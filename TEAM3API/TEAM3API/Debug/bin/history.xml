@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=TEAM3API.map -O0 --gc-sections -LE:\CoIDE\configuration\ProgramData\TEAM3API -TE:\CoIDE\configuration\ProgramData\TEAM3API/arm-gcc-link.ld -g">
+      <target file="TEAM3API.elf" lastModified="16a2ab75b42">
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="16a2ab755e3"/>
+         <source file="..\obj\main.o" lastModified="16a2ab75612"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16a2ab756ae"/>
+         <source file="..\obj\printf.o" lastModified="16a2ab7572b"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16a2ab75816"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="16a2ab758a2"/>
+         <source file="..\obj\syscalls.o" lastModified="16a2ab75910"/>
+      </target>
+   </processor>
+</history>
