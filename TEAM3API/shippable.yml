@@ -1,0 +1,55 @@
+language: none
+
+branches:
+  only:
+    - master
+    
+env:
+  global:
+    - DEPLOY_DIR: $SHIPPABLE_BUILD_DIR/../dist
+    - DEPLOY_USERNAME: $ORG_NAME
+    - DEPLOY_REPO_NAME: $REPO_NAME
+    # Change this project name to the name of your CoIDE project.
+    - PROJECT_NAME: VgaCore
+
+
+build:
+  # Configure Docker image (this image has Doxygen and the GNU ARM Embedded compiler installed)
+  pre_ci_boot:
+    image_name: vidavidorra/u14_gnu_arm_embedded
+    image_tag: latest
+    pull: true
+
+  ci:
+    # Get an external program to generate a makefile from the CoIDE project file.
+    - git clone https://github.com/vidavidorra/CoIDE2Makefile ../CoIDE2Makefile
+    - mkdir -p $PROJECT_NAME/Debug
+    - python ../CoIDE2Makefile/CoIDE2Makefile.py $SHIPPABLE_BUILD_DIR/$PROJECT_NAME.coproj
+    - cd $SHIPPABLE_BUILD_DIR/$PROJECT_NAME/Debug
+    
+    # Build the source code into a library.
+    - make all lib
+
+  on_success:
+    # On success generate the Doxygen documentation and push it to GitHub.
+    - cd $SHIPPABLE_BUILD_DIR
+    - chmod +x deploy_to_gh_pages.sh
+    - mkdir -p $DEPLOY_DIR
+    - cd $SHIPPABLE_BUILD_DIR/docs
+    - doxygen Doxyfile.doxy
+    - cp -R output/html/. $DEPLOY_DIR
+    - cd $SHIPPABLE_BUILD_DIR
+    - ./deploy_to_gh_pages.sh
+
+
+integrations:
+  # Configure email notifications (Slack notifications can be configured here as well.)
+  notifications:
+    - integrationName: email
+      type: email
+      on_success: change
+      on_failure: always
+      on_pull_request: never
+  key:
+    - integrationName: deploy_to_gh_pages
+      type: ssh-key
