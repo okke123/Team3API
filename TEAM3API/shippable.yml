@@ -10,7 +10,7 @@ env:
     - DEPLOY_USERNAME: $ORG_NAME
     - DEPLOY_REPO_NAME: $REPO_NAME
     # Change this project name to the name of your CoIDE project.
-    - PROJECT_NAME: VgaCore
+    - PROJECT_NAME: TEAM3API
 
 
 build:
