@@ -1,26 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -IC:\Users\Okke\GitRepos\TEAM3API -IC:\Users\Okke\GitRepos\TEAM3API\TEAM3API\cmsis_lib\include -IC:\Users\Okke\GitRepos\TEAM3API\TEAM3API\cmsis_boot -IC:\Users\Okke\GitRepos\TEAM3API\TEAM3API\cmsis_lib -IC:\Users\Okke\GitRepos\TEAM3API\TEAM3API\cmsis -IC:\Users\Okke\GitRepos\TEAM3API\TEAM3API">
-      <target file="stm32f4xx_rcc.o" lastModified="16a2ab756ae">
-         <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a2ab2cb9d"/>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\workspace -I..\..\..\workspace\Team3API\cmsis_lib -I..\..\..\workspace\Team3API\cmsis_boot -I..\..\..\workspace\Team3API\cmsis -I..\..\..\workspace\Team3API -I..\..\.. -I..\..\..\workspace\Team3API\cmsis_lib\include">
+      <target file="syscalls.o" lastModified="16a72e63e79">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="16a72772a62"/>
       </target>
-      <target file="system_stm32f4xx.o" lastModified="16a2ab758a2">
-         <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a2ab2a8a2"/>
+      <target file="stm32f4xx_gpio.o" lastModified="16a72e8abf4">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a72772a52"/>
       </target>
-      <target file="stm32f4xx_gpio.o" lastModified="16a2ab75816">
-         <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a2ab2cb8d"/>
+      <target file="AppFront.o" lastModified="16a72e6396d">
+         <source file="..\..\..\AppFront.c" lastModified="16a72a8cbdb"/>
       </target>
-      <target file="printf.o" lastModified="16a2ab7572b">
-         <source file="..\..\..\stdio\printf.c" lastModified="16a2ab295cd"/>
+      <target file="Uart.o" lastModified="16a72e98bd4">
+         <source file="..\..\..\Uart.c" lastModified="16a72e987a9"/>
       </target>
-      <target file="syscalls.o" lastModified="16a2ab75910">
-         <source file="..\..\..\syscalls\syscalls.c" lastModified="16a2ab1e7db"/>
+      <target file="printf.o" lastModified="16a72e63cf3">
+         <source file="..\..\..\stdio\printf.c" lastModified="16a72772a62"/>
       </target>
-      <target file="main.o" lastModified="16a2ab75612">
-         <source file="..\..\..\main.c" lastModified="16a2ab15b2f"/>
+      <target file="system_stm32f4xx.o" lastModified="16a72e8ac61">
+         <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a72772a33"/>
       </target>
-      <target file="startup_stm32f4xx.o" lastModified="16a2ab755e3">
-         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a2ab2a892"/>
+      <target file="startup_stm32f4xx.o" lastModified="16a72e63b6c">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a72772a24"/>
+      </target>
+      <target file="stm32f4xx_usart.o" lastModified="16a72e8aa5e">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="16a72889af8"/>
+      </target>
+      <target file="main.o" lastModified="16a72e9287d">
+         <source file="..\..\..\main.c" lastModified="16a72e6372b"/>
+      </target>
+      <target file="stm32f4xx_rcc.o" lastModified="16a72e8ab68">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a72772a52"/>
       </target>
    </processor>
 </history>

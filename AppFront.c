@@ -6,7 +6,7 @@
  *		UART command handling
  */
 
-#include "Demo_Front.h"
+#include "AppFront.h"
 
 int MessageToCommand(uint8_t* msg, msg_typedef* MSG_command)
 {
