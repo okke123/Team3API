@@ -1,5 +1,5 @@
-#ifndef __DEMO_FRONT_H
-#define __DEMO_FRONT_H
+#ifndef __APP_FRONT_H
+#define __APP_FRONT_H
 
 #include <stdint.h>
 
