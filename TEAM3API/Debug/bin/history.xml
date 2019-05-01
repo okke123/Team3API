@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="4.8.3 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=TEAM3API.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API -TC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API/arm-gcc-link.ld -g">
-      <target file="TEAM3API.elf" lastModified="16a72e98e06">
-         <source file="..\obj\AppFront.o" lastModified="16a72e6396d"/>
-         <source file="..\obj\Uart.o" lastModified="16a72e98bd4"/>
-         <source file="..\obj\stm32f4xx_usart.o" lastModified="16a72e8aa5e"/>
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="16a72e63b6c"/>
-         <source file="..\obj\main.o" lastModified="16a72e9287d"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16a72e8ab68"/>
-         <source file="..\obj\printf.o" lastModified="16a72e63cf3"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16a72e8abf4"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="16a72e8ac61"/>
-         <source file="..\obj\syscalls.o" lastModified="16a72e63e79"/>
+   <processor signature="7.2.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=TEAM3API.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API -TC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API/link.ld -g">
+      <target file="TEAM3API.elf" lastModified="16a7521914b">
+         <source file="..\obj\AppFront.o" lastModified="16a75218a47"/>
+         <source file="..\obj\Uart.o" lastModified="16a75218ac4"/>
+         <source file="..\obj\AppLogic.o" lastModified="16a75218b21"/>
+         <source file="..\obj\stm32f4xx_usart.o" lastModified="16a75218bbe"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="16a75218c1b"/>
+         <source file="..\obj\main.o" lastModified="16a75218c98"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16a75218d35"/>
+         <source file="..\obj\printf.o" lastModified="16a75218dc1"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16a75218e3e"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="16a75218ebb"/>
+         <source file="..\obj\syscalls.o" lastModified="16a75218f38"/>
       </target>
    </processor>
 </history>
