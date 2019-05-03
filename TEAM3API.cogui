@@ -19,46 +19,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<<<<<<< HEAD
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-=======
->>>>>>> 30fdff304d393c30a249555941b435e1df0cd57a
 </presentation>
 </folder>
 </info>
 </editorArea>
-<<<<<<< HEAD
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="AppFront.h" partName="AppFront.h" path="C:/CooCox/CoIDE/workspace/Team3API/AppFront.h" title="AppFront.h" tooltip="C:/CooCox/CoIDE/workspace/Team3API/AppFront.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/AppFront.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="110" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="AppFront.c" partName="AppFront.c" path="C:/CooCox/CoIDE/workspace/Team3API/AppFront.c" title="AppFront.c" tooltip="C:/CooCox/CoIDE/workspace/Team3API/AppFront.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/AppFront.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="208" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.c" partName="AppLogic.c" path="C:/CooCox/CoIDE/workspace/Team3API/AppLogic.c" title="AppLogic.c" tooltip="C:/CooCox/CoIDE/workspace/Team3API/AppLogic.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/AppLogic.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="156" selectionTopPixel="187"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.h" partName="AppLogic.h" path="C:/CooCox/CoIDE/workspace/Team3API/AppLogic.h" title="AppLogic.h" tooltip="C:/CooCox/CoIDE/workspace/Team3API/AppLogic.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/AppLogic.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="21" selectionTopPixel="0"/>
-</editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/CooCox/CoIDE/workspace/Team3API/main.c" title="main.c" tooltip="C:/CooCox/CoIDE/workspace/Team3API/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="273" selectionTopPixel="0"/>
-=======
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Okke/GitRepos/TEAM3API/main.c" title="main.c" tooltip="C:/Users/Okke/GitRepos/TEAM3API/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="59" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" partName="printf.c" path="C:/Users/Okke/GitRepos/TEAM3API/stdio/printf.c" title="printf.c" tooltip="C:/Users/Okke/GitRepos/TEAM3API/stdio/printf.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/stdio/printf.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="867" selectionTopPixel="0"/>
->>>>>>> 30fdff304d393c30a249555941b435e1df0cd57a
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -71,14 +38,9 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/TEAM3API"/>
-<element path="/TEAM3API/Application"/>
 </expanded>
 <selection>
-<<<<<<< HEAD
 <element path="/TEAM3API/main.c"/>
-=======
-<element path="/TEAM3API/Application/AppFront.c"/>
->>>>>>> 30fdff304d393c30a249555941b435e1df0cd57a
 </selection>
 </viewState>
 </view>
@@ -88,17 +50,11 @@
 <view id="org.eclipse.debug.ui.RegisterView" partName="Registers">
 <viewState/>
 </view>
-<view id="org.eclipse.search.ui.views.SearchView" partName="Search">
-<viewState isPinned="false">
-<view IMemento.internal.id="org.eclipse.cdt.ui.pdomSearchViewPage" definitionColumnWidth="150" locationColumnWidth="300" matchColumnWidth="300" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" showEnclosingDefinitions="true"/>
-<view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
-</viewState>
+<view id="org.eclipse.cdt.ui.callHierarchy" partName="Call Hierarchy">
+<viewState showFilesInLabels="false" variableFilter="false"/>
 </view>
 <view id="org.eclipse.debug.ui.DebugView" partName="Debug">
 <viewState/>
-</view>
-<view id="org.eclipse.cdt.ui.callHierarchy" partName="Call Hierarchy">
-<viewState showFilesInLabels="false" variableFilter="false"/>
 </view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
@@ -110,6 +66,12 @@
 <viewState/>
 </view>
 <view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+<view id="org.coocox.component.ui.Help" partName="Help">
 <viewState/>
 </view>
 </views>
@@ -145,13 +107,13 @@
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <view id="org.coocox.component.ui.ComponentView"/>
 <view id="org.coocox.builder.ui.views.ProjectView"/>
+<view id="org.coocox.component.ui.Help"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
-<view id="org.eclipse.search.ui.views.SearchView"/>
-<view id="org.eclipse.cdt.ui.callHierarchy"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1123d4e">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@137a3a8">
 <folder activePageID="org.coocox.component.ui.ComponentView" appearance="2" expanded="2">
 <page content="org.coocox.component.ui.ComponentView" label="Components"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -159,37 +121,36 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.7495441" ratioLeft="1233" ratioRight="412" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1123d4e">
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@137a3a8">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@eb88e7" ratio="0.48400852" ratioLeft="454" ratioRight="484" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1123d4e">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1254755" ratio="0.6992561" ratioLeft="658" ratioRight="283" relationship="4" relative="org.eclipse.ui.internal.ViewStack@137a3a8">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
-<page content="org.eclipse.cdt.ui.callHierarchy" label="Call Hierarchy"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
-<info part="org.coocox.builder.ui.exampleView" ratio="0.21945289" ratioLeft="361" ratioRight="1284" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1123d4e"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@13e1686" ratio="0.7196262" ratioLeft="924" ratioRight="360" relationship="2" relative="org.coocox.builder.ui.exampleView">
-<folder appearance="2" expanded="2">
-<page content="org.coocox.component.ui.Help" label="LabelNotFound"/>
+<info part="org.coocox.builder.ui.exampleView" ratio="0.21966527" ratioLeft="420" ratioRight="1492" relationship="2" relative="org.eclipse.ui.internal.ViewStack@137a3a8"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1e52724" ratio="0.71983916" ratioLeft="1074" ratioRight="418" relationship="2" relative="org.coocox.builder.ui.exampleView">
+<folder activePageID="org.coocox.component.ui.Help" appearance="2" expanded="2">
+<page content="org.coocox.component.ui.Help" label="Help"/>
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.coocox.coassistant.view.CoAssistantView" label="LabelNotFound"/>
 <page content="org.coocox.builder.ui.MoreExampleView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.44902387" ratioLeft="414" ratioRight="508" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@76fa98" ratio="0.36984816" ratioLeft="341" ratioRight="581" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1123d4e">
+<info part="org.eclipse.ui.editorss" ratio="0.44952178" ratioLeft="423" ratioRight="518" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1d985e3" ratio="0.36981934" ratioLeft="348" ratioRight="593" relationship="4" relative="org.eclipse.ui.internal.ViewStack@137a3a8">
 <folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -301,219 +262,51 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<<<<<<< HEAD
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/AppFront.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/AppFront.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/AppLogic.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/AppLogic.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/main.c"/>
-</editors>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="242" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="187" y="48"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="494" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="187" y="48"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="3" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="143" y="0"/>
-</item>
-<item historyLabel="AppFront.h" index="0">
-<position info="not_deleted" x="110" y="0"/>
-</item>
-<item historyLabel="AppFront.c" index="1">
-<position info="not_deleted" x="208" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="291" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="494" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="291" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="499" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="291" y="0"/>
-</item>
-<item historyLabel="AppFront.c" index="1">
-<position info="not_deleted" x="208" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="499" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="291" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="497" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="259" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="291" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="497" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="259" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="205" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="AppFront.c" index="1">
-<position info="not_deleted" x="208" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="227" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="227" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="259" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="227" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="497" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="259" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="497" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="227" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="259" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="255" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="497" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="227" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="255" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="292" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="147" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="129" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="147" y="0"/>
-</item>
-<item historyLabel="AppFront.h" index="0">
-<position info="not_deleted" x="110" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="239" y="0"/>
-</item>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="292" y="0"/>
-</item>
-<item historyLabel="AppLogic.c" index="2">
-<position info="not_deleted" x="156" y="0"/>
-</item>
-<item historyLabel="AppLogic.h" index="3">
-<position info="not_deleted" x="21" y="0"/>
-</item>
-<item active="true" historyLabel="main.c" index="4">
-<position info="not_deleted" x="292" y="0"/>
-=======
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
-<org.coocox.welcome.ui.WelcomePage/>
-</editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
-<org.coocox.welcome.ui.WelcomePage/>
-</editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
-<org.coocox.welcome.ui.WelcomePage/>
-</editor>
-<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
-<subPage/>
-</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/Application/AppLogic.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/Application/AppLogic.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/Uart.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/Uart.h"/>
 <editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
 <subPage/>
 </editor>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/main.c"/>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/stdio/printf.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TEAM3API/Application/AppFront.c"/>
 </editors>
-<item historyLabel="welcome" index="0"/>
-<item historyLabel="welcome" index="1"/>
-<item historyLabel="welcome" index="2"/>
-<item historyLabel="Repository" index="3"/>
-<item historyLabel="Repository" index="4"/>
-<item historyLabel="main.c" index="5">
-<position info="not_deleted" x="54" y="0"/>
-</item>
-<item historyLabel="Repository" index="4"/>
-<item historyLabel="Configuration" index="6"/>
-<item historyLabel="main.c" index="5">
-<position info="not_deleted" x="54" y="0"/>
-</item>
-<item historyLabel="Configuration" index="6"/>
-<item historyLabel="Repository" index="4"/>
-<item historyLabel="Configuration" index="6"/>
-<item historyLabel="main.c" index="5">
-<position info="not_deleted" x="54" y="0"/>
-</item>
-<item historyLabel="printf.c" index="7">
-<position info="not_deleted" x="867" y="0"/>
-</item>
-<item historyLabel="main.c" index="5">
-<position info="not_deleted" x="54" y="0"/>
-</item>
-<item historyLabel="AppFront.c" index="8">
+<item historyLabel="AppLogic.c" index="0">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="5">
-<position info="not_deleted" x="54" y="0"/>
+<item historyLabel="AppLogic.h" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Uart.c" index="2">
+<position/>
+</item>
+<item historyLabel="Uart.h" index="3">
+<position/>
+</item>
+<item historyLabel="Repository" index="4"/>
+<item historyLabel="Uart.h" index="3">
+<position/>
+</item>
+<item historyLabel="Uart.c" index="2">
+<position/>
+</item>
+<item historyLabel="AppLogic.h" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="AppLogic.c" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Uart.c" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Uart.h" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Uart.c" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 <item active="true" historyLabel="main.c" index="5">
-<position/>
->>>>>>> 30fdff304d393c30a249555941b435e1df0cd57a
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -522,28 +315,40 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<<<<<<< HEAD
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="TEAM3API/main.c">
 <persistable path="/TEAM3API/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Uart.h" tooltip="TEAM3API/Uart.h">
+<persistable path="/TEAM3API/Uart.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Uart.c" tooltip="TEAM3API/Uart.c">
+<persistable path="/TEAM3API/Uart.c"/>
+</file>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>
+<subPage/>
+</persistable>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.h" tooltip="TEAM3API/Application/AppLogic.h">
+<persistable path="/TEAM3API/Application/AppLogic.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.c" tooltip="TEAM3API/Application/AppLogic.c">
+<persistable path="/TEAM3API/Application/AppLogic.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.h" tooltip="TEAM3API/AppLogic.h">
 <persistable path="/TEAM3API/AppLogic.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.c" tooltip="TEAM3API/AppLogic.c">
 <persistable path="/TEAM3API/AppLogic.c"/>
-=======
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppFront.c" tooltip="TEAM3API/Application/AppFront.c">
-<persistable path="/TEAM3API/Application/AppFront.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="TEAM3API/stdio/printf.c">
-<persistable path="/TEAM3API/stdio/printf.c"/>
->>>>>>> 30fdff304d393c30a249555941b435e1df0cd57a
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppFront.c" tooltip="TEAM3API/AppFront.c">
 <persistable path="/TEAM3API/AppFront.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="TEAM3API/main.c">
-<persistable path="/TEAM3API/main.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Demo_Front.h" tooltip="TEAM3API/Demo_Front.h">
+<persistable path="/TEAM3API/Demo_Front.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Demo_Front.c" tooltip="TEAM3API/Demo_Front.c">
+<persistable path="/TEAM3API/Demo_Front.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_gpio.c" tooltip="TEAM3API/cmsis_lib/source/stm32f4xx_gpio.c">
 <persistable path="/TEAM3API/cmsis_lib/source/stm32f4xx_gpio.c"/>
@@ -551,55 +356,8 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_gpio.h" tooltip="TEAM3API/cmsis_lib/include/stm32f4xx_gpio.h">
 <persistable path="/TEAM3API/cmsis_lib/include/stm32f4xx_gpio.h"/>
 </file>
-<<<<<<< HEAD
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.h" tooltip="TEAM3API/cmsis_boot/system_stm32f4xx.h">
 <persistable path="/TEAM3API/cmsis_boot/system_stm32f4xx.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_conf.h" tooltip="TEAM3API/cmsis_boot/stm32f4xx_conf.h">
-<persistable path="/TEAM3API/cmsis_boot/stm32f4xx_conf.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx.h" tooltip="TEAM3API/cmsis_boot/stm32f4xx.h">
-<persistable path="/TEAM3API/cmsis_boot/stm32f4xx.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_rcc.h" tooltip="TEAM3API/cmsis_lib/include/stm32f4xx_rcc.h">
-<persistable path="/TEAM3API/cmsis_lib/include/stm32f4xx_rcc.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Demo_Front.h" tooltip="TEAM3API/syscalls/Demo_Front.h">
-<persistable path="/TEAM3API/syscalls/Demo_Front.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_conf.h" tooltip="convolutie_stp/cmsis_boot/stm32f4xx_conf.h">
-<persistable path="/convolutie_stp/cmsis_boot/stm32f4xx_conf.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_usart.h" tooltip="convolutie_stp/cmsis_lib/include/stm32f4xx_usart.h">
-<persistable path="/convolutie_stp/cmsis_lib/include/stm32f4xx_usart.h"/>
-=======
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.c" tooltip="VGA_Core/cmsis_boot/system_stm32f4xx.c">
-<persistable path="/VGA_Core/cmsis_boot/system_stm32f4xx.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dac.h" tooltip="ARM5/Includes/dac.h">
-<persistable path="/ARM5/Includes/dac.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="int.h" tooltip="C:\Users\Okke\Downloads\kernel_calc\int.h">
-<persistable uri="file:/C:/Users/Okke/Downloads/kernel_calc/int.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="int.h" tooltip="ARM5/Includes/int.h">
-<persistable path="/ARM5/Includes/int.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="ARM5/cmsis_boot/startup/startup_stm32f4xx.c">
-<persistable path="/ARM5/cmsis_boot/startup/startup_stm32f4xx.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="adc.c" tooltip="ARM5/Sources/adc.c">
-<persistable path="/ARM5/Sources/adc.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" tooltip="ARM5/main.h">
-<persistable path="/ARM5/main.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="int.c" tooltip="ARM5/Sources/int.c">
-<persistable path="/ARM5/Sources/int.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dac.c" tooltip="ARM5/Sources/dac.c">
-<persistable path="/ARM5/Sources/dac.c"/>
->>>>>>> 30fdff304d393c30a249555941b435e1df0cd57a
 </file>
 </mruList>
 </workbench>
