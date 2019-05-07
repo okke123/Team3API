@@ -76,13 +76,20 @@ void VgaIOInit(void)
 //--------------------------------------------------------------
 void VgaIOSetPixel(uint16_t xp, uint16_t yp, uint8_t color)
 {
-  if(xp>=VGA_DISPLAY_X) xp=0;
-  if(yp>=VGA_DISPLAY_Y) yp=0;
-
-  // Write pixel to ram
-  VGA_RAM1[(yp*(VGA_DISPLAY_X+1))+xp]=color;
+  if(xp<VGA_DISPLAY_X)
+  	  if(yp<VGA_DISPLAY_Y)
+  		  VGA_RAM1[(yp*(VGA_DISPLAY_X+1))+xp]=color;
 }
 
+void VgaIOSetLine(uint16_t xp, uint16_t yp, uint16_t length, uint8_t color)
+{
+	memset(VGA_RAM1+(yp*(VGA_DISPLAY_X+1))+xp, color, sizeof(VGA_RAM1[0])*length);
+}
+
+void VgaIOClearScreen(uint8_t color)
+{
+	memset(VGA_RAM1, color, sizeof(VGA_RAM1));
+}
 
 //--------------------------------------------------------------
 // interne Funktionen
