@@ -26,16 +26,16 @@
 //--------------------------------------------------------------
 // internal Functions
 //--------------------------------------------------------------
-void P_VGA_InitIO(void);
-void P_VGA_InitTIM(void);
-void P_VGA_InitINT(void);
-void P_VGA_InitDMA(void);
+void VgaIOInitGPIO(void);
+void VgaIOInitTIM(void);
+void VgaIOInitINT(void);
+void VgaIOInitDMA(void);
 
 
 //--------------------------------------------------------------
 // Init VGA-Module
 //--------------------------------------------------------------
-void UB_VGA_Screen_Init(void)
+void VgaIOInit(void)
 {
   uint16_t xp,yp;
 
@@ -51,13 +51,13 @@ void UB_VGA_Screen_Init(void)
   }
 
   // init IO-Pins
-  P_VGA_InitIO();
+  VgaIOInitGPIO();
   // init Timer
-  P_VGA_InitTIM();
+  VgaIOInitTIM();
   // init DMA
-  P_VGA_InitDMA();
+  VgaIOInitDMA();
   // init Interrupts
-  P_VGA_InitINT();
+  VgaIOInitINT();
 
   //-----------------------
   // Register swap and safe
@@ -67,26 +67,14 @@ void UB_VGA_Screen_Init(void)
 }
 
 
-//--------------------------------------------------------------
-// fill the DMA RAM buffer with one color
-//--------------------------------------------------------------
-void UB_VGA_FillScreen(uint8_t color)
-{
-  uint16_t xp,yp;
 
-  for(yp=0;yp<VGA_DISPLAY_Y;yp++) {
-    for(xp=0;xp<VGA_DISPLAY_X;xp++) {
-      UB_VGA_SetPixel(xp,yp,color);
-    }
-  }
-}
 
 
 //--------------------------------------------------------------
 // put one Pixel on the screen with one color
 // Important : the last Pixel+1 from every line must be black (don't know why??)
 //--------------------------------------------------------------
-void UB_VGA_SetPixel(uint16_t xp, uint16_t yp, uint8_t color)
+void VgaIOSetPixel(uint16_t xp, uint16_t yp, uint8_t color)
 {
   if(xp>=VGA_DISPLAY_X) xp=0;
   if(yp>=VGA_DISPLAY_Y) yp=0;
@@ -100,7 +88,7 @@ void UB_VGA_SetPixel(uint16_t xp, uint16_t yp, uint8_t color)
 // interne Funktionen
 // init aller IO-Pins
 //--------------------------------------------------------------
-void P_VGA_InitIO(void)
+void VgaIOInitGPIO(void)
 {
   GPIO_InitTypeDef  GPIO_InitStructure;
 
@@ -169,7 +157,7 @@ void P_VGA_InitIO(void)
 // internal Function
 // init Timer
 //--------------------------------------------------------------
-void P_VGA_InitTIM(void)
+void VgaIOInitTIM(void)
 {
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
   TIM_OCInitTypeDef  TIM_OCInitStructure;
@@ -241,7 +229,7 @@ void P_VGA_InitTIM(void)
 // internal Function
 // init Interrupts
 //--------------------------------------------------------------
-void P_VGA_InitINT(void)
+void VgaIOInitINT(void)
 {
   NVIC_InitTypeDef NVIC_InitStructure;
 
@@ -282,7 +270,7 @@ void P_VGA_InitINT(void)
 // internal Function
 // init DMA
 //--------------------------------------------------------------
-void P_VGA_InitDMA(void)
+void VgaIOInitDMA(void)
 {
   DMA_InitTypeDef DMA_InitStructure;
 
@@ -395,4 +383,3 @@ void DMA2_Stream5_IRQHandler(void)
     GPIOE->BSRRH = VGA_GPIO_HINIBBLE;
   }
 }
-
