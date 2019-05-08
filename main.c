@@ -1,19 +1,14 @@
-#include "Uart.h"
-#include "AppFront.h"
-#include "AppLogic.h"
-
-int error;
-char* object_name;
+#include <VgaLogic.h>
+#include <stm32f4xx.h>
 
 int main(void)
 {
-	UartInit(UART_BAUDRATE);
-	UartPuts("Hallo\n\r");
+    SystemInit();
+    API_init();
 
-	int i = CharToInt("100", error);
-	StrSplit("Hallo,allemaal", object_name, error);
-
+    API_clearscreen(0xFF);
     while(1)
     {
+
     }
 }
