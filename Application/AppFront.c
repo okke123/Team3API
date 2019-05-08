@@ -1,19 +1,43 @@
-/*!
- *	/arthur Chileam Bohnen
- *	/version 0.1
- *	/date 2019-4-30
- *	/mainpage Front Layer
- *		UART command handling
- */
+/**
+  ******************************************************************************
+  * @file    AppFront.c
+  * @author  Team3API
+  * @version V0.0.1
+  * @date    30-april-2019
+  * @brief   This file provides the front layer for the application
+  *
+  ******************************************************************************
+  */
 
+/* Includes ------------------------------------------------------------------*/
 #include "AppFront.h"
 
-int MessageToCommand(uint8_t* msg, msg_typedef* MSG_command)
-{
-	return 0x00;
-}
+/** @addtogroup App Demo application
+  * @{
+  */
 
-void ErrorCodeHandler(uint8_t error, uint8_t* error_msg)
+/** @defgroup AppFront Front layer
+  * @brief Terminal functions
+  * @{
+  */
+
+/**
+ * @brief	Error code handling routine according to the specified error value
+ * 			an automated message is generated.
+ * @param	error: integer that contains an error code value.
+ *
+ * @param	error_msg: char pointer that contains a feedback message for the therminal.
+ * @retval	None
+ */
+void ErrorCodeHandler(int error, char* error_msg)
 {
 
 }
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
+

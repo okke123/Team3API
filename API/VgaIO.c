@@ -26,6 +26,7 @@
 //--------------------------------------------------------------
 // internal Functions
 //--------------------------------------------------------------
+
 void VgaIOInitGPIO(void);
 void VgaIOInitTIM(void);
 void VgaIOInitINT(void);
@@ -35,6 +36,7 @@ void VgaIOInitDMA(void);
 //--------------------------------------------------------------
 // Init VGA-Module
 //--------------------------------------------------------------
+
 void VgaIOInit(void)
 {
   uint16_t xp,yp;
@@ -51,6 +53,7 @@ void VgaIOInit(void)
   }
 
   // init IO-Pins
+
   VgaIOInitGPIO();
   // init Timer
   VgaIOInitTIM();
@@ -67,13 +70,11 @@ void VgaIOInit(void)
 }
 
 
-
-
-
 //--------------------------------------------------------------
 // put one Pixel on the screen with one color
 // Important : the last Pixel+1 from every line must be black (don't know why??)
 //--------------------------------------------------------------
+
 void VgaIOSetPixel(uint16_t xp, uint16_t yp, uint8_t color)
 {
   if(xp<VGA_DISPLAY_X)
@@ -95,6 +96,7 @@ void VgaIOClearScreen(uint8_t color)
 // interne Funktionen
 // init aller IO-Pins
 //--------------------------------------------------------------
+
 void VgaIOInitGPIO(void)
 {
   GPIO_InitTypeDef  GPIO_InitStructure;
@@ -164,6 +166,7 @@ void VgaIOInitGPIO(void)
 // internal Function
 // init Timer
 //--------------------------------------------------------------
+
 void VgaIOInitTIM(void)
 {
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
@@ -236,6 +239,7 @@ void VgaIOInitTIM(void)
 // internal Function
 // init Interrupts
 //--------------------------------------------------------------
+
 void VgaIOInitINT(void)
 {
   NVIC_InitTypeDef NVIC_InitStructure;
@@ -277,6 +281,7 @@ void VgaIOInitINT(void)
 // internal Function
 // init DMA
 //--------------------------------------------------------------
+
 void VgaIOInitDMA(void)
 {
   DMA_InitTypeDef DMA_InitStructure;

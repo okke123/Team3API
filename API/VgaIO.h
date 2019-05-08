@@ -14,6 +14,7 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_tim.h"
+
 #include "misc.h"
 #include "stm32f4xx_dma.h"
 
@@ -129,6 +130,7 @@ uint8_t VGA_RAM1[(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y];
 //--------------------------------------------------------------
 // Global Function call
 //--------------------------------------------------------------
+
 void VgaIOInit(void);
 void VgaIOSetPixel(uint16_t xp, uint16_t yp, uint8_t color);
 void VgaIOSetLine(uint16_t xp1, uint16_t xp2, uint16_t yp, uint8_t color);
