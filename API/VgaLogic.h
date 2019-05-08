@@ -1,5 +1,3 @@
-#include <math.h>
-
 void API_init(void);
 
 //Verplict
