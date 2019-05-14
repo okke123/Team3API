@@ -20,25 +20,34 @@ int API_clearscreen (int color)
 }
 
 
-//Momenteel gewoon invullen, later dit als optie maken.
-int API_draw_rectangle (int x_lup, int y_lup, int x_rdown, int y_rdown, int color, int style, int reserved)
+int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor)
 {
-	int x_length = x_rdown-x_lup+1;
+	int x_line, y_line;
 
-	if (reserved)
+	if (filled)
 	{
-		int y_line;
-		for (y_line = y_lup; y_line <= y_rdown; y_line++) {
-			VgaIOSetLine(x_lup,y_line,x_length,color);
+		if (width > 2*weight)
+		{
+			for (y_line = y+weight; y_line < y+height-weight; y_line++) {
+				VgaIOSetLine(x+weight,y_line,width-(weight*2),color);
+			}
 		}
 	}
 	else
-	{
-		VgaIOSetLine(x_lup,y_lup,x_length,color);
-		VgaIOSetLine(x_lup,y_rdown,x_length,color);
-		API_draw_line(x_lup,y_lup,x_lup,y_rdown,color,1,0);
-		API_draw_line(x_rdown,y_lup,x_rdown,y_rdown,color,1,0);
-	}
+		bordercolor = color;
+
+	for (y_line = y; y_line < y+weight; y_line++) //Bovenlijn + bovenhoeken
+		VgaIOSetLine(x,y_line,width,bordercolor);
+
+	for (y_line = y+height-weight; y_line < y+height; y_line++) //Onderlijn + onderhoeken
+		VgaIOSetLine(x,y_line,width,bordercolor);
+
+	for (x_line = x; x_line < x+weight; x_line++)
+		API_draw_line(x_line,y+weight,x_line,y+height-weight-1,bordercolor,1,0); //linkerlijn
+
+	for (x_line = x+width-weight; x_line < x+width; x_line++)
+		API_draw_line(x_line,y+weight,x_line,y+height-weight-1,bordercolor,1,0); //rechterlijn
+
 	return 0;
 }
 
@@ -46,6 +55,9 @@ int API_draw_rectangle (int x_lup, int y_lup, int x_rdown, int y_rdown, int colo
 
 int API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 { /* plot an anti-aliased line of width weight */
+
+	//TODO: Berbetering toevoegen voor horizontaal en verticaale lijnen
+
 	int dx = abs(x_2-x_1), sx = x_1<x_2 ? 1 : -1;
 	int dy = abs(y_2-y_1), sy = y_1<y_2 ? 1 : -1;
 	int err = (dx>dy ? dx : -dy)/2, e2;
@@ -98,10 +110,10 @@ int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
 		do
 		{
 			int teller;
-			for (teller = x_t*-2+1; teller > 0; teller--)
+			for (teller = (x_t*-2)+1; teller > 0; teller--)
 			{
-				API_draw_simple_line(x_1+x_t+teller,y_1-y_t,x_2+x_t+teller,y_2-y_t,color);
-				API_draw_simple_line(x_1+x_t+teller,y_1+y_t,x_2+x_t+teller,y_2+y_t,color);
+				API_draw_simple_line(x_1+x_t+teller-1,y_1-y_t,x_2+x_t+teller-1,y_2-y_t,color);
+				API_draw_simple_line(x_1+x_t+teller-1,y_1+y_t,x_2+x_t+teller-1,y_2+y_t,color);
 			}
 
 			radius = err;

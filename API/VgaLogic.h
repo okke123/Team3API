@@ -3,7 +3,7 @@ void API_init(void);
 //Verplict
 int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved);
 int API_draw_line (int x_1, int y_1, int x_2, int y2, int color, int weight, int reserved);
-int API_draw_rectangle (int x_lup, int y_lup, int x_rdown, int y_rdown, int color, int style, int reserved);
+int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor);
 int API_draw_bitmap (int x_lup, int y_lup, int bm_nr);
 int API_clearscreen (int color);
 
