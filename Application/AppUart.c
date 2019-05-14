@@ -6,7 +6,7 @@
  *		UART peripheral
  */
 
-#include "Uart.h"
+#include "AppUart.h"
 
 void UartInit(int baudrate)
 {
@@ -79,7 +79,7 @@ char UartGet()
 	return c;
 }
 
-void UartGets(char* s, int echo)
+int UartGets(char* s, int echo)
 {
 	while (TRUE)
 	{
@@ -89,7 +89,7 @@ void UartGets(char* s, int echo)
 	 		continue;
 
 	 	if (*s==0xff || *s==LF) // if no data or LF, continue
-			continue;
+			break;
 
 		if (echo)              	// if output-flag set
 			UartPut(*s);  		// to read what u entered
@@ -97,8 +97,10 @@ void UartGets(char* s, int echo)
 		if (*s==CR)            	// if enter pressed
 		{
 			*s = '\0';         	// ignore char and close string
-		    return;            	// buf ready, exit loop
+		    return 0x00;            	// buf ready, exit loop
 		}
 		s++;
 	}
+
+	return 0x03;
 }

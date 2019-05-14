@@ -13,6 +13,6 @@ void UartInit(int baudrate);
 void UartPut(char c);
 void UartPuts(char* s);
 char UartGet();
-void UartGets(char* s, int echo);
+int UartGets(char* s, int echo);
 
 #endif
