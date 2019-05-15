@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    AppFront.c
-  * @author  Team3API
+  * @author  Chileam Bohnen
   * @version V0.0.1
   * @date    30-april-2019
   * @brief   This file provides the front layer for the application
@@ -10,9 +10,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "VgaLogic.h"
 #include "AppFront.h"
-#include "string.h"
 
 /** @addtogroup App Demo application
   * @{
@@ -26,9 +24,9 @@
 /**
  * @brief	Error code handling routine according to the specified error value
  * 			an automated message is generated.
- * @param	error: integer that contains an error code value.
+ * @param	error:		integer that contains an error code value.
  *
- * @param	error_msg: char pointer that contains a feedback message for the therminal.
+ * @param	error_msg:	char pointer that contains a feedback message for the therminal.
  * @retval	None
  */
 void ErrorCodeHandler(char error, char* error_msg)
@@ -103,6 +101,7 @@ void ErrorCodeHandler(char error, char* error_msg)
 			break;
 
 		default:
+			stpcpy(error_msg, "\0");
 			break;
 	}
 }
@@ -113,4 +112,3 @@ void ErrorCodeHandler(char error, char* error_msg)
 /**
   * @}
   */
-

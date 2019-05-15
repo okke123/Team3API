@@ -1,8 +1,7 @@
 #ifndef __APP_LOGIC_H
 #define __APP_LOGIC_H
 
-#include "string.h"
-#include "stdlib.h"
+#include "main.h"
 
 #define NUM_SET "0123456789"
 #define DELIMITER ","
