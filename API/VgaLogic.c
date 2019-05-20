@@ -79,7 +79,7 @@ int API_clearscreen (int color)
 int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor)
 {
 	int x_line, y_line;
-
+	
  /* Check if rectangle should be filled in */
 	if (filled)
 	{
@@ -101,14 +101,14 @@ int API_draw_rectangle (int x, int y, int width, int height, int color, int fill
 
 	for (y_line = y+height-weight; y_line < y+height; y_line++) //Bottom
 		VgaIOSetLine(x,y_line,width,bordercolor);
-
+		
  /* Draw the vertical lines of the border */
 	for (x_line = x; x_line < x+weight; x_line++) //Left
 		API_draw_line(x_line,y+weight,x_line,y+height-weight-1,bordercolor,1,0);
 
 	for (x_line = x+width-weight; x_line < x+width; x_line++) //Right
 		API_draw_line(x_line,y+weight,x_line,y+height-weight-1,bordercolor,1,0);
-
+		
 	return 0;
 }
 
