@@ -37,6 +37,17 @@ void VgaIOInitDMA(void);
 // Init VGA-Module
 //--------------------------------------------------------------
 
+/** @addtogroup VGA-API
+ *  @brief	API for VGA
+ * 	@{
+ */
+
+/** @defgroup VGA-API-IO API IO Layer
+ *  @brief	All the IO functions for the VGA screen
+ * 	@{
+ */
+
+
 void VgaIOInit(void)
 {
   uint16_t xp,yp;
@@ -84,6 +95,7 @@ void VgaIOSetPixel(uint16_t xp, uint16_t yp, uint8_t color)
 
 void VgaIOSetLine(uint16_t xp, uint16_t yp, uint16_t length, uint8_t color)
 {
+	//TODO: Check if outside of screen!!
 	memset(VGA_RAM1+(yp*(VGA_DISPLAY_X+1))+xp, color, sizeof(VGA_RAM1[0])*length);
 }
 
@@ -395,3 +407,11 @@ void DMA2_Stream5_IRQHandler(void)
     GPIOE->BSRRH = VGA_GPIO_HINIBBLE;
   }
 }
+
+/**
+ * @}
+ */
+
+/**
+ * @}
+ */
