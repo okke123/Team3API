@@ -21,22 +21,7 @@
 #include <string.h>
 #include <math.h>
 
-//--------------------------------------------------------------
-// color designation
-// 8bit color (R3G3B2)
-// Red   (3bit) -> Bit7-Bit5
-// Green (3bit) -> Bit4-Bit2
-// Blue  (2bit) -> Bit1-Bit0
-//--------------------------------------------------------------
-#define  VGA_COL_BLACK          0x00
-#define  VGA_COL_BLUE           0x03
-#define  VGA_COL_GREEN          0x1C
-#define  VGA_COL_RED            0xE0
-#define  VGA_COL_WHITE          0xFF
 
-#define  VGA_COL_CYAN           0x1F
-#define  VGA_COL_MAGENTA        0xE3
-#define  VGA_COL_YELLOW         0xFC
 
 
 
