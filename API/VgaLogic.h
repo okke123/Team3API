@@ -7,7 +7,6 @@
   * @brief   This file prototypes the functions of 'VgaLogic.c', defines global constants and includes the nesseciary files.
   */
 
-<<<<<<< HEAD
 /** @defgroup ErrorCode Error codes
  *  @{
  *  	Error codes values:
@@ -45,9 +44,6 @@
 /* Memory functions related ----------------------------------------------------------*/
 #define		API_MEM_FAULT_ERROR				0x30
 
-
-=======
-
 //--------------------------------------------------------------
 // Includes
 //--------------------------------------------------------------
@@ -58,17 +54,11 @@
 //--------------------------------------------------------------
 // Global Function call
 //--------------------------------------------------------------
->>>>>>> 11e60f069cd316a58f123febbe623e44b16d7efa
 void API_init(void);
 
 int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved);
-<<<<<<< HEAD
-int API_draw_line (int x_l, int y_1, int x_2, int y2, int color, int weight, int reserved);
-int API_draw_rectangle (int x_lup, int y_lup, int x_rdown, int y_rdown, int color, int style, int reserved);
-=======
 int API_draw_line (int x_1, int y_1, int x_2, int y2, int color, int weight, int reserved);
 int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor);
->>>>>>> 11e60f069cd316a58f123febbe623e44b16d7efa
 int API_draw_bitmap (int x_lup, int y_lup, int bm_nr);
 int API_clearscreen (int color);
 
@@ -91,7 +81,7 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
 
 <<<<<<< HEAD
 #define LINE_WIDTH_CUTOFF 150 //lager is minder dik       en hoger is dikker
-=======
+
 #define  VGA_COL_BLACK			0x00 //0b00000000
 #define  VGA_COL_BLUE			0x03 //0b00000011
 #define  VGA_COL_LIGHT_BLUE		0x53 //0b01010011
@@ -108,4 +98,3 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
 #define  VGA_COL_GRAY			0x49 //0b01001001
 #define  VGA_COL_WHITE			0xFF //0b11111111
 #define	 VGA_COL_PINK			0xF2 //0b10010010
->>>>>>> 11e60f069cd316a58f123febbe623e44b16d7efa
