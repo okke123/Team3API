@@ -28,9 +28,12 @@
 
 #include "VgaLogic.h"
 
+
 /*Declare private function, not to be used outside file*/
 ///@cond INTERNAL
-int API_draw_simple_line (int x_1, int y_1, int x_2, int y2, int color);
+void API_draw_simple_line (int x_1, int y_1, int x_2, int y2, int color);
+
+int API_check_outside_screen (int x, int y);
 ///@endcond
 
 
@@ -77,7 +80,8 @@ int API_clearscreen (int color)
   */
 int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor)
 {
-	int x_line, y_line;
+	int error = 0;
+	int y_line;
 	
  /* Check if rectangle should be filled in */
 	if (filled)
@@ -102,13 +106,16 @@ int API_draw_rectangle (int x, int y, int width, int height, int color, int fill
 		VgaIOSetLine(x,y_line,width,bordercolor);
 		
  /* Draw the vertical lines of the border */
-	for (x_line = x; x_line < x+weight; x_line++) //Left
-		API_draw_line(x_line,y+weight,x_line,y+height-weight-1,bordercolor,1,0);
-
-	for (x_line = x+width-weight; x_line < x+width; x_line++) //Right
-		API_draw_line(x_line,y+weight,x_line,y+height-weight-1,bordercolor,1,0);
+	for (y_line = y+weight; y_line < y+height-weight; y_line++) //Left + Right
+	{
+		VgaIOSetLine(x,y_line,weight,bordercolor);
+		VgaIOSetLine(x+width-weight,y_line,weight,bordercolor);
+	}
 		
-	return 0;
+	error |= API_check_outside_screen(x,y);
+	error |= API_check_outside_screen(x+width-1,y+height-1);
+
+	return error;
 }
 
 
@@ -128,7 +135,9 @@ int API_draw_rectangle (int x, int y, int width, int height, int color, int fill
 int API_draw_circle (int x, int y, int radius, int color, int filled)
 {
  /* Initializes private variables */
+	int error = 0;
 	int x_t = -radius, y_t = 0, err = 2-2*radius;
+
 	do
 	{
 		if(filled)
@@ -145,13 +154,18 @@ int API_draw_circle (int x, int y, int radius, int color, int filled)
 		}
 	 /* Change variables according to the Brensenham's Algorithm */
 		radius = err;
-		if (radius <= y_t) err += ++y_t*2+1;
-		if (radius > x_t || err > y_t) err += ++x_t*2+1;
+		if (radius <= y_t)
+			err += ++y_t*2+1;
+		if (radius > x_t || err > y_t)
+			err += ++x_t*2+1;
 	}
 	while (x_t < 0);
+
+	error |= API_check_outside_screen(x-radius,y-radius);
+	error |= API_check_outside_screen(x+radius,y+radius);
+
 	return 0;
 }
-
 
 
 /**
@@ -170,9 +184,15 @@ int API_draw_circle (int x, int y, int radius, int color, int filled)
   */
 int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
+	int error = 0;
+
 	if (weight==1)
 	{/* If the weight of the pixel is one, use the 'API_draw_simple_line' function */
 		API_draw_simple_line(x_1,y_1,x_2,y_2,color);
+
+		error |= API_check_outside_screen(x_1,y_1);
+		error |= API_check_outside_screen(x_2,y_2);
+
 	}
 	else
 	{/* If the weight is more than one, make two circles at the points and draw multiple lines between them */
@@ -194,8 +214,14 @@ int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
 			if (radius > x_t || err > y_t) err += ++x_t*2+1;
 		}
 		while (x_t < 0);
+
+		error |= API_check_outside_screen(x_1-(weight/2),y_1-(weight/2));
+		error |= API_check_outside_screen(x_1+(weight/2),y_1+(weight/2));
+
+		error |= API_check_outside_screen(x_2-(weight/2),y_2-(weight/2));
+		error |= API_check_outside_screen(x_2+(weight/2),y_2+(weight/2));
 	}
-	return 0;
+	return error;
 }
 
 
@@ -220,13 +246,15 @@ int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
   */
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int weight)
 {
-	API_draw_line(x_1,y_1,x_2,y_2,color,weight,0);
-	API_draw_line(x_2,y_2,x_3,y_3,color,weight,0);
-	API_draw_line(x_3,y_3,x_4,y_4,color,weight,0);
-	API_draw_line(x_4,y_4,x_5,y_5,color,weight,0);
-	API_draw_line(x_5,y_5,x_1,y_1,color,weight,0);
+	int error = 0;
 
-	return 0;
+	error |= API_draw_line(x_1,y_1,x_2,y_2,color,weight,0);
+	error |= API_draw_line(x_2,y_2,x_3,y_3,color,weight,0);
+	error |= API_draw_line(x_3,y_3,x_4,y_4,color,weight,0);
+	error |= API_draw_line(x_4,y_4,x_5,y_5,color,weight,0);
+	error |= API_draw_line(x_5,y_5,x_1,y_1,color,weight,0);
+
+	return error;
 }
 
 
@@ -254,7 +282,7 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
 
   * @retval Error:	A integer error code if something went wrong, else it's zero
   */
-int API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
+void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 {
 	//TODO: Berbetering toevoegen voor horizontaal en verticaale lijnen
 
@@ -271,11 +299,28 @@ int API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 		if (e2 >-dx) { err -= dy; x_1 += sx; }
 		if (e2 < dy) { err += dx; y_1 += sy; }
 	}
-
 	return 0;
 }
-// End exclusion of doxygen
-///@endcond
+
+
+
+/**
+  * @brief	Checks if the given position is outside the screen
+  * @note 	This function is private and not able to be called outside VgaLogic.c
+  *
+  * @param  x_1:	X value of the point
+  * @param  y_1:	Y value of the point
+
+  * @retval Error:	Gives back a '0x20' if outside screen, '0' if this is not the case
+  */
+int API_check_outside_screen (int x, int y)
+{
+	if (x < 0 && x >= VGA_DISPLAY_X && y < 0 && y >= VGA_DISPLAY_Y)
+		return 0x20;
+	return 0;
+}
+
+
 
 const uint8_t Letter[3][27][32] ={
 {	//arial_bold
@@ -465,3 +510,5 @@ int API_draw_text(int x, int y, uint8_t color, char *str_in, int fontname)
 		return foutmeldings_error_logic(4);
 	}
 }
+// End exclusion of doxygen
+///@endcond

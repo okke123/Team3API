@@ -14,8 +14,6 @@ int main(void)
 
     API_draw_text(0, 0, VGA_COL_RED, "the quick brown fox jumps over the lazy dog", 1);
 
-
-
 	  while(1)
     {
     	error = UartGets(msg, 0);
@@ -23,7 +21,9 @@ int main(void)
     	{
     		ErrorCodeHandler(error, error_msg);
     		UartPuts(error_msg);
-    	} else {
+    	}
+      else
+      {
     		UartPuts(msg);
     	}
     }

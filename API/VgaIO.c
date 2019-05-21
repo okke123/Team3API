@@ -50,18 +50,13 @@ void VgaIOInitDMA(void);
 
 void VgaIOInit(void)
 {
-  uint16_t xp,yp;
 
   VGA.hsync_cnt=0;
   VGA.start_adr=0;
   VGA.dma2_cr_reg=0;
 
   // RAM init total black
-  for(yp=0;yp<VGA_DISPLAY_Y;yp++) {
-    for(xp=0;xp<(VGA_DISPLAY_X+1);xp++) {
-      VGA_RAM1[(yp*(VGA_DISPLAY_X+1))+xp]=0;
-    }
-  }
+  VgaIOClearScreen(0x00);
 
   // init IO-Pins
 
@@ -86,20 +81,34 @@ void VgaIOInit(void)
 // Important : the last Pixel+1 from every line must be black (don't know why??)
 //--------------------------------------------------------------
 
-void VgaIOSetPixel(uint16_t xp, uint16_t yp, uint8_t color)
+void VgaIOSetPixel(int xp, int yp, int color)
 {
-  if(xp<VGA_DISPLAY_X)
-  	  if(yp<VGA_DISPLAY_Y)
-  		  VGA_RAM1[(yp*(VGA_DISPLAY_X+1))+xp]=color;
+	if (xp<VGA_DISPLAY_X && xp >= 0 && yp<VGA_DISPLAY_Y && yp >= 0)
+		VGA_RAM1[(yp*(VGA_DISPLAY_X+1))+xp]=color;
 }
 
-void VgaIOSetLine(uint16_t xp, uint16_t yp, uint16_t length, uint8_t color)
+void VgaIOSetLine(int xp, int yp, int length, int color)
 {
-	//TODO: Check if outside of screen!!
-	memset(VGA_RAM1+(yp*(VGA_DISPLAY_X+1))+xp, color, sizeof(VGA_RAM1[0])*length);
+	if (yp < VGA_DISPLAY_Y && yp >= 0 && xp < VGA_DISPLAY_X && xp+length > 0) 	//Y pos binnen max (inf - 319)
+	{																			//Y pos binnen min (0 - inf)
+																				//Lijn niet te veel naar rechts (320+ domein) waardoor lijn niet op scherm komt
+																				//Lijn niet te veel naar links (- domein) waardoor lijn niet op scherm komt
+
+		/* Als lijn buiten scherm komt op X-as, pas de lijn aan */
+		if (xp+length > VGA_DISPLAY_X)
+			length = VGA_DISPLAY_X - xp;
+
+		if (xp < 0)
+		{
+		length += xp;
+			xp = 0;
+		}
+
+		memset(VGA_RAM1+(yp*(VGA_DISPLAY_X+1))+xp, color, sizeof(VGA_RAM1[0])*length);
+	}
 }
 
-void VgaIOClearScreen(uint8_t color)
+void VgaIOClearScreen(int color)
 {
 	memset(VGA_RAM1, color, sizeof(VGA_RAM1));
 }
