@@ -12,6 +12,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "AppFront.h"
 
+char error_msg[255];
+char msg[100];
+int error;
+
+void AppFrontLoop(void);
+
 /** @addtogroup App Demo application
   * @{
   */
@@ -20,6 +26,28 @@
   * @brief Terminal functions
   * @{
   */
+
+
+
+void AppFrontInit(void)
+{
+	UartInit();
+	API_init();
+	AppFrontLoop();
+}
+
+void AppFrontLoop(void)
+{
+	while(1)
+	{
+		UartGets(msg, 0); //Get String
+		//Naar struct
+		//Functie roepen met struct
+
+	}
+}
+
+
 
 /**
  * @brief	Error code handling routine according to the specified error value

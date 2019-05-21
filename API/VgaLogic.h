@@ -20,7 +20,7 @@
 //--------------------------------------------------------------
 void API_init(void);
 
-//int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved);
+//int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontstyle, int reserved);
 int API_draw_text(int x, int y, uint8_t color, char *str_in, int fontname);
 int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved);
 int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor);
@@ -93,43 +93,3 @@ uint8_t past_tekst(int x, int y, int grot_str_in);
 #define  VGA_COL_GRAY			0x49 //0b01001001
 #define  VGA_COL_WHITE			0xFF //0b11111111
 #define	 VGA_COL_PINK			0xF2 //0b10010010
-
-
-//int API_draw_text(int x, int y, uint8_t color, char *str_in, int fontname);
-
-/** @defgroup ErrorCode Error codes
- *  @{
- *  	Error codes values:
- * 		|	Error code	|	Error type									|
- * 		|:-------------:|:----------------------------------------------|
- * 		|		0x00	|	None error									|
- * 		|		0x0n	|	Hardware related							|
- * 		|		0x1n	|	Script commandos related					|
- * 		|		0x2n	|	Draw functions related						|
- * 		|		0x3n	|	Memory functions related					|
- *
- */
-
-/** @}*/
-
-#define		API_NONE_ERROR					0x00
-/* Hardware related ------------------------------------------------------------------*/
-#define		API_DISCONNECT_ERROR			0x01
-#define		API_UNKNOWN_COMMAND_ERROR		0x02
-#define		API_COMMAND_READ_ERROR			0x03
-/* Script commandos related ----------------------------------------------------------*/
-#define 	API_CLEARSCREEN_PARAM_ERROR		0x10
-#define 	API_LINE_PARAM_ERROR			0x11
-#define 	API_RECT_PARAM_ERROR			0x12
-#define 	API_TEXT_PARAM_ERROR			0x13
-#define 	API_BITMAP_PARAM_ERROR			0x14
-#define 	API_WAIT_PARAM_ERROR			0x15
-#define		API_REPEAT_PARAM_ERROR			0x16
-#define		API_EXECUTE_PARAM_ERROR			0x17
-#define		API_CIRCLE_PARAM_ERROR			0x18
-#define		API_FIGURE_PARAM_ERROR			0x19
-/* Draw functions related ------------------------------------------------------------*/
-#define		API_OFF_SCREEN_ERROR			0x20
-#define		API_COLOR_ERROR					0x21
-/* Memory functions related ----------------------------------------------------------*/
-#define		API_MEM_FAULT_ERROR				0x30

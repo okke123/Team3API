@@ -292,14 +292,13 @@ void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 	int err = (dx>dy ? dx : -dy)/2, e2;
 
  /* Draw the line according to the Bresenham's line Algorithm */
-	for(;;){
+	while(1){
 		VgaIOSetPixel(x_1,y_1,color);
 		if (x_1==x_2 && y_1==y_2) break;
 		e2 = err;
 		if (e2 >-dx) { err -= dy; x_1 += sx; }
 		if (e2 < dy) { err += dx; y_1 += sy; }
 	}
-	return 0;
 }
 
 
@@ -438,6 +437,7 @@ int Draw_Letter(int x_lup, int y_lup, char char_letter, int color, int font)
        }
      }
    }
+  return 0;
  }
 
 uint8_t past_tekst(int x, int y, int grot_str_in)
@@ -507,8 +507,9 @@ int API_draw_text(int x, int y, uint8_t color, char *str_in, int fontname)
 	}
 	else
 	{
-		return foutmeldings_error_logic(4);
+		return 0x20; //TODO: RETURN ERROR CODE  //foutmeldings_error_logic(4);
 	}
+	return 0;
 }
 // End exclusion of doxygen
 ///@endcond
