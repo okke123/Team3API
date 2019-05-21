@@ -2,7 +2,7 @@
 #define __APP_FRONT_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include "AppLogic.h"
 
 void ErrorCodeHandler(char error, char* error_msg);
 

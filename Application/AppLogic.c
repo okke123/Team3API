@@ -17,7 +17,9 @@ int CharToInt(char* src, int error)
 	{
 		error = 0x00;
 		return atoi(src);
-	} else {
+	}
+	else
+	{
 		error = 0x10;
 		return value;
 	}
