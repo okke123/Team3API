@@ -43,7 +43,18 @@ typedef struct {
 }VGA_t;
 VGA_t VGA;
 
+//--------------------------------------------------------------
+// Bitmap structure
+//--------------------------------------------------------------
+typedef struct {
+	const char* bitmap;
+	const int size;
+	const int width;
+	const int height;
 
+} TypeDefBitmap;
+
+TypeDefBitmap bitmaps[5];
 
 //--------------------------------------------------------------
 // Display RAM
@@ -120,6 +131,7 @@ void VgaIOInit(void);
 void VgaIOSetPixel(int xp, int yp, int color);
 void VgaIOSetLine(int xp1, int xp2, int yp, int color);
 void VgaIOClearScreen(int color);
+void VgaIOSetBitmap(int xp, int yp, TypeDefBitmap* bitmap);
 
 //--------------------------------------------------------------
 #endif // __STM32F4_UB_VGA_SCREEN_H
