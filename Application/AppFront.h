@@ -6,5 +6,4 @@
 
 void ErrorCodeHandler(char error, char* error_msg);
 
-
 #endif
