@@ -117,9 +117,9 @@ uint8_t VGA_RAM1[(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y];
 //--------------------------------------------------------------
 
 void VgaIOInit(void);
-void VgaIOSetPixel(uint16_t xp, uint16_t yp, uint8_t color);
-void VgaIOSetLine(uint16_t xp1, uint16_t xp2, uint16_t yp, uint8_t color);
-void VgaIOClearScreen(uint8_t color);
+void VgaIOSetPixel(int xp, int yp, int color);
+void VgaIOSetLine(int xp1, int xp2, int yp, int color);
+void VgaIOClearScreen(int color);
 
 //--------------------------------------------------------------
 #endif // __STM32F4_UB_VGA_SCREEN_H
