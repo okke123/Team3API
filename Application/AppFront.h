@@ -18,3 +18,5 @@
 
 
 void ErrorCodeHandler(int error, char* error_msg);
+
+#endif

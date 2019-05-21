@@ -5,9 +5,9 @@ int main(void)
 {
     SystemInit();
     API_init();
-
     API_clearscreen(0xFF);
-    while(1)
+
+	while(1)
     {
 
     }
