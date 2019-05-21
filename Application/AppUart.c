@@ -1,14 +1,33 @@
-/*!
- *	/arthur Chileam Bohnen
- *	/version V0.1
- *	/date 2019-5-1
- *	/mainpage UART IO layer
- *		UART peripheral
+/**
+  ******************************************************************************
+  * @file    AppFront.c
+  * @author  Chileam Bohnen
+  * @version V0.0.1
+  * @date    30-april-2019
+  * @brief   This file provides the IO layer for the application.
+  *
+  ******************************************************************************
+  */
+
+/* Includes ------------------------------------------------------------------*/
+#include "AppUart.h"
+
+
+/** @addtogroup App Demo application
+  * @{
+  */
+
+/** @defgroup AppUart IO layer
+  * @brief STM32 USART Peripheral wrapper.
+  * @{
+  */
+
+/**
+ * @brief	Initializes the USART2 peripheral.
+ * @note	This is a wrapper for STM32 USART initialization.
+ * @retval	None
  */
-
-#include "Uart.h"
-
-void UartInit(int baudrate)
+void UartInit()
 {
 	/* --------------------------- System Clocks Configuration -----------------*/
 	/* USART2 clock enable */
@@ -42,7 +61,7 @@ void UartInit(int baudrate)
 	  - Hardware flow control disabled (RTS and CTS signals)
 	  - Receive and transmit enabled
 	*/
-	USART_InitStructure.USART_BaudRate = baudrate;
+	USART_InitStructure.USART_BaudRate = 115200;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -56,12 +75,24 @@ void UartInit(int baudrate)
 	USART_Cmd(USART2, ENABLE);
 }
 
+/**
+ * @brief	Transmits single data through the USART2 peripheral.
+ * @note	This is a wrapper for STM32 USART SendData.
+ * @param	c:		The data to transmit.
+ * @retval	None
+ */
 void UartPut(char c)
 {
 	while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
 	USART_SendData(USART2, c);
 }
 
+/**
+ * @brief	Transmits a string of data through the USART2 peripheral.
+ * @note	This is a wrapper for STM32 USART SendData.
+ * @param	c:		The string of data to transmit.
+ * @retval	None
+ */
 void UartPuts(char* s)
 {
 	volatile unsigned int i;
@@ -69,8 +100,16 @@ void UartPuts(char* s)
 	{
 		UartPut(s[i]);
 	}
+	UartPut(CR);
+	UartPut(LF);
 }
 
+/**
+ * @brief	Return the most recent received data by the USART2 peripheral.
+ * @note	This is a wrapper for STM32 USART ReceiveData.
+ * @param	None.
+ * @retval	c:		The data to transmit.
+ */
 char UartGet()
 {
 	char c = -1;
@@ -79,7 +118,13 @@ char UartGet()
 	return c;
 }
 
-void UartGets(char* s, int echo)
+/**
+ * @brief	Return the most recent received string of data by the USART2 peripheral.
+ * @note	This is a wrapper for STM32 USART ReceiveData.
+ * @param	None.
+ * @retval	c:		The string of data to transmit.
+ */
+int UartGets(char* s, int echo)
 {
 	while (TRUE)
 	{
@@ -97,8 +142,17 @@ void UartGets(char* s, int echo)
 		if (*s==CR)            	// if enter pressed
 		{
 			*s = '\0';         	// ignore char and close string
-		    return;            	// buf ready, exit loop
+		    return 0x00;            	// buf ready, exit loop
 		}
 		s++;
 	}
+
+	return 0x03;
 }
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

@@ -1,8 +1,8 @@
 #ifndef __APP_LOGIC_H
 #define __APP_LOGIC_H
 
-#include "string.h"
-#include "stdlib.h"
+#include "AppUart.h"
+#include "VgaLogic.h"
 
 #define NUM_SET "0123456789"
 #define DELIMITER ","
