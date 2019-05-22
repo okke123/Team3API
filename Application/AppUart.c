@@ -141,6 +141,8 @@ int UartGets(char* s, int echo)
 
 		if (*s==CR)            	// if enter pressed
 		{
+			if (echo)              	// if output-flag set
+				UartPut(*s);
 			*s = '\0';         	// ignore char and close string
 		    return 0x00;            	// buf ready, exit loop
 		}

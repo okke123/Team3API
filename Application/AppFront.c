@@ -33,6 +33,9 @@ void AppFrontInit(void)
 {
 	UartInit();
 	API_init();
+
+	API_clearscreen(VGA_COL_BLUE);
+
 	AppFrontLoop();
 }
 
@@ -41,9 +44,7 @@ void AppFrontLoop(void)
 	while(1)
 	{
 		UartGets(msg, 0); //Get String
-		//Naar struct
-		//Functie roepen met struct
-
+		StringHandler(msg);
 	}
 }
 

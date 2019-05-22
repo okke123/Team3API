@@ -5,6 +5,7 @@
 #include "AppLogic.h"
 
 
+
 void AppFrontInit(void);
 void ErrorCodeHandler(char error, char* error_msg);
 
