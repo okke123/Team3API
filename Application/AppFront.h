@@ -7,6 +7,6 @@
 
 
 void AppFrontInit(void);
-void ErrorCodeHandler(char error, char* error_msg);
+void ErrorCodeHandler(char error);
 
 #endif

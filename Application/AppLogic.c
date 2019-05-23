@@ -33,15 +33,6 @@ int CharToInt(char* src, int *error)
 	}
 }
 
-void StrSplit(char* src, char* dest, int error)
-{
-	if ((dest = strtok(src, DELIMITER)) == NULL)
-	{
-		error = 0x10;
-		return;
-	}
-	error = 0x00;
-}
 
 
 void StringHandler(char *str_inkomend)
@@ -69,11 +60,11 @@ void StringHandler(char *str_inkomend)
 	for(i=0; token != NULL; i++,token=strtok(NULL,","))
 		string_array[i] = trim(token,NULL);
 
-//DISPLAY ARGUMENTEN
+	//DISPLAY ARGUMENTEN
+	#ifdef DEBUG
 	for (i=0;i<=aantal_komma;i++)
-	{
 		UartPuts(string_array[i]);
-	}
+	#endif
 
 	int error = 0;
 	int x_1,x_2,x_3,x_4,x_5;
@@ -82,8 +73,10 @@ void StringHandler(char *str_inkomend)
 
 	switch (check_commando(string_array[0]))
 	{
-	case 1:	//LIJN Commando
-		//UartPuts("lijn commando gevonden!");
+	case COMMAND_CODE_LINE:
+		#ifdef DEBUG
+			UartPuts("Lijn commando gevonden");
+		#endif
 		if (aantal_komma==6 || aantal_komma==7)
 		{
 			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
@@ -93,35 +86,49 @@ void StringHandler(char *str_inkomend)
 			color =  	check_parameter(string_array[5],PARAMETER_TYPE_COLOR, &error);
 			weight = 	check_parameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
 
-			if (aantal_komma==6) reserved = 0;
-			else reserved = check_parameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
+			if (aantal_komma==6)
+				reserved = 0;
+			else
+				reserved = check_parameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
 
-			if (error==0)
+			if (!error)
 			{
-				API_draw_line(x_1,y_1,x_2,y_2,color,weight,reserved);
-				UartPuts("Lijn getekend");
+				error = API_draw_line(x_1,y_1,x_2,y_2,color,weight,reserved);
+				ErrorCodeHandler(error);
+				#ifdef DEBUG
+					UartPuts("Lijn getekend");
+				#endif
 				break;
 			}
 		}
-		UartPuts("ERROR IN PARAMETERS!");
+		ErrorCodeHandler(API_LINE_PARAM_ERROR);
 		break;
 
-	case 2: //Clearscherm
+	case COMMAND_CODE_CLEARSCREEN:
+		#ifdef DEBUG
+			UartPuts("Clear commando gevonden");
+		#endif
 		if (aantal_komma==1)
 		{
-			color =  	check_parameter(string_array[1],PARAMETER_TYPE_COLOR, &error);
+			color = check_parameter(string_array[1],PARAMETER_TYPE_COLOR, &error);
 
-			if (error==0)
+			if (!error)
 			{
-				API_clearscreen(color);
-				UartPuts("Scherm gevuld");
+				error = API_clearscreen(color);
+				ErrorCodeHandler(error);
+				#ifdef DEBUG
+					UartPuts("Scherm gevuld");
+				#endif
 				break;
 			}
 		}
-		UartPuts("ERROR IN PARAMETERS!");
+		ErrorCodeHandler(API_CLEARSCREEN_PARAM_ERROR);
 		break;
 
-	case 3: //Rechthoek
+	case COMMAND_CODE_RECTANGLE:
+		#ifdef DEBUG
+			UartPuts("Rechthoek commando gevonden");
+		#endif
 		if (aantal_komma >= 6 && aantal_komma <= 8)
 		{
 			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
@@ -143,60 +150,78 @@ void StringHandler(char *str_inkomend)
 				bordercolor = check_parameter(string_array[8],PARAMETER_TYPE_NUMBER,&error);
 
 
-			if (error==0)
+			if (!error)
 			{
-				API_draw_rectangle(x_1,y_1,width,height,color,filled,weight,bordercolor);
-				UartPuts("Rechthoek getekend");
+				error = API_draw_rectangle(x_1,y_1,width,height,color,filled,weight,bordercolor);
+				ErrorCodeHandler(error);
+				#ifdef DEBUG
+					UartPuts("Rechthoek getekend");
+				#endif
 				break;
 			}
 		}
-		UartPuts("ERROR IN PARAMETERS!");
+		ErrorCodeHandler(API_RECT_PARAM_ERROR);
 		break;
 
-	case 4: //Tekst
+	case COMMAND_CODE_TEXT:
+		#ifdef DEBUG
+			UartPuts("Tekst commando gevonden");
+		#endif
 		if (aantal_komma >= 7 && aantal_komma <= 8)
 		{
 			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
 			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
 			color =  	check_parameter(string_array[3],PARAMETER_TYPE_COLOR, &error);
-			//tekst
-			//font
 			fontsize = 	check_parameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
 			fontstyle = check_parameter(string_array[7],PARAMETER_TYPE_FONT_STYLE,&error);
 
-			if (aantal_komma < 8) reserved = 0;
-			else reserved = check_parameter(string_array[8],PARAMETER_TYPE_NUMBER,&error);
+			if (aantal_komma < 8)
+				reserved = 0;
+			else
+				reserved = check_parameter(string_array[8],PARAMETER_TYPE_NUMBER,&error);
 
-			if (error==0)
+			if (!error)
 			{
-				API_draw_text(x_1,y_1,color,string_array[4],fontstyle);
+				error = API_draw_text(x_1,y_1,color,string_array[4],fontstyle);
+				ErrorCodeHandler(error);
 				//API_draw_text(x_1,y_1,color,string_array[4],string_array[5],fontsize,fontstyle,reserved);
-				UartPuts("Tekst getekend");
+				#ifdef DEBUG
+					UartPuts("Tekst getekend");
+				#endif
 				break;
 			}
 		}
-		UartPuts("ERROR IN PARAMETERS!");
+		ErrorCodeHandler(API_TEXT_PARAM_ERROR);
 		break;
 
-	case 5: //Bitmap
+	case COMMAND_CODE_BITMAP:
+		#ifdef DEBUG
+			UartPuts("Bitmap commando gevonden");
+		#endif
 		if (aantal_komma == 3)
 		{
 			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
 			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
 			bm_nr =  	check_parameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
 
-			if (error==0)
+			if (!error)
 			{
-				//TODO: comment out
-				//API_draw_bitmap(x_1,y_1,bm_nr);
-				UartPuts("Bitmap getekend");
+				/*TODO: comment out
+				error = API_draw_bitmap(x_1,y_1,bm_nr);
+				ErrorCodeHandler(error);*/
+				#ifdef DEBUG
+					UartPuts("Bitmap getekend");
+				#endif
 				break;
 			}
 		}
-		UartPuts("ERROR IN PARAMETERS!");
+		ErrorCodeHandler(API_BITMAP_PARAM_ERROR);
 		break;
 
-	case 6: //Figuur
+	case COMMAND_CODE_FIGURE:
+		#ifdef DEBUG
+			UartPuts("Figuur commando gevonden");
+		#endif
 		if (aantal_komma >= 11 && aantal_komma <= 12)
 		{
 			x_1 = 		check_parameter(string_array[1] ,PARAMETER_TYPE_NUMBER,&error);
@@ -211,20 +236,28 @@ void StringHandler(char *str_inkomend)
 			y_5 = 		check_parameter(string_array[10],PARAMETER_TYPE_NUMBER,&error);
 			color =  	check_parameter(string_array[11],PARAMETER_TYPE_COLOR, &error);
 
-			if (aantal_komma < 12) weight = 1;
-			else weight = check_parameter(string_array[12],PARAMETER_TYPE_NUMBER,&error);
+			if (aantal_komma < 12)
+				weight = 1;
+			else
+				weight = check_parameter(string_array[12],PARAMETER_TYPE_NUMBER,&error);
 
-			if (error==0)
+			if (!error)
 			{
-				API_draw_figure(x_1,y_1,x_2,y_2,x_3,y_3,x_4,y_4,x_5,y_5,color,weight);
-				UartPuts("Figuur getekend");
+				error = API_draw_figure(x_1,y_1,x_2,y_2,x_3,y_3,x_4,y_4,x_5,y_5,color,weight);
+				ErrorCodeHandler(error);
+				#ifdef DEBUG
+					UartPuts("Figuur getekend");
+				#endif
 				break;
 			}
 		}
-		UartPuts("ERROR IN PARAMETERS!");
+		ErrorCodeHandler(API_FIGURE_PARAM_ERROR);
 		break;
 
-	case 7: //Cirkel
+	case COMMAND_CODE_CIRCLE:
+		#ifdef DEBUG
+			UartPuts("Cirkel commando gevonden");
+		#endif
 		if (aantal_komma >= 4 && aantal_komma <= 5)
 		{
 			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
@@ -235,21 +268,21 @@ void StringHandler(char *str_inkomend)
 			if (aantal_komma < 5) filled = 0;
 			else filled = check_parameter(string_array[5],PARAMETER_TYPE_NUMBER,&error);
 
-			if (error==0)
+			if (!error)
 			{
-				API_draw_circle(x_1,y_1,radius,color,filled);
-				UartPuts("Cirkel getekend");
+				error = API_draw_circle(x_1,y_1,radius,color,filled);
+				ErrorCodeHandler(error);
+				#ifdef DEBUG
+					UartPuts("Cirkel getekend");
+				#endif
 				break;
 			}
 		}
-		UartPuts("ERROR IN PARAMETERS!");
+		ErrorCodeHandler(API_CIRCLE_PARAM_ERROR);
 		break;
 
-
-
-
 	default:
-		UartPuts("Geen commando gevonden");
+		ErrorCodeHandler(API_UNKNOWN_COMMAND_ERROR);
 		break;
 	}
 }
@@ -297,13 +330,13 @@ char *trim(char *str, const char *seps)
 int check_commando(char *functie_naam)
 {
 	//check alle defines
-	if(strstr(functie_naam,CMD_LIJN)!=NULL)			return 1;
-	if(strstr(functie_naam,CMD_CLEARSCHERM)!=NULL)	return 2;
-	if(strstr(functie_naam,CMD_RECHTHOEK)!=NULL)	return 3;
-	if(strstr(functie_naam,CMD_TEKST)!=NULL)		return 4;
-	if(strstr(functie_naam,CMD_BITMAP)!=NULL)		return 5;
-	if(strstr(functie_naam,CMD_FIGUUR)!=NULL)		return 6;
-	if(strstr(functie_naam,CMD_CIRKEL)!=NULL)		return 7;
+	if(strstr(functie_naam,COMMAND_TEXT_LINE)		!=NULL)	return COMMAND_CODE_LINE;
+	if(strstr(functie_naam,COMMAND_TEXT_CLEARSCREEN)!=NULL)	return COMMAND_CODE_CLEARSCREEN;
+	if(strstr(functie_naam,COMMAND_TEXT_RECTANGLE)	!=NULL)	return COMMAND_CODE_RECTANGLE;
+	if(strstr(functie_naam,COMMAND_TEXT_TEXT)		!=NULL)	return COMMAND_CODE_TEXT;
+	if(strstr(functie_naam,COMMAND_TEXT_BITMAP)		!=NULL)	return COMMAND_CODE_BITMAP;
+	if(strstr(functie_naam,COMMAND_TEXT_FIGURE)		!=NULL)	return COMMAND_CODE_FIGURE;
+	if(strstr(functie_naam,COMMAND_TEXT_CIRCLE)		!=NULL)	return COMMAND_CODE_CIRCLE;
 	return 0;
 }
 
@@ -319,34 +352,36 @@ int check_parameter(char *parameter, int parameter_type, int *error)
 			if (internal_error == 0)
 				return number;
 			break;
+
 		case PARAMETER_TYPE_COLOR:
 			//Kleuren compare
-			if(strcmp(parameter,"zwart")		==0)	return VGA_COL_BLACK;
-			if(strcmp(parameter,"blauw")		==0) 	return VGA_COL_BLUE;
-			if(strcmp(parameter,"lichtblauw")	==0) 	return VGA_COL_LIGHT_BLUE;
-			if(strcmp(parameter,"groen")		==0) 	return VGA_COL_GREEN;
-			if(strcmp(parameter,"lichtgroen") 	==0) 	return VGA_COL_LIGHT_GREEN;
-			if(strcmp(parameter,"cyaan")		==0) 	return VGA_COL_CYAN;
-			if(strcmp(parameter,"lichtcyaan")	==0) 	return VGA_COL_LIGHT_CYAN;
-			if(strcmp(parameter,"rood") 		==0) 	return VGA_COL_RED;
-			if(strcmp(parameter,"lichtrood") 	==0) 	return VGA_COL_LIGHT_RED;
-			if(strcmp(parameter,"magenta")		==0)	return VGA_COL_MAGENTA;
-			if(strcmp(parameter,"lichtmagenta")	==0)	return VGA_COL_LIGHT_MAGENTA;
-			if(strcmp(parameter,"bruin")		==0) 	return VGA_COL_BROWN;
-			if(strcmp(parameter,"geel")			==0)	return VGA_COL_YELLOW;
-			if(strcmp(parameter,"wit")  		==0) 	return VGA_COL_WHITE;
-			if(strcmp(parameter,"roze")			==0) 	return VGA_COL_PINK;
+			if(strcmp(parameter, COLOR_TEXT_BLACK)			==0)	return VGA_COL_BLACK;
+			if(strcmp(parameter, COLOR_TEXT_BLUE)			==0) 	return VGA_COL_BLUE;
+			if(strcmp(parameter, COLOR_TEXT_LIGHT_BLUE)		==0) 	return VGA_COL_LIGHT_BLUE;
+			if(strcmp(parameter, COLOR_TEXT_GREEN)			==0) 	return VGA_COL_GREEN;
+			if(strcmp(parameter, COLOR_TEXT_LIGHT_GREEN) 	==0) 	return VGA_COL_LIGHT_GREEN;
+			if(strcmp(parameter, COLOR_TEXT_CYAN)			==0) 	return VGA_COL_CYAN;
+			if(strcmp(parameter, COLOR_TEXT_LIGHT_CYAN)		==0) 	return VGA_COL_LIGHT_CYAN;
+			if(strcmp(parameter, COLOR_TEXT_RED) 			==0) 	return VGA_COL_RED;
+			if(strcmp(parameter, COLOR_TEXT_LIGHT_RED) 		==0) 	return VGA_COL_LIGHT_RED;
+			if(strcmp(parameter, COLOR_TEXT_MAGENTA)		==0)	return VGA_COL_MAGENTA;
+			if(strcmp(parameter, COLOR_TEXT_LIGHT_MAGENTA)	==0)	return VGA_COL_LIGHT_MAGENTA;
+			if(strcmp(parameter, COLOR_TEXT_BROWN)			==0) 	return VGA_COL_BROWN;
+			if(strcmp(parameter, COLOR_TEXT_YELLOW)			==0)	return VGA_COL_YELLOW;
+			if(strcmp(parameter, COLOR_TEXT_WHITE)  		==0) 	return VGA_COL_WHITE;
+			if(strcmp(parameter, COLOR_TEXT_PINK)			==0) 	return VGA_COL_PINK;
 			break;
+
 		case PARAMETER_TYPE_FONT_STYLE:
 			//Font style compare
-			if(strcmp(parameter,"normaal")	==0)	return 2;
-			if(strcmp(parameter,"vet")		==0) 	return 0;
-			if(strcmp(parameter,"cursief")	==0) 	return 1;
+			if(strcmp(parameter, FONT_STYLE_TEXT_NORMAL)	==0)	return FONT_STYLE_CODE_NORMAL;
+			if(strcmp(parameter, FONT_STYLE_TEXT_BOLD)		==0) 	return FONT_STYLE_CODE_BOLD;
+			if(strcmp(parameter, FONT_STYLE_TEXT_ITALIC)	==0) 	return FONT_STYLE_CODE_ITALIC;
 			break;
 
 		default:
 			break;
 	}
-	*error |= 0x11;
+	*error += 1;
 	return 0;
 }

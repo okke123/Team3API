@@ -12,7 +12,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "AppFront.h"
 
-char error_msg[255];
 char msg[100];
 int error;
 
@@ -58,8 +57,9 @@ void AppFrontLoop(void)
  * @param	error_msg:	char pointer that contains a feedback message for the therminal.
  * @retval	None
  */
-void ErrorCodeHandler(char error, char* error_msg)
+void ErrorCodeHandler(char error)
 {
+	char error_msg[255];
 	switch(error)
 	{
 		case API_NONE_ERROR:
@@ -133,6 +133,7 @@ void ErrorCodeHandler(char error, char* error_msg)
 			stpcpy(error_msg, "\0");
 			break;
 	}
+	UartPuts(error_msg);
 }
 /**
   * @}

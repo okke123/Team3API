@@ -164,7 +164,7 @@ int API_draw_circle (int x, int y, int radius, int color, int filled)
 	error |= API_check_outside_screen(x-radius,y-radius);
 	error |= API_check_outside_screen(x+radius,y+radius);
 
-	return 0;
+	return error;
 }
 
 
@@ -315,7 +315,7 @@ void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 int API_check_outside_screen (int x, int y)
 {
 	if (x < 0 && x >= VGA_DISPLAY_X && y < 0 && y >= VGA_DISPLAY_Y)
-		return 0x20;
+		return API_OFF_SCREEN_ERROR;
 	return 0;
 }
 

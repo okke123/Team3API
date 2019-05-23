@@ -4,26 +4,58 @@
 #include "AppUart.h"
 #include "VgaLogic.h"
 
+#define DEBUG 1
+
 #define NUM_SET "0123456789"
 #define DELIMITER ","
 
+#define COLOR_TEXT_BLACK 		 "zwart"
+#define COLOR_TEXT_BLUE 		 "blauw"
+#define COLOR_TEXT_LIGHT_BLUE 	 "lichtblauw"
+#define COLOR_TEXT_GREEN 		 "groen"
+#define COLOR_TEXT_LIGHT_GREEN 	 "lichtgroen"
+#define COLOR_TEXT_CYAN 		 "cyaan"
+#define COLOR_TEXT_LIGHT_CYAN 	 "lichtcyaan"
+#define COLOR_TEXT_RED 			 "rood"
+#define COLOR_TEXT_LIGHT_RED 	 "lichtrood"
+#define COLOR_TEXT_MAGENTA 		 "magenta"
+#define COLOR_TEXT_LIGHT_MAGENTA "lichtmagenta"
+#define COLOR_TEXT_BROWN 		 "bruin"
+#define COLOR_TEXT_YELLOW 		 "geel"
+#define COLOR_TEXT_WHITE 		 "wit"
+#define COLOR_TEXT_PINK 		 "roze"
 
-#define PARAMETER_TYPE_NUMBER 1
-#define PARAMETER_TYPE_COLOR 2
-#define PARAMETER_TYPE_FONT_STYLE 3
+
+#define PARAMETER_TYPE_NUMBER 		1
+#define PARAMETER_TYPE_COLOR 		2
+#define PARAMETER_TYPE_FONT_STYLE 	3
+
+#define FONT_STYLE_TEXT_NORMAL 	"normaal"
+#define FONT_STYLE_TEXT_BOLD 	"vet"
+#define FONT_STYLE_TEXT_ITALIC 	"cursief"
+
+#define FONT_STYLE_CODE_NORMAL 	2
+#define FONT_STYLE_CODE_BOLD 	0
+#define FONT_STYLE_CODE_ITALIC 	1
 
 
-#define CMD_LIJN "lijn"               //er  01
-#define CMD_CLEARSCHERM "clearscherm" //er  02
-#define CMD_RECHTHOEK "rechthoek"     //er  03
-#define CMD_TEKST "tekst"             //er  04
-#define CMD_BITMAP "bitmap"           //er  05
-#define CMD_FIGUUR "figuur"           //er  06
-#define CMD_CIRKEL "cirkel"           //er  07
+#define COMMAND_TEXT_LINE 		 "lijn"
+#define COMMAND_TEXT_CLEARSCREEN "clearscherm"
+#define COMMAND_TEXT_RECTANGLE 	 "rechthoek"
+#define COMMAND_TEXT_TEXT 		 "tekst"
+#define COMMAND_TEXT_BITMAP 	 "bitmap"
+#define COMMAND_TEXT_FIGURE 	 "figuur"
+#define COMMAND_TEXT_CIRCLE 	 "cirkel"
+
+#define COMMAND_CODE_LINE 		 1
+#define COMMAND_CODE_CLEARSCREEN 2
+#define COMMAND_CODE_RECTANGLE 	 3
+#define COMMAND_CODE_TEXT 		 4
+#define COMMAND_CODE_BITMAP 	 5
+#define COMMAND_CODE_FIGURE 	 6
+#define COMMAND_CODE_CIRCLE 	 7
 
 int CharToInt(char* src, int *error);
-
-void StrSplit(char* src, char* dest, int error);
 
 void CreateObject(char* src, int error);
 
