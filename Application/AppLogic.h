@@ -55,7 +55,7 @@
 #define COMMAND_CODE_FIGURE 	 6
 #define COMMAND_CODE_CIRCLE 	 7
 
-int CharToInt(char* src, int *error);
+int CharToInt(char* src, int *value);
 
 void CreateObject(char* src, int error);
 

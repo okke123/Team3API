@@ -17,20 +17,33 @@ int check_commando(char *functie_naam);
 
 int check_parameter(char *parameter, int parameter_type, int *error);
 
-int CharToInt(char* src, int *error)
+int CharToInt(char* src, int* value)
 {
-	int value = -1;
-//TODO: Maak werkend met min getallen en als de string begint met een letter (bijvb. "50f")
-	if (strpbrk(src, NUM_SET))
+	int fault_counter = 0;
+	int i = 0, j;
+
+	if (src[i] == '-')
+		i = 1;
+
+	for (; i < strlen(src); i++)
+		for (j = 0; j < strlen(NUM_SET); j++)
+		{
+			if (src[i] != *(NUM_SET + j)) {
+				fault_counter++;
+			} else {
+				break;
+			}
+
+		}
+
+	if (fault_counter >= 10)
 	{
-		*error = 0x00;
-		return atoi(src);
+		*value = 0;
+		return API_COMMAND_READ_ERROR;
 	}
-	else
-	{
-		*error = 0x10;
-		return value;
-	}
+
+	*value = atoi(src);
+	return API_NONE_ERROR;
 }
 
 

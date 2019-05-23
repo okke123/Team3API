@@ -20,5 +20,7 @@ void UartPut(char c);
 void UartPuts(char* s);
 char UartGet();
 int UartGets(char* s, int echo);
+void UART_putnum(unsigned int num, unsigned char deel);
+void UART_putint(unsigned int num);
 
 #endif
