@@ -47,14 +47,14 @@ VGA_t VGA;
 // Bitmap structure
 //--------------------------------------------------------------
 typedef struct {
-	const char* bitmap;
+	const char* img;
 	const int size;
 	const int width;
 	const int height;
 
 } TypeDefBitmap;
 
-TypeDefBitmap bitmaps[5];
+TypeDefBitmap bitmaps[7];
 
 //--------------------------------------------------------------
 // Display RAM

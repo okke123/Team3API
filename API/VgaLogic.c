@@ -518,47 +518,13 @@ int API_draw_bitmap (int x_lup, int y_lup, int bm_nr)
 {
 	int start_x = x_lup;
 	int start_y = (VGA_DISPLAY_X + 1) * y_lup;
+
 	VgaIOSetBitmap(start_x, start_y, &bitmaps[bm_nr]);
+
 	return API_NONE_ERROR;
 }
 
 
-void swap(char *a, char *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
 
-void swap_vertical(char* src, char* dest, int columns, int rows)
-{
-	int i, j;
-
-	for (i = 0; i < rows; i++)
-	{
-		for (j = 0; j < columns/2; j++)
-		{
-			int src_start = (i * columns) + j;
-			int dest_start = (rows - i) * columns - j - 1;
-
-			swap(src + src_start, dest + dest_start);
-		}
-	}
-}
-
-void swap_horizontal(char* src, char* dest, int columns, int rows)
-{
-	int i, j;
-	for (i = 0; i < columns; i++)
-	{
-		for (j = 0; j < rows/2; j++)
-		{
-			int src_start = (j * columns) + i;
-			int dest_start = (rows - j) * columns - i - 1;
-
-			swap(src + src_start, dest + dest_start);
-		}
-	}
-}
 // End exclusion of doxygen
 ///@endcond

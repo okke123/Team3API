@@ -7,7 +7,7 @@
 #define NUM_SET "0123456789"
 #define DELIMITER ","
 
-int CharToInt(char* src, int error);
+int CharToInt(char* src, int* value);
 
 void StrSplit(char* src, char* dest, int error);
 

@@ -9,20 +9,33 @@
 #include "AppLogic.h"
 
 
-int CharToInt(char* src, int error)
+int CharToInt(char* src, int* value)
 {
-	int value = -1;
+	int fault_counter = 0;
+	int i = 0, j;
 
-	if (strpbrk(src, NUM_SET))
+	if (src[i] == '-')
+		i = 1;
+
+	for (; i < strlen(src); i++)
+		for (j = 0; j < strlen(NUM_SET); j++)
+		{
+			if (src[i] != *(NUM_SET + j)) {
+				fault_counter++;
+			} else {
+				break;
+			}
+
+		}
+
+	if (fault_counter >= 10)
 	{
-		error = 0x00;
-		return atoi(src);
+		*value = 0;
+		return API_COMMAND_READ_ERROR;
 	}
-	else
-	{
-		error = 0x10;
-		return value;
-	}
+
+	*value = atoi(src);
+	return API_NONE_ERROR;
 }
 
 void StrSplit(char* src, char* dest, int error)
