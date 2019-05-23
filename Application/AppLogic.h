@@ -4,7 +4,7 @@
 #include "AppUart.h"
 #include "VgaLogic.h"
 
-#define DEBUG 1
+//#define DEBUG 1
 
 #define NUM_SET "0123456789"
 #define DELIMITER ","

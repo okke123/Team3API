@@ -54,6 +54,10 @@ void StringHandler(char *str_inkomend)
 	int aantal_tek;
 	for(aantal_tek=0;*(str_inkomend+aantal_tek)!='\0';aantal_tek++);
 
+	//Als er geen tekens zijn gestuurd:
+	if(!aantal_tek)
+		return;
+
 	//Buffer array aanmaken
 	char str_buf[aantal_tek];
 	strcpy(str_buf, str_inkomend);
@@ -213,15 +217,15 @@ void StringHandler(char *str_inkomend)
 		#endif
 		if (aantal_komma == 3)
 		{
-			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
-			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
-			bm_nr =  	check_parameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
+			x_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
+			y_1 = 		check_parameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
+			bm_nr =  	check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
 
 			if (!error)
 			{
-				/*TODO: comment out
+				//TODO: comment out
 				error = API_draw_bitmap(x_1,y_1,bm_nr);
-				ErrorCodeHandler(error);*/
+				ErrorCodeHandler(error);
 				#ifdef DEBUG
 					UartPuts("Bitmap getekend");
 				#endif
@@ -356,13 +360,11 @@ int check_commando(char *functie_naam)
 int check_parameter(char *parameter, int parameter_type, int *error)
 {
 	int number;
-	int internal_error = 0;
 
 	switch (parameter_type)
 	{
 		case PARAMETER_TYPE_NUMBER:
-			number = CharToInt(parameter,&internal_error);
-			if (internal_error == 0)
+			if(!CharToInt(parameter,&number))
 				return number;
 			break;
 
