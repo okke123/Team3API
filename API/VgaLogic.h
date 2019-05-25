@@ -14,7 +14,19 @@
 #include "VgaIO.h"
 #include "math.h"
 
+/*
+typedef struct //FONT_INFO
+{
+	int width;
+	int font_adr;
+}	FONT_INFO;
 
+typedef struct	//FONTS
+{
+ 	const FONT_INFO *bitmap_info;
+	const uint8_t *bitmap;
+} FONTS;
+*/
 //--------------------------------------------------------------
 // Global Function call
 //--------------------------------------------------------------
@@ -29,8 +41,8 @@ int API_clearscreen (int color);
 
 int API_draw_circle (int x, int y, int radius, int color, int filled);
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int weight);
-int Draw_Letter(int x_lup, int y_lup, char char_letter, int color, int font);
 uint8_t past_tekst(int x, int y, int grot_str_in);
+
 /** @defgroup ErrorCode Error codes
  *  @{
  *  	Error codes values:
@@ -133,3 +145,6 @@ uint8_t past_tekst(int x, int y, int grot_str_in);
 #define		API_COLOR_ERROR					0x21
 /* Memory functions related ----------------------------------------------------------*/
 #define		API_MEM_FAULT_ERROR				0x30
+
+
+
