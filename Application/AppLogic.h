@@ -39,9 +39,9 @@
 #define FONT_STYLE_TEXT_BOLD 	"vet"
 #define FONT_STYLE_TEXT_ITALIC 	"cursief"
 
-#define FONT_STYLE_CODE_NORMAL 	2
-#define FONT_STYLE_CODE_BOLD 	0
-#define FONT_STYLE_CODE_ITALIC 	1
+#define FONT_STYLE_CODE_NORMAL 	1
+#define FONT_STYLE_CODE_BOLD 	2
+#define FONT_STYLE_CODE_ITALIC 	3
 
 
 #define COMMAND_TEXT_LINE 		 "lijn"

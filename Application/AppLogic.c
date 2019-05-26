@@ -22,20 +22,26 @@ int CharToInt(char* src, int* value)
 		i = 1;
 
 	for (; i < strlen(src); i++)
+	{
 		for (j = 0; j < strlen(NUM_SET); j++)
 		{
 			if (src[i] != *(NUM_SET + j)) {
 				fault_counter++;
-			} else {
+			}
+			else
+			{
 				break;
 			}
-
 		}
-
-	if (fault_counter >= 10)
-	{
-		*value = 0;
-		return API_COMMAND_READ_ERROR;
+		if (fault_counter >= 10)
+		{
+			*value = 0;
+			return API_COMMAND_READ_ERROR;
+		}
+		else
+		{
+			fault_counter = 0;
+		}
 	}
 
 	*value = atoi(src);
