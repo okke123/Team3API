@@ -15,14 +15,26 @@
 #include "math.h"
 #include "stdlib.h"
 
+/*
+typedef struct //FONT_INFO
+{
+	int width;
+	int font_adr;
+}	FONT_INFO;
 
+typedef struct	//FONTS
+{
+ 	const FONT_INFO *bitmap_info;
+	const uint8_t *bitmap;
+} FONTS;
+*/
 //--------------------------------------------------------------
 // Global Function call
 //--------------------------------------------------------------
 void API_init(void);
 
-//int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontstyle, int reserved);
-int API_draw_text(int x, int y, uint8_t color, char *str_in, int fontname);
+//int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved);
+int API_draw_text(int x, int y, uint8_t color, char *str_in, char *fontname, int frontsize, int fontstype, int reserved);
 int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved);
 int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor);
 int API_draw_bitmap (int x_lup, int y_lup, int bm_nr);
@@ -30,8 +42,8 @@ int API_clearscreen (int color);
 
 int API_draw_circle (int x, int y, int radius, int color, int filled);
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int weight);
-int Draw_Letter(int x_lup, int y_lup, char char_letter, int color, int font);
 uint8_t past_tekst(int x, int y, int grot_str_in);
+
 /** @defgroup ErrorCode Error codes
  *  @{
  *  	Error codes values:

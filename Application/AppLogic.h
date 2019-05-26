@@ -4,6 +4,11 @@
 #include "AppUart.h"
 #include "VgaLogic.h"
 
+#include "stdlib.h"
+#include "ctype.h"
+#include "stdio.h"
+#include "string.h"
+
 //#define DEBUG 1
 
 #define NUM_SET "0123456789"
@@ -62,5 +67,12 @@ void CreateObject(char* src, int error);
 void StringHandler(char *str_inkomend);
 
 char *trim(char *str, const char *seps);
+
+void StringHandler(char *str_inkomend);
+
+int check_commando(char *functie_naam);
+
+void call_line(char *pstring_array);
+void call_text(char *pstring_array);
 
 #endif
