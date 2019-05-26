@@ -9,7 +9,7 @@
 #include "stdio.h"
 #include "string.h"
 
-//#define DEBUG 1
+#define DEBUG 1
 
 #define NUM_SET "0123456789"
 #define DELIMITER ","
@@ -72,7 +72,5 @@ void StringHandler(char *str_inkomend);
 
 int check_commando(char *functie_naam);
 
-void call_line(char *pstring_array);
-void call_text(char *pstring_array);
 
 #endif

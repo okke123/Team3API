@@ -12,6 +12,7 @@
 // Includes
 //--------------------------------------------------------------
 #include "VgaIO.h"
+#include "ctype.h"
 #include "math.h"
 #include "stdlib.h"
 
@@ -33,8 +34,8 @@ typedef struct	//FONTS
 //--------------------------------------------------------------
 void API_init(void);
 
-//int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved);
-int API_draw_text(int x, int y, uint8_t color, char *str_in, char *fontname, int frontsize, int fontstype, int reserved);
+int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved);
+//int API_draw_text(int x, int y, uint8_t color, char *str_in, char *fontname, int frontsize, int fontstype, int reserved);
 int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved);
 int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor);
 int API_draw_bitmap (int x_lup, int y_lup, int bm_nr);
