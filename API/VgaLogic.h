@@ -16,19 +16,6 @@
 #include "math.h"
 #include "stdlib.h"
 
-/*
-typedef struct //FONT_INFO
-{
-	int width;
-	int font_adr;
-}	FONT_INFO;
-
-typedef struct	//FONTS
-{
- 	const FONT_INFO *bitmap_info;
-	const uint8_t *bitmap;
-} FONTS;
-*/
 //--------------------------------------------------------------
 // Global Function call
 //--------------------------------------------------------------
