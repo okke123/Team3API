@@ -9,7 +9,7 @@
 #include "stdio.h"
 #include "string.h"
 
-#define DEBUG 1
+//#define DEBUG 1
 
 #define NUM_SET "0123456789"
 #define DELIMITER ","
@@ -27,6 +27,7 @@
 #define COLOR_TEXT_LIGHT_MAGENTA "lichtmagenta"
 #define COLOR_TEXT_BROWN 		 "bruin"
 #define COLOR_TEXT_YELLOW 		 "geel"
+#define COLOR_TEXT_GRAY 		 "grijs"
 #define COLOR_TEXT_WHITE 		 "wit"
 #define COLOR_TEXT_PINK 		 "roze"
 

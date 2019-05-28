@@ -81,7 +81,7 @@ void ErrorCodeHandler(char error)
 			 	 				"\t* tekst\r"
 			 	 				"\t* bitmap\r"
 								"\t* figuur\r"
-								"\t* cirkel");
+								"\t* cirkel\r");
 			break;
 
 		case API_COMMAND_READ_ERROR:
