@@ -12,6 +12,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "AppFront.h"
 
+char msg[100];
+int error;
+
+void AppFrontLoop(void);
+
 /** @addtogroup App Demo application
   * @{
   */
@@ -21,6 +26,29 @@
   * @{
   */
 
+
+
+void AppFrontInit(void)
+{
+	UartInit();
+	API_init();
+
+	API_clearscreen(VGA_COL_WHITE);
+
+	AppFrontLoop();
+}
+
+void AppFrontLoop(void)
+{
+	while(1)
+	{
+		UartGets(msg, 1); //Get String
+		StringHandler(msg);
+	}
+}
+
+
+
 /**
  * @brief	Error code handling routine according to the specified error value
  * 			an automated message is generated.
@@ -29,12 +57,15 @@
  * @param	error_msg:	char pointer that contains a feedback message for the therminal.
  * @retval	None
  */
-void ErrorCodeHandler(char error, char* error_msg)
+void ErrorCodeHandler(char error)
 {
+	char error_msg[255];
 	switch(error)
 	{
 		case API_NONE_ERROR:
-			strcpy(error_msg, "\0");
+			//strcpy(error_msg, "\0");
+			//TODO: Veranderen?
+			return;
 			break;
 
 		case API_DISCONNECT_ERROR:
@@ -42,10 +73,15 @@ void ErrorCodeHandler(char error, char* error_msg)
 			break;
 
 		case API_UNKNOWN_COMMAND_ERROR:
-			strcpy(error_msg, "Script commando onbekend.\n\r"
-						 "Mogelijke commando's zijn:\n\r"
-						 "\trechthoek,x_lup,y_lup,x_rdowm,y_rdown,kleur,stijle,reserved\n\r"
-						 "\ttekst,x_lup,y_lup,kleur,text,font,fontsize,fontstyle,reserved\n\r");
+			strcpy(error_msg, 	"Script commando onbekend.\r"
+						 	 	"Mogelijke commando's zijn:\r"
+								"\t* lijn\r"
+			 	 				"\t* clearscherm\r"
+			 	 				"\t* rechthoek\r"
+			 	 				"\t* tekst\r"
+			 	 				"\t* bitmap\r"
+								"\t* figuur\r"
+								"\t* cirkel");
 			break;
 
 		case API_COMMAND_READ_ERROR:
@@ -104,6 +140,7 @@ void ErrorCodeHandler(char error, char* error_msg)
 			stpcpy(error_msg, "\0");
 			break;
 	}
+	UartPuts(error_msg);
 }
 /**
   * @}

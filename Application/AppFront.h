@@ -4,6 +4,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "AppLogic.h"
 
-void ErrorCodeHandler(char error, char* error_msg);
+
+
+void AppFrontInit(void);
+void ErrorCodeHandler(char error);
 
 #endif
