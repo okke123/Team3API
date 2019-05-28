@@ -393,15 +393,9 @@ int woord_pixel_groot(char *text, FONTS *info)
 	for(i=0;*(text+i)  != '\0';i++)
 	{
 		int asci = *(text+i) - 'a';	//controleer welke waarde deze moet zijn in de font array.
-		//x_tot += (info->bitmap_info[asci].width>8) ? 16 : 8;	//controleer hoe de wijdte is en voeg deze er totaal bij.
-		if(info->bitmap_info[asci].width > 16)
-			x_tot += 3*8;
-		else if(info->bitmap_info[asci].width > 8 && info->bitmap_info[asci].width <= 16)
-			x_tot += 2*8;
-		else if(info->bitmap_info[asci].width == 8)
-			x_tot+= 8+3;	//voor de leesbaarheid, anders zitten de letter tegen elkaar.
-		else x_tot += 8;
-		//het is 16 of 8 omdat het format waardes van 1 tot 15 weergeeft.
+		//controlleer de wijdte van het aantal pixels
+		x_tot+=	info->bitmap_info[asci].width;
+		x_tot+=2;	//twee pixels tussen de chars voor leesbaarheid.
 	}
 	return x_tot;
 }
@@ -444,12 +438,12 @@ int API_draw_text (int x, int y, int color, char *text, char *fontname, int font
 	fontsize-=1;	//0 is klein, 1 is groot.
 	fontstyle-=1;	//0 = normaal, 1 = vet, 2 = cursief.
 
-	//TODO: AAN HET TESTEN!
-	int temp_x = x;
+	int x_jumps = 0;
 
+	if(reserved)
+		x_jumps = x;
 
 	int font_ber = get_info(fontname, fontsize, fontstyle);
-
 
 	FONTS info = fonts[font_ber];
 
@@ -472,8 +466,7 @@ int API_draw_text (int x, int y, int color, char *text, char *fontname, int font
   		//enter als deze niet past.
 		if(x+x_pixel_size>VGA_DISPLAY_X)
 		{
-			//TODO: AAN HET TESTEN!
-  			x=temp_x;	//2pixels afstand voor leesbaarheid!
+  			x=x_jumps+2;	//2pixels afstand voor leesbaarheid!
   			//x=2;	//2pixels afstand voor leesbaarheid!
 			//controleer welk font zodat hier een 'enter' komt.
   			y += (info.bitmap_info[0].width>8) ? 16 : 8;
@@ -490,30 +483,14 @@ int API_draw_text (int x, int y, int color, char *text, char *fontname, int font
 			if(ltr_val >= 0 && ltr_val <= 25)
 			{
 				Draw_Letter(x,y,ltr_val,color,info, font_ber);
-				if(info.bitmap_info[ltr_val].width > 16)
-					x += 3*8;
-				else if(info.bitmap_info[ltr_val].width > 8 && info.bitmap_info[ltr_val].width <= 16)
-					x += 2*8;
-				else if(info.bitmap_info[ltr_val].width == 8)
-					x+= 8 + 2;	//voor de leesbaarheid, anders zitten letter tegen elkaar.
-				else x += 8;
+				x+=info.bitmap_info[ltr_val].width+2;	//voor leesbaarheid
 			}
 			else
-			{
-				//TODO: foutmelding meegeven
 				return API_TEXT_PARAM_ERROR;
-			}
 		}
 		//check aan de hand van de font hoe groot de spatie moet zijn.
-		x += (info.bitmap_info[0].width > 8) ? 16 : 8; //spatie
+		x += (info.bitmap_info[0].width > 8) ? 10 : 6; //spatie
 	}
-	/* PAST NIET MEER OP SCHERM, MOET IN DE FOR LOOP KOMEN!
-	if(y>VGA_DISPLAY_Y)
-	{
-		//TODO:
-		//error message!
-		return API_OFF_SCREEN_ERROR;
-	}*/
 	return 0;
 }
 
