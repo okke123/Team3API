@@ -111,6 +111,9 @@ void VgaIOSetLine(int xp, int yp, int length, int color)
 void VgaIOClearScreen(int color)
 {
 	memset(VGA_RAM1, color, sizeof(VGA_RAM1));
+	int i;
+	for (i=VGA_DISPLAY_X;i<(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y;i+=VGA_DISPLAY_X+1)
+		VGA_RAM1[i]=0x00;
 }
 
 void VgaIOSetBitmap(int xp, int yp, TypeDefBitmap* bitmap)

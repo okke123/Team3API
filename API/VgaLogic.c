@@ -314,7 +314,7 @@ void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
   */
 int API_check_outside_screen (int x, int y)
 {
-	if (x < 0 && x >= VGA_DISPLAY_X && y < 0 && y >= VGA_DISPLAY_Y)
+	if (x < 0 || x >= VGA_DISPLAY_X || y < 0 || y >= VGA_DISPLAY_Y)
 		return API_OFF_SCREEN_ERROR;
 	return 0;
 }

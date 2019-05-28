@@ -1,0 +1,107 @@
+clearscherm,zwart
+lijn,1,1,100,100,rood,4
+lijn,100,1,100,1,groen,3
+clearscherm,wit
+rechthoek,10,10,300,200,zwart,1
+rechthoek,10,10,150,100,lichtblauw,0
+rechthoek,160,110,150,100,geel,1
+clearscherm,zwart
+wacht,100
+tekst,10,20,  wit,the quick brown fox jumps over the lazy dog, consolas, 1, normaal
+tekst,10,100, magenta,the quick brown fox jumps over the lazy dog, arial, 2, vet
+tekst,10,200, lichtcyaan,the quick brown fox jumps over the lazy dog, consolas, 1, cursief
+clearscherm,wit
+
+herhaal,6,2
+figuur,100,10, 200,10, 250,50, 150,150, 50,50, rood
+cirkel,120,160,25,groen
+
+bitmap,0,50,50
+clearscherm,wit
+bitmap,1,50,50
+clearscherm,wit
+bitmap,2,50,50
+clearscherm,bruin
+bitmap,3,50,50
+clearscherm,wit
+wacht,500
+tekst,10,10,groen,all done, consolas, 2, vet
+
+
+
+
+
+
+
+
+clearscherm,wit
+tekst,30,10,zwart,korte tekst,consolas,2,normaal
+
+tekst,30,50,zwart,dit is een erg onodig lange text omdat dit moet,consolas,2,normaal
+
+tekst,30,120,zwart,dit is een erg onodig lange text met enter parameter,consolas,2,normaal,1
+
+
+
+clearscherm,wit
+tekst,10,30,zwart,the quick brown fox jumps over the lazy dog, consolas, 1, normaal ,1
+tekst,10,60,zwart,the quick brown fox jumps over the lazy dog, consolas, 1, vet,1
+tekst,10,90,zwart,the quick brown fox jumps over the lazy dog, consolas, 1, cursief,1
+tekst,10,120,zwart,the quick brown fox jumps over the lazy dog, arial,1, normaal ,1
+tekst,10,150,zwart,the quick brown fox jumps over the lazy dog, arial,1, vet,1
+tekst,10,180,zwart,the quick brown fox jumps over the lazy dog, arial,1, cursief,1
+
+
+
+clearscherm,wit
+tekst,10,30,zwart,the quick brown fox jumps over the lazy dog, consolas, 2, normaal ,1
+tekst,10,100,zwart,the quick brown fox jumps over the lazy dog, consolas, 2, vet,1
+tekst,10,170,zwart,the quick brown fox jumps over the lazy dog, consolas, 2, cursief,1
+
+clearscherm,wit
+tekst,10,30,zwart,the quick brown fox jumps over the lazy dog, arial,2, normaal ,1
+tekst,10,100,zwart,the quick brown fox jumps over the lazy dog, arial,2, vet,1
+tekst,10,170,zwart,the quick brown fox jumps over the lazy dog, arial,2, cursief,1
+
+
+clearscherm,wit
+tekst,10,10,zwart,rechthoek extra parameters, consolas, 1, vet,1
+rechthoek,50,50,50,50,rood,1,5,blauw
+cirkel,245,75,25,bruin,1
+lijn,10,120,309,120,groen,1
+lijn,10,130,309,130,lichtblauw,5
+lijn,10,150,309,150,roze,10
+figuur, 50,230, 50,190, 70,170, 90,190, 90,230, cyaan,1
+figuur, 230,230, 230,190, 250,170, 270,190, 270,230, magenta,5
+
+
+
+
+clearscherm,wit
+rechthoek,0,  0,20,240, zwart,1
+rechthoek,20, 0,20,240, blauw,1
+rechthoek,40, 0,20,240, lichtblauw,1
+rechthoek,60, 0,20,240, groen,1
+rechthoek,80, 0,20,240, lichtgroen,1
+rechthoek,100,0,20,240, cyaan,1
+rechthoek,120,0,20,240, lichtcyaan,1
+rechthoek,140,0,20,240, rood,1
+rechthoek,160,0,20,240, lichtrood,1
+rechthoek,180,0,20,240, magenta,1
+rechthoek,200,0,20,240, lichtmagenta,1
+rechthoek,220,0,20,240, bruin,1
+rechthoek,240,0,20,240, geel,1
+rechthoek,260,0,20,240, grijs,1
+rechthoek,280,0,20,240, wit,1
+rechthoek,300,0,20,240, roze,1
+
+
+
+clearscherm,wit
+tekst,50,50,zwart,op de terminal is nu errorhandeling te zien, consolas, 2, vet,1
+
+
+line,10,10,20,20,zwart
+lijn,10,130,309,120,lichtbluw
+rechthoek,50,50,5h0,50,rood,1,5,blauw
+cirkel,160,360,180,grijs,1
