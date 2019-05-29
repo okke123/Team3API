@@ -35,11 +35,11 @@
 //--------------------------------------------------------------
 #define VGA_DISPLAY_X   320
 #define VGA_DISPLAY_Y   240
-/** @addtogroup VGA-API
+/** @addtogroup API
  *  @brief	API for VGA
  * 	@{
  */
-/** @addtogroup VGA-API-Defines API Defines
+/** @addtogroup API-Defines API Defines
  *  @{
  *	VGA defines
  *--------------------------------------------------------------
@@ -67,12 +67,12 @@ VGA_t VGA;
 
 
 
-/** @addtogroup VGA-API
+/** @addtogroup API
  *  @brief	API for VGA
  * 	@{
  */
 
-/** @addtogroup VGA-API-IO API IO Layer
+/** @addtogroup API-IO API IO Layer
  *  @brief	All the IO functions for the VGA screen
  * 	@{
  */

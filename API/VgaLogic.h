@@ -31,11 +31,11 @@ int API_draw_circle (int x, int y, int radius, int color, int filled);
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int weight);
 
 
-/** @addtogroup VGA-API
+/** @addtogroup API
  *  @brief	API for VGA
  * 	@{
  */
-/** @defgroup VGA-API-Defines API Defines
+/** @defgroup API-Defines API Defines
  *  @brief	In this module are all the defines that are declared in the API
  *  @{
  *  Error defines
@@ -76,10 +76,10 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
 #define 	API_OFF_SCREEN_WARNING			0x20
 
 
-/** @addtogroup VGA-API
+/** @addtogroup API
  * 	@{
  */
-/** @addtogroup VGA-API-Defines API Defines
+/** @addtogroup API-Defines API Defines
  *  @{
  * 	Color defines
  *	--------------------------------------------------------------

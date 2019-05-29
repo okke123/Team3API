@@ -29,12 +29,12 @@ void VgaIOInitINT(void);
 void VgaIOInitDMA(void);
 
 
-/** @addtogroup VGA-API
+/** @addtogroup API
  *  @brief	API for VGA
  * 	@{
  */
 
-/** @defgroup VGA-API-IO API IO Layer
+/** @defgroup API-IO API IO Layer
  *  @brief	All the IO functions for the VGA screen
  * 	@{
  */

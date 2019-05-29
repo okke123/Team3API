@@ -19,12 +19,12 @@ var _vga_i_o_8h =
     [ "VGA_VSYNC_BILD_STOP", "_vga_i_o_8h.html#abf14fb3313d4de9367100e2dcddcd39f", null ],
     [ "VGA_VSYNC_IMP", "_vga_i_o_8h.html#ad3c951f66600690235db2c93e74bc82f", null ],
     [ "VGA_VSYNC_PERIODE", "_vga_i_o_8h.html#a73e729af6a6a2eb20ef3804cf794e4bd", null ],
-    [ "VgaIOClearScreen", "group___v_g_a-_a_p_i-_i_o.html#ga24755a2906dacb89a90d14df827fc8ce", null ],
-    [ "VgaIOInit", "group___v_g_a-_a_p_i-_i_o.html#gae9bf0f9927be44304c9288f52044b880", null ],
-    [ "VgaIOSetBitmap", "group___v_g_a-_a_p_i-_i_o.html#gafc57beb34a803fffe153f385e9db22a9", null ],
-    [ "VgaIOSetLine", "group___v_g_a-_a_p_i-_i_o.html#ga3e751cde6531afa4cb23dcd91b2af549", null ],
-    [ "VgaIOSetPixel", "group___v_g_a-_a_p_i-_i_o.html#ga42927d901824147fd8e850367a57fa3e", null ],
-    [ "bitmaps", "group___v_g_a-_a_p_i-_i_o.html#ga59b5bc4d36c2a7af82b60260c396f497", null ],
+    [ "VgaIOClearScreen", "group___a_p_i-_i_o.html#ga24755a2906dacb89a90d14df827fc8ce", null ],
+    [ "VgaIOInit", "group___a_p_i-_i_o.html#gae9bf0f9927be44304c9288f52044b880", null ],
+    [ "VgaIOSetBitmap", "group___a_p_i-_i_o.html#gafc57beb34a803fffe153f385e9db22a9", null ],
+    [ "VgaIOSetLine", "group___a_p_i-_i_o.html#ga3e751cde6531afa4cb23dcd91b2af549", null ],
+    [ "VgaIOSetPixel", "group___a_p_i-_i_o.html#ga42927d901824147fd8e850367a57fa3e", null ],
+    [ "bitmaps", "group___a_p_i-_i_o.html#ga59b5bc4d36c2a7af82b60260c396f497", null ],
     [ "VGA", "_vga_i_o_8h.html#a0642526bfd4eb59d888572150ee3032a", null ],
-    [ "VGA_RAM1", "group___v_g_a-_a_p_i-_i_o.html#gadad76feab97da661d4015659c7a7f9a8", null ]
+    [ "VGA_RAM1", "group___a_p_i-_i_o.html#gadad76feab97da661d4015659c7a7f9a8", null ]
 ];

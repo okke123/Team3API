@@ -1,0 +1,6 @@
+/*! \mainpage Doxygen documentation for the API and Application of team 3
+ *
+ * This is the documentation for the API and Application.
+ *
+ * The code is split in two parts, the \ref API and the \ref Application
+ */

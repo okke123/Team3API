@@ -12,12 +12,12 @@
   * @note	The origin of the x and y coordinates on the screen are in the top left.
   */
 
-/** @addtogroup VGA-API
+/** @addtogroup API
  *  @brief	API for VGA
  * 	@{
  */
 
-/** @defgroup VGA-API-Logic API Logic Layer
+/** @defgroup API-Logic API Logic Layer
  *  @brief	All the logic functions for the VGA screen
  * 	@{
  */

@@ -24,6 +24,7 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "TEAM3API", "index.html", [
+    [ "Doxygen documentation for the API and Application of team 3", "index.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -43,7 +44,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_app_front_8c.html",
-"group___v_g_a-_a_p_i-_i_o.html#gaef190d87febc0414eb7a39bd4c2d2169"
+"group___a_p_i-_logic.html#gad1b28429e9f113344ce334f0626b6ed6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

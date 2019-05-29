@@ -27,12 +27,12 @@ var _vga_logic_8h =
     [ "VGA_COL_RED", "_vga_logic_8h.html#a790cc430619a64faf356c303f8bdd3d4", null ],
     [ "VGA_COL_WHITE", "_vga_logic_8h.html#a2ad592a88539ed90dd1fe6c33648a13b", null ],
     [ "VGA_COL_YELLOW", "_vga_logic_8h.html#a76575b7810719497e2b15a6709c1b6f0", null ],
-    [ "API_clearscreen", "group___v_g_a-_a_p_i-_logic.html#gac5d34bcb0d84db1190d4b876a3f65944", null ],
-    [ "API_draw_bitmap", "group___v_g_a-_a_p_i-_logic.html#ga6eeb30f90b8b94e5bdceb4847f5f77e1", null ],
-    [ "API_draw_circle", "group___v_g_a-_a_p_i-_logic.html#gaafb5c2810f8084bed6b20e4c398f0fc8", null ],
-    [ "API_draw_figure", "group___v_g_a-_a_p_i-_logic.html#ga99e8e55a36e036be0423fdb06a02820b", null ],
-    [ "API_draw_line", "group___v_g_a-_a_p_i-_logic.html#ga3fd40a7f05424ffe7b0ef94c8c7f7315", null ],
-    [ "API_draw_rectangle", "group___v_g_a-_a_p_i-_logic.html#ga62957deeb57f3a25c8d0727c8c9a8b40", null ],
-    [ "API_draw_text", "group___v_g_a-_a_p_i-_logic.html#gacd665154361594d5ddb6363d6191d885", null ],
-    [ "API_init", "group___v_g_a-_a_p_i-_logic.html#gad1b28429e9f113344ce334f0626b6ed6", null ]
+    [ "API_clearscreen", "group___a_p_i-_logic.html#gac5d34bcb0d84db1190d4b876a3f65944", null ],
+    [ "API_draw_bitmap", "group___a_p_i-_logic.html#ga6eeb30f90b8b94e5bdceb4847f5f77e1", null ],
+    [ "API_draw_circle", "group___a_p_i-_logic.html#gaafb5c2810f8084bed6b20e4c398f0fc8", null ],
+    [ "API_draw_figure", "group___a_p_i-_logic.html#ga99e8e55a36e036be0423fdb06a02820b", null ],
+    [ "API_draw_line", "group___a_p_i-_logic.html#ga3fd40a7f05424ffe7b0ef94c8c7f7315", null ],
+    [ "API_draw_rectangle", "group___a_p_i-_logic.html#ga62957deeb57f3a25c8d0727c8c9a8b40", null ],
+    [ "API_draw_text", "group___a_p_i-_logic.html#gacd665154361594d5ddb6363d6191d885", null ],
+    [ "API_init", "group___a_p_i-_logic.html#gad1b28429e9f113344ce334f0626b6ed6", null ]
 ];

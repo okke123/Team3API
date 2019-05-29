@@ -10,12 +10,12 @@
 
 #include "Fonts.h"
 
-/** @addtogroup VGA-API
+/** @addtogroup API
  *  @brief	API for VGA
  * 	@{
  */
 
-/** @defgroup VGA-API-FONTS API Fonts
+/** @defgroup API-FONTS API Fonts
  *  @brief	Deceleration of all fonts used by the API.
  * 	@{
  */
