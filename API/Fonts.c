@@ -9,7 +9,6 @@
   */
 
 #include "Fonts.h"
-#include "VgaLogic.h"
 
 /** @addtogroup VGA-API
  *  @brief	API for VGA
