@@ -1,3 +1,10 @@
+/**
+  ******************************************************************************
+  * @file    AppLogic.h
+  * @author  Team 3
+  * @brief   The headerfile for the AppLogic.c and includes relevant files, global defines and functions.
+*/
+
 #ifndef __APP_LOGIC_H
 #define __APP_LOGIC_H
 
@@ -13,6 +20,30 @@
 
 #define NUM_SET "0123456789"
 #define DELIMITER ","
+
+/** @defgroup color names.
+ *  @{
+ *  	color names:
+ * 		|defines kleur				|	kleur			|
+ * 		|:-------------------------:|:------------------|
+ * 		|COLOR_TEXT_BLACK			|	zwart			|
+ * 		|COLOR_TEXT_BLUE			|	blauw			|
+ * 		|COLOR_TEXT_LIGHT_BLUE		|	lichtblauw		|
+ * 		|COLOR_TEXT_GREEN			|	groen			|
+ * 		|COLOR_TEXT_LIGHT_GREEN		|	lichtgroen		|
+ * 		|COLOR_TEXT_CYAN			|	cyaan			|
+ * 		|COLOR_TEXT_LIGHT_CYAN		|	lichtcyaan		|
+ * 		|COLOR_TEXT_RED				|	rood			|
+ * 		|COLOR_TEXT_LIGHT_RED		|	lichtrood		|
+ * 		|COLOR_TEXT_MAGENTA			|	magenta			|
+ * 		|COLOR_TEXT_LIGHT_MAGENTA	|	lichtmagenta	|
+ * 		|COLOR_TEXT_BROWN			|	bruin			|
+ * 		|COLOR_TEXT_YELLOW			|	geel			|
+ * 		|COLOR_TEXT_GRAY			|	grijs			|
+ * 		|COLOR_TEXT_WHITE			|	wit				|
+ * 		|COLOR_TEXT_PINK			|	roze			|
+  */
+
 
 #define COLOR_TEXT_BLACK 		 "zwart"
 #define COLOR_TEXT_BLUE 		 "blauw"
@@ -53,6 +84,20 @@
 #define COMMAND_TEXT_FIGURE 	 "figuur"
 #define COMMAND_TEXT_CIRCLE 	 "cirkel"
 
+
+/** @defgroup color names.
+ *  @{
+ *  	codes:
+ * 		|define command code		|	value	|
+ * 		|:-------------------------:|:----------|
+ * 		|COMMAND_CODE_LINE			|	1		|
+ * 		|COMMAND_CODE_CLEARSCREEN	|	2		|
+ * 		|COMMAND_CODE_RECTANGLE		|	3		|
+ * 		|COMMAND_CODE_TEXT			|	4		|
+ * 		|COMMAND_CODE_BITMAP		|	5		|
+ * 		|COMMAND_CODE_FIGURE		|	6		|
+ * 		|COMMAND_CODE_CIRCLE		|	7		|
+*/
 #define COMMAND_CODE_LINE 		 1
 #define COMMAND_CODE_CLEARSCREEN 2
 #define COMMAND_CODE_RECTANGLE 	 3

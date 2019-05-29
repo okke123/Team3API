@@ -1,26 +1,29 @@
 /**
   ******************************************************************************
   * @file    AppFront.c
-  * @author  Chileam Bohnen
-  * @version V0.0.1
-  * @date    30-april-2019
-  * @brief   This file provides the IO layer for the application.
-  *
-  ******************************************************************************
+  * @author  Team 3
+  * @date    25-5-2019
+  * @brief   This file provides the logical functions for the UART:
+  *           - init of the UART.
+  *			  - print a char over the UART.
+  *			  - print a string over the UART.
+  *			  - get a char from the UART.
+  *			  - get a string from the UART.
   */
+
+/** @addtogroup Application
+ *  @brief	Application used for demo.
+ * 	@{
+ */
+
+/** @defgroup APP-UART Uart for the application.
+ *  @brief	All the logic functions for the UART.
+ * 	@{
+ */
 
 /* Includes ------------------------------------------------------------------*/
 #include "AppUart.h"
 
-
-/** @addtogroup App Demo application
-  * @{
-  */
-
-/** @defgroup AppUart IO layer
-  * @brief STM32 USART Peripheral wrapper.
-  * @{
-  */
 
 /**
  * @brief	Initializes the USART2 peripheral.
@@ -108,9 +111,8 @@ void UartPuts(char* s)
  * @brief	Return the most recent received data by the USART2 peripheral.
  * @note	This is a wrapper for STM32 USART ReceiveData.
  * @param	None.
- * @retval	c:		The data to transmit.
  */
-char UartGet()
+char UartGet(void)
 {
 	char c = -1;
 	if (USART_GetFlagStatus(USART2, USART_FLAG_RXNE)== SET)  // check for data available
@@ -121,8 +123,9 @@ char UartGet()
 /**
  * @brief	Return the most recent received string of data by the USART2 peripheral.
  * @note	This is a wrapper for STM32 USART ReceiveData.
- * @param	None.
- * @retval	c:		The string of data to transmit.
+ * @param	s: incomming string.
+ * @param	echo: output-flag what prints the data.
+ * @return	error if the function fails.
  */
 int UartGets(char* s, int echo)
 {
@@ -150,50 +153,7 @@ int UartGets(char* s, int echo)
 	return 0x03;
 }
 
-void UART_putint(unsigned int num)
-{
-    UART_putnum(num, 10);
-}
 
-// Stuurt meegegeven getal uit op de UART in het aangegeven getallenstelsel
-void UART_putnum(unsigned int num, unsigned char deel)
-{
-    static unsigned char chars[16] = "0123456789ABCDEF";
-    unsigned int rest;
-    signed char c[16];
-    signed int i=15;
-
-    // Zet de integer om naar een string
-    if(num==0)
-    {
-        c[i]='0';
-        i--;
-    }
-    else
-    {
-        while(num>0)
-        {
-            rest=num%deel;
-            num/=deel;
-            c[i]=chars[rest];
-            i--;
-
-            if(i==0) // it ends here
-                num=0;
-        }
-    }
-
-
-    // Stuur de string uit
-    while(i<15)
-    {
-        i++;
-        // Wacht tot de buffer leeg is
-        while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
-        USART_SendData(USART2, c[i]);
-
-    }
-}
 /**
   * @}
   */

@@ -1,18 +1,40 @@
-/*!
- *	/arthur Chileam Bohnen
- *	/version 0.1
- *	/date 2019-5-1
- *	/mainpage Logic Layer
- *		Command parser for VGA API
+/**
+  ******************************************************************************
+  * @file    AppLogic.c
+  * @author  Team 3
+  * @brief   This file provides the logical functions for the UART:
+  *           - char to integer.
+  *           - handler of the strings for error codes.
+  *           - left trim a string.
+  *           - right trim a string.
+  *           - left/right trim a string.
+  *           - check if the function name from the script is valid.
+  *           - check if the parameters in the script are valid.
+  */
+
+/** @addtogroup Application
+ *  @brief	Application used for demo.
+ * 	@{
+ */
+
+/** @defgroup APP-LOGIC Logic layer for the application
+ *  @brief	All the logic functions for the app layer.
+ * 	@{
  */
 
 #include "AppLogic.h"
 
 
-int check_commando(char *functie_naam);
+int check_commando(char *func_name);
 
 int check_parameter(char *parameter, int parameter_type, int *error);
 
+/**
+   @brief function to convert a pointer of char values to a int value.
+   @param src:		pointer of chars what have to be converted.
+   @param value:	pointer of the int value where the value is stored.
+   @return errorcode: returns errorcode if the char pointer can't be converted.
+*/
 int CharToInt(char* src, int* value)
 {
 	int fault_counter = 0;
@@ -49,12 +71,16 @@ int CharToInt(char* src, int* value)
 }
 
 
-
-void StringHandler(char *str_inkomend)
+/**
+   @brief checks the function for parameters and call the correct functions.
+   @param str:		string from the UART.
+   @return void: 	returns void if a enter is pressed.
+*/
+void StringHandler(char *str)
 {
 	//Aantal tekens in de inkomende string
 	int aantal_tek;
-	for(aantal_tek=0;*(str_inkomend+aantal_tek)!='\0';aantal_tek++);
+	for(aantal_tek=0;*(str+aantal_tek)!='\0';aantal_tek++);
 
 	//Als er geen tekens zijn gestuurd:
 	if(!aantal_tek)
@@ -62,7 +88,7 @@ void StringHandler(char *str_inkomend)
 
 	//Buffer array aanmaken
 	char str_buf[aantal_tek];
-	strcpy(str_buf, str_inkomend);
+	strcpy(str_buf, str);
 
 	char *token;
 	int aantal_komma = 0, i;
@@ -90,7 +116,7 @@ void StringHandler(char *str_inkomend)
 	int y_1,y_2,y_3,y_4,y_5;
 	int color,bordercolor,radius,weight,width,height,fontsize,fontstyle,reserved,filled,bm_nr;
 
-	switch (check_commando(string_array[0]))
+	switch (CheckCommandos(string_array[0]))
 	{
 	case COMMAND_CODE_LINE:
 		#ifdef DEBUG
@@ -308,7 +334,12 @@ void StringHandler(char *str_inkomend)
 }
 
 
-
+/**
+   @brief function that left trims a string.
+   @param str:	pointer to string what has to be left trimmed.
+   @param seps:
+   @return errorcode: returns errorcode if the char pointer can't be converted.
+*/
 char *ltrim(char *str, const char *seps)
 {
     size_t totrim;
@@ -328,6 +359,13 @@ char *ltrim(char *str, const char *seps)
     return str;
 }
 
+
+/**
+   @brief function that right trims a string.
+   @param str:	pointer to string what has to be left trimmed.
+   @param seps:
+   @return errorcode: returns errorcode if the char pointer can't be converted.
+*/
 char *rtrim(char *str, const char *seps)
 {
     int i;
@@ -342,24 +380,47 @@ char *rtrim(char *str, const char *seps)
     return str;
 }
 
+
+/**
+   @brief general function that trims a string.
+   @param str:	pointer to string what has to be trimmed.
+   @param seps: seperator value
+   @return trimmed string.
+*/
 char *trim(char *str, const char *seps)
 {
     return ltrim(rtrim(str, seps), seps);
 }
 
-int check_commando(char *functie_naam)
+
+/**
+   @brief function that checks if the functionname in the script are valid.
+   @param str:	pointer to string what has to be left trimmed.
+   @return command: returns the correct command value.
+   @return 0: returns 0 if the script function name has not be found.
+*/
+int CheckCommandos(char *func_name)
 {
 	//check alle defines
-	if(strstr(functie_naam,COMMAND_TEXT_LINE)		!=NULL)	return COMMAND_CODE_LINE;
-	if(strstr(functie_naam,COMMAND_TEXT_CLEARSCREEN)!=NULL)	return COMMAND_CODE_CLEARSCREEN;
-	if(strstr(functie_naam,COMMAND_TEXT_RECTANGLE)	!=NULL)	return COMMAND_CODE_RECTANGLE;
-	if(strstr(functie_naam,COMMAND_TEXT_TEXT)		!=NULL)	return COMMAND_CODE_TEXT;
-	if(strstr(functie_naam,COMMAND_TEXT_BITMAP)		!=NULL)	return COMMAND_CODE_BITMAP;
-	if(strstr(functie_naam,COMMAND_TEXT_FIGURE)		!=NULL)	return COMMAND_CODE_FIGURE;
-	if(strstr(functie_naam,COMMAND_TEXT_CIRCLE)		!=NULL)	return COMMAND_CODE_CIRCLE;
+	if(strstr(func_name,COMMAND_TEXT_LINE)			!=NULL)	return COMMAND_CODE_LINE;
+	if(strstr(func_name,COMMAND_TEXT_CLEARSCREEN)	!=NULL)	return COMMAND_CODE_CLEARSCREEN;
+	if(strstr(func_name,COMMAND_TEXT_RECTANGLE)		!=NULL)	return COMMAND_CODE_RECTANGLE;
+	if(strstr(func_name,COMMAND_TEXT_TEXT)			!=NULL)	return COMMAND_CODE_TEXT;
+	if(strstr(func_name,COMMAND_TEXT_BITMAP)		!=NULL)	return COMMAND_CODE_BITMAP;
+	if(strstr(func_name,COMMAND_TEXT_FIGURE)		!=NULL)	return COMMAND_CODE_FIGURE;
+	if(strstr(func_name,COMMAND_TEXT_CIRCLE)		!=NULL)	return COMMAND_CODE_CIRCLE;
 	return 0;
 }
 
+
+/**
+   @brief function that checks if the given parameters of a script function.
+   @param parameter: pointer to a string array which has stored all the script parameters.
+   @param parameter_type: integer value for the type of the font parameter.
+   @param error: pointer to the error value. Change the value if  a error accurures.
+   @return number: returns the correct color or fontstyle.
+   @return 0: returns 0 if no other returns accurses.
+*/
 int check_parameter(char *parameter, int parameter_type, int *error)
 {
 	int number;
