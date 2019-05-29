@@ -24,12 +24,10 @@
 #define FALSE	0				// boolean value false
 
 /* Functies ------------------------------------------------------------------*/
-void UartInit();
-void UartPut(char c);
-void UartPuts(char* s);
-char UartGet();
-int UartGets(char* s, int echo);
-void UART_putnum(unsigned int num, unsigned char deel);
-void UARTPutInt(unsigned int num);
+void AppUartInit();
+void AppUartPut(char c);
+void AppUartPuts(char* s);
+char AppUartGet();
+int  AppUartGets(char* s, int echo);
 
 #endif

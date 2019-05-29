@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    AppFront.c
   * @author  Team 3
-  * @date    25-5-2019
+  * @date    29-5-2019
   * @brief   This file provides the logical functions for the UART:
   *           - init of the UART.
   *			  - print a char over the UART.
@@ -16,7 +16,7 @@
  * 	@{
  */
 
-/** @defgroup APP-UART Uart for the application.
+/** @defgroup APP-UART App Uart (IO) Layer
  *  @brief	All the logic functions for the UART.
  * 	@{
  */
@@ -30,7 +30,7 @@
  * @note	This is a wrapper for STM32 USART initialization.
  * @retval	None
  */
-void UartInit()
+void AppUartInit()
 {
 	/* --------------------------- System Clocks Configuration -----------------*/
 	/* USART2 clock enable */
@@ -84,7 +84,7 @@ void UartInit()
  * @param	c:		The data to transmit.
  * @retval	None
  */
-void UartPut(char c)
+void AppUartPut(char c)
 {
 	while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
 	USART_SendData(USART2, c);
@@ -96,15 +96,15 @@ void UartPut(char c)
  * @param	c:		The string of data to transmit.
  * @retval	None
  */
-void UartPuts(char* s)
+void AppUartPuts(char* s)
 {
 	volatile unsigned int i;
 	for (i=0; s[i]; i++)
 	{
-		UartPut(s[i]);
+		AppUartPut(s[i]);
 	}
-	UartPut(CR);
-	UartPut(LF);
+	AppUartPut(CR);
+	AppUartPut(LF);
 }
 
 /**
@@ -112,7 +112,7 @@ void UartPuts(char* s)
  * @note	This is a wrapper for STM32 USART ReceiveData.
  * @param	None.
  */
-char UartGet(void)
+char AppUartGet(void)
 {
 	char c = -1;
 	if (USART_GetFlagStatus(USART2, USART_FLAG_RXNE)== SET)  // check for data available
@@ -123,15 +123,17 @@ char UartGet(void)
 /**
  * @brief	Return the most recent received string of data by the USART2 peripheral.
  * @note	This is a wrapper for STM32 USART ReceiveData.
- * @param	s: incomming string.
- * @param	echo: output-flag what prints the data.
- * @return	error if the function fails.
+
+ * @param	s: 		incomming string.
+ * @param	echo: 	output-flag what prints the data.
+
+ * @return	error:	gives if the function fails.
  */
-int UartGets(char* s, int echo)
+int AppUartGets(char* s, int echo)
 {
 	while (TRUE)
 	{
-	 	*s = UartGet();
+	 	*s = AppUartGet();
 
 	 	if (*s==-1)             // check for data available
 	 		continue;
@@ -140,7 +142,7 @@ int UartGets(char* s, int echo)
 			continue;
 
 		if (echo)              	// if output-flag set
-			UartPut(*s);  		// to read what u entered
+			AppUartPut(*s);  	// to read what u entered
 
 		if (*s==CR)            	// if enter pressed
 		{

@@ -2,6 +2,7 @@
   ******************************************************************************
   * @file    AppFront.c
   * @author  Team 3
+  * @date    29-5-2019
   * @brief   This file provides the logical functions for the UART
   *           - init the front layer.
   *			  - pass a string from the UART.
@@ -13,7 +14,7 @@
  * 	@{
  */
 
-/** @defgroup APP-FRONT Front layer for the application
+/** @defgroup APP-FRONT App Front Layer
  *  @brief	All the graphical functions for the app layer.
  * 	@{
  */
@@ -21,50 +22,55 @@
 /* Includes ------------------------------------------------------------------*/
 #include "AppFront.h"
 
+/**
+ * @brief	Buffer for the incomming messages
+ */
 char msg[100];
-int error;
 
+
+/* Local decleration of funciton */
 void AppFrontLoop(void);
 
 
+
 /**
- * @brief	inits the front.
- * @param	void: no parameters needed.
- * @return	none.
+ * @brief	Initialises the App IO (UART) and the API
+ * @return	void
  */
 void AppFrontInit(void)
 {
-	UartInit();
+	AppUartInit();
 	API_init();
 
+	//Start with white screen
 	API_clearscreen(VGA_COL_WHITE);
 
 	AppFrontLoop();
 }
 
 
+
 /**
- * @brief	while loop that gets the the UART messages.
- * @param	void: no parameters needed.
- * @return	none.
+ * @brief	Infinite loop that keeps scanning Uart and acts on message gotten
+ * @return	void
  */
 void AppFrontLoop(void)
 {
 	while(1)
 	{
-		UartGets(msg, 1); //Get String
-		StringHandler(msg);
+		AppUartGets(msg, 1); 	//Get message
+		AppLogicStringHandler(msg);	//Act on message
 	}
 }
 
 
 
 /**
- * @brief	Error code handling routine according to the specified error value
- * @param	error:		char that contains an error code value.
- * @return	none.
+ * @brief	Error code handling routine according to the specified error value (prints message for user)
+ * @param	error:	byte that contains an error code value.
+ * @return	void
  */
-void ErrorCodeHandler(char error)
+void AppFrontErrorHandler(char error)
 {
 	char error_msg[255];
 	switch(error)
@@ -135,7 +141,7 @@ void ErrorCodeHandler(char error)
 			stpcpy(error_msg, "\0");
 			break;
 	}
-	UartPuts(error_msg);
+	AppUartPuts(error_msg);
 }
 /**
   * @}

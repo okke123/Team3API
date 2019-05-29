@@ -2,6 +2,7 @@
   ******************************************************************************
   * @file    AppLogic.c
   * @author  Team 3
+  * @date    29-5-2019
   * @brief   This file provides the logical functions for the UART:
   *           - char to integer.
   *           - handler of the strings for error codes.
@@ -17,25 +18,31 @@
  * 	@{
  */
 
-/** @defgroup APP-LOGIC Logic layer for the application
+/** @defgroup APP-LOGIC App Logic Layer
  *  @brief	All the logic functions for the app layer.
  * 	@{
  */
 
+/* Includes ///////////////////////------------------------------------------*/
+
 #include "AppLogic.h"
 
+/* Local deceleration of functions ------------------------------------------*/
+int 	AppLogicCharToInt(char* src, int *value);
+char   *AppLogicTrimString(char *str, const char *seps);
+char   *AppLogicTrimStringLeft(char *str, const char *seps);
+char   *AppLogicTrimStringRight(char *str, const char *seps);
+int 	AppLogicCheckCommand(char *func_name);
+int 	AppLogicCheckParameter(char *parameter, int parameter_type, int *error);
 
-int check_commando(char *func_name);
-
-int check_parameter(char *parameter, int parameter_type, int *error);
 
 /**
-   @brief function to convert a pointer of char values to a int value.
-   @param src:		pointer of chars what have to be converted.
-   @param value:	pointer of the int value where the value is stored.
-   @return errorcode: returns errorcode if the char pointer can't be converted.
+   @brief Function to convert a pointer of char values to a int value.
+   @param src:		Pointer of chars that have to be converted.
+   @param value:	Pointer of the int value where the value will be stored.
+   @return error: 	Returns errorcode if the char pointer can't be converted to integer.
 */
-int CharToInt(char* src, int* value)
+int AppLogicCharToInt(char* src, int* value)
 {
 	int fault_counter = 0;
 	int i = 0, j;
@@ -72,43 +79,43 @@ int CharToInt(char* src, int* value)
 
 
 /**
-   @brief checks the function for parameters and call the correct functions.
-   @param str:		string from the UART.
-   @return void: 	returns void if a enter is pressed.
+   @brief Checks the function for parameters and calls the correct function.
+   @param str:		String from the UART.
+   @return void
 */
-void StringHandler(char *str)
+void AppLogicStringHandler(char *str)
 {
-	//Aantal tekens in de inkomende string
-	int aantal_tek;
-	for(aantal_tek=0;*(str+aantal_tek)!='\0';aantal_tek++);
+	//Amount of characters in the string
+	int amount_chars;
+	for(amount_chars=0;*(str+amount_chars)!='\0';amount_chars++);
 
-	//Als er geen tekens zijn gestuurd:
-	if(!aantal_tek)
+	//Exit function if there are no characters
+	if(!amount_chars)
 		return;
 
-	//Buffer array aanmaken
-	char str_buf[aantal_tek];
+	//Make buffer array
+	char str_buf[amount_chars];
 	strcpy(str_buf, str);
 
 	char *token;
-	int aantal_komma = 0, i;
-	//Check het aantal komma's in de string
+	int amount_comma = 0, i;
+
+	//Check the amount of commas in the string
 	for(i=0; str_buf[i] != '\0';i++)
-		aantal_komma += (str_buf[i] == ',') ? 1 : 0;
+		amount_comma += (str_buf[i] == ',') ? 1 : 0;
 
-	char *string_array[aantal_komma];		//Maak een array aan met alle strings.
+	char *string_array[amount_comma];		//Make a array of multiple char pointers (multiple strings)
 
-	//Zet de string alvast in de pointer.
 	token = strtok(str_buf, ",");
 
-	//	Zet alle stukken tekst in de string_array
+	//Put split strings into array (spaces are trimmed of the front and end of the string)
 	for(i=0; token != NULL; i++,token=strtok(NULL,","))
-		string_array[i] = trim(token,NULL);
+		string_array[i] = AppLogicTrimString(token,NULL);
 
-	//DISPLAY ARGUMENTEN
+	//Display split strings if DEBUG is defined
 	#ifdef DEBUG
-	for (i=0;i<=aantal_komma;i++)
-		UartPuts(string_array[i]);
+	for (i=0;i<=amount_comma;i++)
+		AppUartPuts(string_array[i]);
 	#endif
 
 	int error = 0;
@@ -116,231 +123,232 @@ void StringHandler(char *str)
 	int y_1,y_2,y_3,y_4,y_5;
 	int color,bordercolor,radius,weight,width,height,fontsize,fontstyle,reserved,filled,bm_nr;
 
-	switch (CheckCommandos(string_array[0]))
+	switch (AppLogicCheckCommand(string_array[0]))
 	{
 	case COMMAND_CODE_LINE:
 		#ifdef DEBUG
-			UartPuts("Lijn commando gevonden");
+			AppUartPuts("Lijn commando gevonden");
 		#endif
-		if (aantal_komma==6 || aantal_komma==7) //Fill variables with checked parameters
+		if (amount_comma==6 || amount_comma==7) //Fill variables with checked parameters
 		{
-			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
-			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
-			x_2 = 		check_parameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
-			y_2 = 		check_parameter(string_array[4],PARAMETER_TYPE_NUMBER,&error);
-			color =  	check_parameter(string_array[5],PARAMETER_TYPE_COLOR, &error);
-			weight = 	check_parameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
+			x_1 = 		AppLogicCheckParameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
+			y_1 = 		AppLogicCheckParameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
+			x_2 = 		AppLogicCheckParameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
+			y_2 = 		AppLogicCheckParameter(string_array[4],PARAMETER_TYPE_NUMBER,&error);
+			color =  	AppLogicCheckParameter(string_array[5],PARAMETER_TYPE_COLOR, &error);
+			weight = 	AppLogicCheckParameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
 
-			if (aantal_komma==6)
+			if (amount_comma==6)
 				reserved = 0;
 			else
-				reserved = check_parameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
+				reserved = AppLogicCheckParameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
 
 			if (!error)
 			{
 				error = API_draw_line(x_1,y_1,x_2,y_2,color,weight,reserved);
-				ErrorCodeHandler(error);
+				AppFrontErrorHandler(error);
 				#ifdef DEBUG
-					UartPuts("Lijn getekend");
+					AppUartPuts("Lijn getekend");
 				#endif
 				break;
 			}
 		}
-		ErrorCodeHandler(API_LINE_PARAM_ERROR);
+		AppFrontErrorHandler(API_LINE_PARAM_ERROR);
 		break;
 
 	case COMMAND_CODE_CLEARSCREEN:
 		#ifdef DEBUG
-			UartPuts("Clear commando gevonden");
+			AppUartPuts("Clear commando gevonden");
 		#endif
-		if (aantal_komma==1)
+		if (amount_comma==1)
 		{
-			color = check_parameter(string_array[1],PARAMETER_TYPE_COLOR, &error);
+			color = AppLogicCheckParameter(string_array[1],PARAMETER_TYPE_COLOR, &error);
 
 			if (!error)
 			{
 				error = API_clearscreen(color);
-				ErrorCodeHandler(error);
+				AppFrontErrorHandler(error);
 				#ifdef DEBUG
-					UartPuts("Scherm gevuld");
+					AppUartPuts("Scherm gevuld");
 				#endif
 				break;
 			}
 		}
-		ErrorCodeHandler(API_CLEARSCREEN_PARAM_ERROR);
+		AppFrontErrorHandler(API_CLEARSCREEN_PARAM_ERROR);
 		break;
 
 	case COMMAND_CODE_RECTANGLE:
 		#ifdef DEBUG
-			UartPuts("Rechthoek commando gevonden");
+			AppUartPuts("Rechthoek commando gevonden");
 		#endif
-		if (aantal_komma >= 6 && aantal_komma <= 8)
+		if (amount_comma >= 6 && amount_comma <= 8)
 		{
-			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
-			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
-			width = 	check_parameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
-			height = 	check_parameter(string_array[4],PARAMETER_TYPE_NUMBER,&error);
-			color =  	check_parameter(string_array[5],PARAMETER_TYPE_COLOR, &error);
-			filled = 	check_parameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
+			x_1 = 		AppLogicCheckParameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
+			y_1 = 		AppLogicCheckParameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
+			width = 	AppLogicCheckParameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
+			height = 	AppLogicCheckParameter(string_array[4],PARAMETER_TYPE_NUMBER,&error);
+			color =  	AppLogicCheckParameter(string_array[5],PARAMETER_TYPE_COLOR, &error);
+			filled = 	AppLogicCheckParameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
 
-			if (aantal_komma == 6)
+			if (amount_comma == 6)
 			{
 				weight = 1;
 				bordercolor = color;
 			}
 			else
 			{
-				weight = check_parameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
-				if (aantal_komma == 7)
+				weight = AppLogicCheckParameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
+				if (amount_comma == 7)
 					bordercolor = color;
 				else
-					bordercolor = check_parameter(string_array[8],PARAMETER_TYPE_COLOR,&error);
+					bordercolor = AppLogicCheckParameter(string_array[8],PARAMETER_TYPE_COLOR,&error);
 			}
 
 			if (!error)
 			{
 				error = API_draw_rectangle(x_1,y_1,width,height,color,filled,weight,bordercolor);
-				ErrorCodeHandler(error);
+				AppFrontErrorHandler(error);
 				#ifdef DEBUG
-					UartPuts("Rechthoek getekend");
+					AppUartPuts("Rechthoek getekend");
 				#endif
 				break;
 			}
 		}
-		ErrorCodeHandler(API_RECT_PARAM_ERROR);
+		AppFrontErrorHandler(API_RECT_PARAM_ERROR);
 		break;
 
 	case COMMAND_CODE_TEXT:
 		#ifdef DEBUG
-			UartPuts("Tekst commando gevonden");
+			AppUartPuts("Tekst commando gevonden");
 		#endif
-		if (aantal_komma >= 7 && aantal_komma <= 8)
+		if (amount_comma >= 7 && amount_comma <= 8)
 		{
-			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
-			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
-			color =  	check_parameter(string_array[3],PARAMETER_TYPE_COLOR, &error);
-			fontsize = 	check_parameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
-			fontstyle = check_parameter(string_array[7],PARAMETER_TYPE_FONT_STYLE,&error);
+			x_1 = 		AppLogicCheckParameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
+			y_1 = 		AppLogicCheckParameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
+			color =  	AppLogicCheckParameter(string_array[3],PARAMETER_TYPE_COLOR, &error);
+			fontsize = 	AppLogicCheckParameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
+			fontstyle = AppLogicCheckParameter(string_array[7],PARAMETER_TYPE_FONT_STYLE,&error);
 
-			if (aantal_komma < 8)
+			if (amount_comma < 8)
 				reserved = 0;
 			else
-				reserved = check_parameter(string_array[8],PARAMETER_TYPE_NUMBER,&error);
+				reserved = AppLogicCheckParameter(string_array[8],PARAMETER_TYPE_NUMBER,&error);
 
 			if (!error)
 			{
 				error = API_draw_text(x_1,y_1,color,string_array[4],string_array[5],fontsize,fontstyle,reserved);
-				ErrorCodeHandler(error);
+				AppFrontErrorHandler(error);
 				#ifdef DEBUG
-					UartPuts("Tekst getekend");
+					AppUartPuts("Tekst getekend");
 				#endif
 				break;
 			}
 		}
-		ErrorCodeHandler(API_TEXT_PARAM_ERROR);
+		AppFrontErrorHandler(API_TEXT_PARAM_ERROR);
 		break;
 
 	case COMMAND_CODE_BITMAP:
 		#ifdef DEBUG
-			UartPuts("Bitmap commando gevonden");
+			AppUartPuts("Bitmap commando gevonden");
 		#endif
-		if (aantal_komma == 3)
+		if (amount_comma == 3)
 		{
-			x_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
-			y_1 = 		check_parameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
-			bm_nr =  	check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
+			x_1 = 		AppLogicCheckParameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
+			y_1 = 		AppLogicCheckParameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
+			bm_nr =  	AppLogicCheckParameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
 
 			if (!error)
 			{
 				//TODO: comment out
 				error = API_draw_bitmap(x_1,y_1,bm_nr);
-				ErrorCodeHandler(error);
+				AppFrontErrorHandler(error);
 				#ifdef DEBUG
-					UartPuts("Bitmap getekend");
+					AppUartPuts("Bitmap getekend");
 				#endif
 				break;
 			}
 		}
-		ErrorCodeHandler(API_BITMAP_PARAM_ERROR);
+		AppFrontErrorHandler(API_BITMAP_PARAM_ERROR);
 		break;
 
 	case COMMAND_CODE_FIGURE:
 		#ifdef DEBUG
-			UartPuts("Figuur commando gevonden");
+			AppUartPuts("Figuur commando gevonden");
 		#endif
-		if (aantal_komma >= 11 && aantal_komma <= 12)
+		if (amount_comma >= 11 && amount_comma <= 12)
 		{
-			x_1 = 		check_parameter(string_array[1] ,PARAMETER_TYPE_NUMBER,&error);
-			y_1 = 		check_parameter(string_array[2] ,PARAMETER_TYPE_NUMBER,&error);
-			x_2 = 		check_parameter(string_array[3] ,PARAMETER_TYPE_NUMBER,&error);
-			y_2 = 		check_parameter(string_array[4] ,PARAMETER_TYPE_NUMBER,&error);
-			x_3 = 		check_parameter(string_array[5] ,PARAMETER_TYPE_NUMBER,&error);
-			y_3 = 		check_parameter(string_array[6] ,PARAMETER_TYPE_NUMBER,&error);
-			x_4 = 		check_parameter(string_array[7] ,PARAMETER_TYPE_NUMBER,&error);
-			y_4 = 		check_parameter(string_array[8] ,PARAMETER_TYPE_NUMBER,&error);
-			x_5 = 		check_parameter(string_array[9] ,PARAMETER_TYPE_NUMBER,&error);
-			y_5 = 		check_parameter(string_array[10],PARAMETER_TYPE_NUMBER,&error);
-			color =  	check_parameter(string_array[11],PARAMETER_TYPE_COLOR, &error);
+			x_1 = 		AppLogicCheckParameter(string_array[1] ,PARAMETER_TYPE_NUMBER,&error);
+			y_1 = 		AppLogicCheckParameter(string_array[2] ,PARAMETER_TYPE_NUMBER,&error);
+			x_2 = 		AppLogicCheckParameter(string_array[3] ,PARAMETER_TYPE_NUMBER,&error);
+			y_2 = 		AppLogicCheckParameter(string_array[4] ,PARAMETER_TYPE_NUMBER,&error);
+			x_3 = 		AppLogicCheckParameter(string_array[5] ,PARAMETER_TYPE_NUMBER,&error);
+			y_3 = 		AppLogicCheckParameter(string_array[6] ,PARAMETER_TYPE_NUMBER,&error);
+			x_4 = 		AppLogicCheckParameter(string_array[7] ,PARAMETER_TYPE_NUMBER,&error);
+			y_4 = 		AppLogicCheckParameter(string_array[8] ,PARAMETER_TYPE_NUMBER,&error);
+			x_5 = 		AppLogicCheckParameter(string_array[9] ,PARAMETER_TYPE_NUMBER,&error);
+			y_5 = 		AppLogicCheckParameter(string_array[10],PARAMETER_TYPE_NUMBER,&error);
+			color =  	AppLogicCheckParameter(string_array[11],PARAMETER_TYPE_COLOR, &error);
 
-			if (aantal_komma < 12)
+			if (amount_comma < 12)
 				weight = 1;
 			else
-				weight = check_parameter(string_array[12],PARAMETER_TYPE_NUMBER,&error);
+				weight = AppLogicCheckParameter(string_array[12],PARAMETER_TYPE_NUMBER,&error);
 
 			if (!error)
 			{
 				error = API_draw_figure(x_1,y_1,x_2,y_2,x_3,y_3,x_4,y_4,x_5,y_5,color,weight);
-				ErrorCodeHandler(error);
+				AppFrontErrorHandler(error);
 				#ifdef DEBUG
-					UartPuts("Figuur getekend");
+					AppUartPuts("Figuur getekend");
 				#endif
 				break;
 			}
 		}
-		ErrorCodeHandler(API_FIGURE_PARAM_ERROR);
+		AppFrontErrorHandler(API_FIGURE_PARAM_ERROR);
 		break;
 
 	case COMMAND_CODE_CIRCLE:
 		#ifdef DEBUG
-			UartPuts("Cirkel commando gevonden");
+			AppUartPuts("Cirkel commando gevonden");
 		#endif
-		if (aantal_komma >= 4 && aantal_komma <= 5)
+		if (amount_comma >= 4 && amount_comma <= 5)
 		{
-			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
-			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
-			radius = 	check_parameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
-			color =  	check_parameter(string_array[4],PARAMETER_TYPE_COLOR, &error);
+			x_1 = 		AppLogicCheckParameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
+			y_1 = 		AppLogicCheckParameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);
+			radius = 	AppLogicCheckParameter(string_array[3],PARAMETER_TYPE_NUMBER,&error);
+			color =  	AppLogicCheckParameter(string_array[4],PARAMETER_TYPE_COLOR, &error);
 
-			if (aantal_komma < 5) filled = 0;
-			else filled = check_parameter(string_array[5],PARAMETER_TYPE_NUMBER,&error);
+			if (amount_comma < 5) filled = 0;
+			else filled = AppLogicCheckParameter(string_array[5],PARAMETER_TYPE_NUMBER,&error);
 
 			if (!error)
 			{
 				error = API_draw_circle(x_1,y_1,radius,color,filled);
-				ErrorCodeHandler(error);
+				AppFrontErrorHandler(error);
 				#ifdef DEBUG
-					UartPuts("Cirkel getekend");
+					AppUartPuts("Cirkel getekend");
 				#endif
 				break;
 			}
 		}
-		ErrorCodeHandler(API_CIRCLE_PARAM_ERROR);
+		AppFrontErrorHandler(API_CIRCLE_PARAM_ERROR);
 		break;
 
 	default:
-		ErrorCodeHandler(API_UNKNOWN_COMMAND_ERROR);
+		AppFrontErrorHandler(API_UNKNOWN_COMMAND_ERROR);
 		break;
 	}
 }
 
 
+
 /**
-   @brief function that left trims a string.
-   @param str:	pointer to string what has to be left trimmed.
-   @param seps:
-   @return errorcode: returns errorcode if the char pointer can't be converted.
+   @brief 	Function that left trims a string
+   @param str:		Pointer to string what has to be left trimmed
+   @param seps:		Specific seperator character (default: tab, carriage return, vertical tab, page break, new line and space)
+   @return str: 	Returns trimmed string
 */
-char *ltrim(char *str, const char *seps)
+char *AppLogicTrimStringLeft(char *str, const char *seps)
 {
     size_t totrim;
     if (seps == NULL) {
@@ -360,13 +368,14 @@ char *ltrim(char *str, const char *seps)
 }
 
 
+
 /**
-   @brief function that right trims a string.
-   @param str:	pointer to string what has to be left trimmed.
-   @param seps:
-   @return errorcode: returns errorcode if the char pointer can't be converted.
+   @brief 	Function that right trims a string
+   @param str:		Pointer to string what has to be left trimmed
+   @param seps:		Specific seperator character (default: tab, carriage return, vertical tab, page break, new line and space)
+   @return str: 	Returns trimmed string
 */
-char *rtrim(char *str, const char *seps)
+char *AppLogicTrimStringRight(char *str, const char *seps)
 {
     int i;
     if (seps == NULL) {
@@ -381,25 +390,26 @@ char *rtrim(char *str, const char *seps)
 }
 
 
+
 /**
-   @brief general function that trims a string.
-   @param str:	pointer to string what has to be trimmed.
-   @param seps: seperator value
-   @return trimmed string.
+   @brief 	Function that trims a string using (AppLogicTrimStringLeft() and AppLogicTrimStringRight() ).
+   @param str:		Pointer to string what has to be left trimmed
+   @param seps:		Specific seperator character (default: tab, carriage return, vertical tab, page break, new line and space)
+   @return str: 	Returns trimmed string
 */
-char *trim(char *str, const char *seps)
+char *AppLogicTrimString(char *str, const char *seps)
 {
-    return ltrim(rtrim(str, seps), seps);
+    return AppLogicTrimStringLeft(AppLogicTrimStringRight(str, seps), seps);
 }
 
 
+
 /**
-   @brief function that checks if the functionname in the script are valid.
-   @param str:	pointer to string what has to be left trimmed.
-   @return command: returns the correct command value.
-   @return 0: returns 0 if the script function name has not be found.
+   @brief	Function that checks if the command name in the string is valid
+   @param func_name:		Pointer to string what has to be checked
+   @return command_code: 	Returns corresponding code of command if a function name has been found, else it returns zero
 */
-int CheckCommandos(char *func_name)
+int AppLogicCheckCommand(char *func_name)
 {
 	//check alle defines
 	if(strstr(func_name,COMMAND_TEXT_LINE)			!=NULL)	return COMMAND_CODE_LINE;
@@ -414,26 +424,24 @@ int CheckCommandos(char *func_name)
 
 
 /**
-   @brief function that checks if the given parameters of a script function.
-   @param parameter: pointer to a string array which has stored all the script parameters.
-   @param parameter_type: integer value for the type of the font parameter.
-   @param error: pointer to the error value. Change the value if  a error accurures.
-   @return number: returns the correct color or fontstyle.
-   @return 0: returns 0 if no other returns accurses.
+   @brief 	Function that checks if the parameter type in the string is valid
+   @param parameter: 		Pointer to a string array which has stored the parameters.
+   @param parameter_type: 	Code for the parameter type.
+   @param error: 			Pointer to the error value. Change the value if a error occurures.
+   @return integer: 		Returns corresponding code for parameter type, if parameter type is not valid it returns a zero
 */
-int check_parameter(char *parameter, int parameter_type, int *error)
+int AppLogicCheckParameter(char *parameter, int parameter_type, int *error)
 {
 	int number;
 
 	switch (parameter_type)
 	{
 		case PARAMETER_TYPE_NUMBER:
-			if(!CharToInt(parameter,&number))
+			if(!AppLogicCharToInt(parameter,&number))
 				return number;
 			break;
 
 		case PARAMETER_TYPE_COLOR:
-			//Kleuren compare
 			if(strcmp(parameter, COLOR_TEXT_BLACK)			==0)	return VGA_COL_BLACK;
 			if(strcmp(parameter, COLOR_TEXT_BLUE)			==0) 	return VGA_COL_BLUE;
 			if(strcmp(parameter, COLOR_TEXT_LIGHT_BLUE)		==0) 	return VGA_COL_LIGHT_BLUE;
@@ -453,7 +461,6 @@ int check_parameter(char *parameter, int parameter_type, int *error)
 			break;
 
 		case PARAMETER_TYPE_FONT_STYLE:
-			//Font style compare
 			if(strcmp(parameter, FONT_STYLE_TEXT_NORMAL)	==0)	return FONT_STYLE_CODE_NORMAL;
 			if(strcmp(parameter, FONT_STYLE_TEXT_BOLD)		==0) 	return FONT_STYLE_CODE_BOLD;
 			if(strcmp(parameter, FONT_STYLE_TEXT_ITALIC)	==0) 	return FONT_STYLE_CODE_ITALIC;

@@ -2,6 +2,7 @@
   ******************************************************************************
   * @file    AppFront.h
   * @author  Team 3
+  * @date    29-5-2019
   * @brief   The headerfile for the AppFront.c and includes relevant files, global defines and functions.
 */
 
@@ -12,8 +13,8 @@
 #include "AppLogic.h"
 
 
-
+/* Global deceleration of functions ------------------------------------------*/
 void AppFrontInit(void);
-void ErrorCodeHandler(char error);
+void AppFrontErrorHandler(char error);
 
 #endif
