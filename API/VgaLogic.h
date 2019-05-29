@@ -40,6 +40,7 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
  *  @{
  *  Error defines
  *	--------------------------------------------------------------
+ *	These error codes can be used outside the API to have organised error handeling.
  * 		|	Define name						|	Error type								|  Error value	|
  * 		|:----------------------------------|:------------------------------------------|:-------------:|
  * 		|	API_NONE_ERROR					|	No error								| 0x00			|

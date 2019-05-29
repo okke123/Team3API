@@ -13,7 +13,7 @@
 
 
 //--------------------------------------------------------------
-// Includes
+// Includes for funcionality
 //--------------------------------------------------------------
 #include "stm32f4xx.h"
 #include "stm32f4xx_gpio.h"
@@ -23,8 +23,8 @@
 #include "misc.h"
 #include "stm32f4xx_dma.h"
 
-#include <string.h>
-#include <math.h>
+#include "string.h"
+#include "math.h"
 
 
 
@@ -35,6 +35,23 @@
 //--------------------------------------------------------------
 #define VGA_DISPLAY_X   320
 #define VGA_DISPLAY_Y   240
+/** @addtogroup VGA-API
+ *  @brief	API for VGA
+ * 	@{
+ */
+/** @addtogroup VGA-API-Defines API Defines
+ *  @{
+ *	VGA defines
+ *--------------------------------------------------------------
+ *	These values are used to get the size of the screen
+ * 		|	Define name		|	Value	|
+ * 		|:------------------|:---------:|
+ * 		|	VGA_DISPLAY_X	|	320		|
+ * 		|	VGA_DISPLAY_Y	|	240		|
+  */
+/** @}*/
+/** @}*/
+
 
 
 
@@ -48,9 +65,28 @@ typedef struct {
 }VGA_t;
 VGA_t VGA;
 
-//--------------------------------------------------------------
-// Bitmap structure
-//--------------------------------------------------------------
+
+
+/** @addtogroup VGA-API
+ *  @brief	API for VGA
+ * 	@{
+ */
+
+/** @addtogroup VGA-API-IO API IO Layer
+ *  @brief	All the IO functions for the VGA screen
+ * 	@{
+ */
+
+ /**
+  *	@brief	One dimentional byte array that contains all the pixels of the screen
+  *	@note	Every horizontal line has one extra pixel for the H-Sync
+  */
+uint8_t VGA_RAM1[(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y];
+
+
+ /**
+  *	@brief	Deceleration of the TypeDefBitmap struct, used for storing information about all the bitmaps in 'VgaIO.c' 
+  */
 typedef struct {
 	const char* img;
 	const int size;
@@ -59,13 +95,12 @@ typedef struct {
 
 } TypeDefBitmap;
 
+ /**
+  *	@brief	Array of structure type 'TypeDefBitmap' with 7 elements (amount of bitmaps)
+  */
 TypeDefBitmap bitmaps[7];
-
-//--------------------------------------------------------------
-// Display RAM
-//--------------------------------------------------------------
-uint8_t VGA_RAM1[(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y];
-
+/** @}*/
+/** @}*/
 
 
 //--------------------------------------------------------------
@@ -97,7 +132,6 @@ uint8_t VGA_RAM1[(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y];
 #define  VGA_TIM2_HSYNC_IMP       320  // HSync-length (3,81us)
 #define  VGA_TIM2_HTRIGGER_START  480  // HSync+BackPorch (5,71us)
 #define  VGA_TIM2_DMA_DELAY        60  // ease the delay when DMA START (Optimization = none)
-//#define  VGA_TIM2_DMA_DELAY        30  // ease the delay when DMA START (Optimization = -O1)
 
 
 //--------------------------------------------------------------
@@ -131,7 +165,6 @@ uint8_t VGA_RAM1[(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y];
 //--------------------------------------------------------------
 // Global Function call
 //--------------------------------------------------------------
-
 void VgaIOInit(void);
 void VgaIOSetPixel(int xp, int yp, int color);
 void VgaIOSetLine(int xp1, int xp2, int yp, int color);

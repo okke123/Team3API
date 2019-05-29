@@ -25,7 +25,7 @@
 #include "VgaLogic.h"
 
 /*Declare private function, not to be used outside file*/
-void 	API_draw_simple_line (int x_1, int y_1, int x_2, int y2, int color);
+void	API_draw_simple_line (int x_1, int y_1, int x_2, int y2, int color);
 int 	API_check_outside_screen (int x, int y);
 void	API_draw_character(int x_lup, int y_lup, int char_val, int color, FONTS font_style, int format);
 int		API_word_pixel_size(char *text, FONTS *font_info);
@@ -33,8 +33,7 @@ int		API_get_font_value(char *fontname, int fontsize, int fontstype);
 
 /**
   * @brief  Initializes all the necessary API functionality in the IO-Layer (GPIO, Timers, DMA, Interrupts & SRAM)
-  * @param  None
-  * @retval None
+  * @return None
   */
 void API_init(void)
 {
@@ -45,7 +44,7 @@ void API_init(void)
 
 /**
   * @brief  Makes the VGA screen one color by calling VgaIOClearScreen() with the given color
-  * @param  Color: integer with color code
+  * @param  color: integer with color code
   * @retval Error: A integer error code if something went wrong, else it's zero
   */
 int API_clearscreen (int color)
@@ -69,7 +68,7 @@ int API_clearscreen (int color)
   * @param  weight:			Weight of the border
   * @param  bordercolor:	Color of the border if the parameter 'color' is used for the inside of the rectangle
   *
-  * @retval Error:	A integer error code if something went wrong, else it's zero
+  * @return Error:	A integer error code if something went wrong, else it's zero
   */
 int API_draw_rectangle (int x, int y, int width, int height, int color, int filled, int weight, int bordercolor)
 {
@@ -123,7 +122,7 @@ int API_draw_rectangle (int x, int y, int width, int height, int color, int fill
   * @param  color:			Color of the circle
   * @param  filled:			Specifies if the circle needs to be filled in (0: only border | 1: filled)
   *
-  * @retval Error:	A integer error code if something went wrong, else it's zero
+  * @return Error:	A integer error code if something went wrong, else it's zero
   */
 int API_draw_circle (int x, int y, int radius, int color, int filled)
 {
@@ -173,7 +172,7 @@ int API_draw_circle (int x, int y, int radius, int color, int filled)
   * @param  weight:		Weight of the line
   * @param  reserved:	Extra parameter for later
 
-  * @retval Error:	A integer error code if something went wrong, else it's zero
+  * @return Error:	A integer error code if something went wrong, else it's zero
   */
 int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
@@ -235,7 +234,7 @@ int API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
   * @param  color:		Color of the lines of the polygon
   * @param  weight:		Weight of the lines of the polygon
 
-  * @retval Error:	A integer error code if something went wrong, else it's zero
+  * @return Error:	A integer error code if something went wrong, else it's zero
   */
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int weight)
 {
@@ -265,7 +264,7 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
    @param fontstype:	Font style (0=normal, 1=bold, 2=italic)
    @param reserved:		Value to enable new lines jumping to x coordinate
 
-   @retval Error:		A integer error code if something went wrong, else it's zero
+   @return Error:		A integer error code if something went wrong, else it's zero
 */
 int API_draw_text (int x, int y, int color, char *text, char *fontname, int fontsize, int fontstyle, int reserved)
 {
@@ -336,11 +335,11 @@ int API_draw_text (int x, int y, int color, char *text, char *fontname, int font
    @brief	Draws bitmap on the VGA screen
    @note	The top left of the bitmap is the origin for the coordinates
 
-   @param x: 				X value of the coordinate
-   @param y: 				Y value of the coordinate
-   @param bitmap_number:	Integer of bitmap number
+   @param 	x: 				X value of the coordinate
+   @param 	y: 				Y value of the coordinate
+   @param 	bitmap_number:	Integer of bitmap number
 
-   @retval Error:		A integer error code if something went wrong, else it's zero
+   @return 	Error:			A integer error code if something went wrong, else it's zero
 */
 int API_draw_bitmap (int x, int y, int bitmap_number)
 {
@@ -362,7 +361,7 @@ int API_draw_bitmap (int x, int y, int bitmap_number)
   * @param  y_2:	Y value of 2st point of the line on the VGA screen
   * @param  color:	Color of the line
 
-  * @retval Error:	A integer error code if something went wrong, else it's zero
+  * @return Error:	A integer error code if something went wrong, else it's zero
   */
 void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 {
@@ -389,7 +388,7 @@ void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
   *
   * @param  x:		X value of the point
   * @param  y:		Y value of the point
-
+  *
   * @return Error:	Gives back a API_OFF_SCREEN_WARNING if outside screen, zero if this is not the case
   */
 int API_check_outside_screen (int x, int y)
@@ -472,7 +471,7 @@ void API_draw_character(int x_lup, int y_lup, int char_val, int color, FONTS fon
    @param text: 		String which contains the word to measure
    @param *font_info:	Pointer to fontstyle
 
-   @return int:			Width of the word in pixels
+   @return x_tot:		Width of the word in pixels
 */
 int API_word_pixel_size(char *text, FONTS *font_info)
 {

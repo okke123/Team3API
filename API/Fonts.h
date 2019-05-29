@@ -4,7 +4,7 @@
   * @author  Team 3
   * @version V1.0.0
   * @date    29-May-2019
-  * @brief   This file defines the structures used in 'Font.c'
+  * @brief   This file defines the structures used in 'Fonts.c'
   */
 
 //Include standard interger types ('uint8_t' used by the font arrays)

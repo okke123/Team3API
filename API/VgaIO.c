@@ -23,16 +23,11 @@
 //--------------------------------------------------------------
 // internal Functions
 //--------------------------------------------------------------
-
 void VgaIOInitGPIO(void);
 void VgaIOInitTIM(void);
 void VgaIOInitINT(void);
 void VgaIOInitDMA(void);
 
-
-//--------------------------------------------------------------
-// Init VGA-Module
-//--------------------------------------------------------------
 
 /** @addtogroup VGA-API
  *  @brief	API for VGA
@@ -45,6 +40,11 @@ void VgaIOInitDMA(void);
  */
 
 
+
+/**
+  * @brief  Initializes all the necessary functionality (GPIO, Timers, DMA, Interrupts)
+  * @return void
+  */
 void VgaIOInit(void)
 {
 
@@ -73,25 +73,42 @@ void VgaIOInit(void)
 }
 
 
-//--------------------------------------------------------------
-// put one Pixel on the screen with one color
-// Important : the last Pixel+1 from every line must be black (don't know why??)
-//--------------------------------------------------------------
 
+/**
+  * @brief  This function changes one pixel in the SRAM
+  *
+  * @param  xp:     X posistion of pixel
+  * @param  yp:     Y posistion of pixel
+  * @param  color:  Byte that contains the color value the pixel should become
+  *
+  * @return void
+  */
 void VgaIOSetPixel(int xp, int yp, int color)
 {
 	if (xp<VGA_DISPLAY_X && xp >= 0 && yp<VGA_DISPLAY_Y && yp >= 0)
 		VGA_RAM1[(yp*(VGA_DISPLAY_X+1))+xp]=color;
 }
 
+
+
+/**
+  * @brief  This function changes one horizontal line in the SRAM
+  * @note   The coordinates given are the most left pixel
+  *
+  * @param  xp:			X posistion of line
+  * @param  yp:			Y posistion of line
+  * @param  length:		Horizontal length of the line
+  * @param  color:		Byte that contains the color value the pixel should become
+  *
+  * @return void
+  */
 void VgaIOSetLine(int xp, int yp, int length, int color)
 {
-	if (yp < VGA_DISPLAY_Y && yp >= 0 && xp < VGA_DISPLAY_X && xp+length > 0) 	//Y pos binnen max (inf - 319)
-	{																			//Y pos binnen min (0 - inf)
-																				//Lijn niet te veel naar rechts (320+ domein) waardoor lijn niet op scherm komt
-																				//Lijn niet te veel naar links (- domein) waardoor lijn niet op scherm komt
+	if (yp < VGA_DISPLAY_Y && yp >= 0 && xp < VGA_DISPLAY_X && xp+length > 0) 	
+	{																			
+	//Check if line is completely or partly on screen
 
-		/* Als lijn buiten scherm komt op X-as, pas de lijn aan */
+		// If line is outside screen, change x position and/or length of line
 		if (xp+length > VGA_DISPLAY_X)
 			length = VGA_DISPLAY_X - xp;
 
@@ -100,33 +117,61 @@ void VgaIOSetLine(int xp, int yp, int length, int color)
 		length += xp;
 			xp = 0;
 		}
-
+		//Write line to memory
 		memset(VGA_RAM1+(yp*(VGA_DISPLAY_X+1))+xp, color, sizeof(VGA_RAM1[0])*length);
 	}
 }
 
+
+
+/**
+  * @brief  This function sets the SRAM to one value (except the H-Sync pixel)
+  * @param  color:	Color of the screen
+  * @return void
+  */
 void VgaIOClearScreen(int color)
 {
+	//Set SRAM to one color
 	memset(VGA_RAM1, color, sizeof(VGA_RAM1));
+
+	//Go through all extra pixels on the x-axis and change them to black
 	int i;
 	for (i=VGA_DISPLAY_X;i<(VGA_DISPLAY_X+1)*VGA_DISPLAY_Y;i+=VGA_DISPLAY_X+1)
 		VGA_RAM1[i]=0x00;
 }
 
+
+
+/**
+  * @brief  This function copy's a bitmap to the SRAM
+  * @note   The coordinates given are the top-left pixel
+  *
+  * @param  xp:			X posistion of line
+  * @param  yp:			Y posistion of line
+  * @param  bitmap:		Pointer to a bitmap array
+  *
+  * @return void
+  */
 void VgaIOSetBitmap(int xp, int yp, TypeDefBitmap* bitmap)
 {
 	int i;
+
+	//Go through all horizontal lines and copy them one after one
     for (i = 0; i < bitmap->height; i++)
     {
+    	//Copy bitmap line to SRAM
     	memcpy(VGA_RAM1 + xp + (yp + (VGA_DISPLAY_X + 1) * (i + 1)), bitmap->img + (bitmap->width * i), bitmap->width);
     }
 }
 
-//--------------------------------------------------------------
-// interne Funktionen
-// init aller IO-Pins
-//--------------------------------------------------------------
 
+/* Internal Functions -----------------------------------------------------------------------------------------------------------*/
+
+
+/**
+  * @brief  Initializes the GPIO
+  * @return void
+  */
 void VgaIOInitGPIO(void)
 {
   GPIO_InitTypeDef  GPIO_InitStructure;
@@ -192,11 +237,11 @@ void VgaIOInitGPIO(void)
 }
 
 
-//--------------------------------------------------------------
-// internal Function
-// init Timer
-//--------------------------------------------------------------
 
+/**
+  * @brief  Initializes the timers
+  * @return void
+  */
 void VgaIOInitTIM(void)
 {
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
@@ -265,11 +310,12 @@ void VgaIOInitTIM(void)
 
 }
 
-//--------------------------------------------------------------
-// internal Function
-// init Interrupts
-//--------------------------------------------------------------
 
+
+/**
+  * @brief  Initializes the interrups
+  * @return void
+  */
 void VgaIOInitINT(void)
 {
   NVIC_InitTypeDef NVIC_InitStructure;
@@ -307,11 +353,11 @@ void VgaIOInitINT(void)
 }
 
 
-//--------------------------------------------------------------
-// internal Function
-// init DMA
-//--------------------------------------------------------------
 
+/**
+  * @brief  Initializes the DMA controller
+  * @return void
+  */
 void VgaIOInitDMA(void)
 {
   DMA_InitTypeDef DMA_InitStructure;
@@ -351,12 +397,11 @@ void VgaIOInitDMA(void)
 
 
 
-//--------------------------------------------------------------
-// Interrupt of Timer2
-//
-//   CC3-Interrupt    -> starts from DMA
-// Watch it.. higher troughput when interrupt flag is left alone
-//--------------------------------------------------------------
+/**
+  * @brief  Interrupt of Timer2
+  *	@note	CC3-Interrupt    -> starts from DMA
+  * @return void
+  */
 void TIM2_IRQHandler(void)
 {
 
@@ -403,12 +448,12 @@ void TIM2_IRQHandler(void)
 }
 
 
-//--------------------------------------------------------------
-// DMA Interrupt ISR
-//   after TransferCompleteInterrupt -> stop DMA
-//
-// still a bit buggy
-//--------------------------------------------------------------
+
+/**
+  * @brief  DMA Interrupt ISR
+  *	@note	after TransferCompleteInterrupt -> stop DMA
+  * @return void
+  */
 void DMA2_Stream5_IRQHandler(void)
 {
   if(DMA_GetITStatus(DMA2_Stream5, DMA_IT_TCIF5))
@@ -427,7 +472,7 @@ void DMA2_Stream5_IRQHandler(void)
 }
 
 /**
-  * @brief  Constant definition of Bitmap 0
+  * @brief  Constant definition of Bitmap #0 (Happy smiley)
   */
 const char SMILEY_BITMAP[] = {
 		0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,
@@ -465,7 +510,7 @@ const char SMILEY_BITMAP[] = {
 };
 
 /**
-  * @brief  Constant definition of Bitmap 1
+  * @brief  Constant definition of Bitmap #1 (Angry smiley)
   */
 const char ANGRY_BITMAP[] = {
 		0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,
@@ -503,7 +548,7 @@ const char ANGRY_BITMAP[] = {
 };
 
 /**
-  * @brief  Constant definition of Bitmap 2
+  * @brief  Constant definition of Bitmap #2 (Cool smiley)
   */
 const char GLASSES_BITMAP[] = {
 		0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0x0,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,
@@ -541,7 +586,7 @@ const char GLASSES_BITMAP[] = {
 };
 
 /**
-  * @brief  Constant definition of Bitmap 3
+  * @brief  Constant definition of Bitmap #3 (Arrow up)
   */
 const char ARROW_UP_BITMAP[] = {
 		0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0x0,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,
@@ -579,7 +624,7 @@ const char ARROW_UP_BITMAP[] = {
 };
 
 /**
-  * @brief  Constant definition of Bitmap 4
+  * @brief  Constant definition of Bitmap #4 (Arrow down)
   */
 const char ARROW_DOWN_BITMAP[] = {
 		0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0x0,	0x0,	0x0,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,
@@ -617,7 +662,7 @@ const char ARROW_DOWN_BITMAP[] = {
 };
 
 /**
-  * @brief  Constant definition of Bitmap 5
+  * @brief  Constant definition of Bitmap #5 (Arrow right)
   */
 const char ARROW_RIGHT_BITMAP[] = {
 		0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0x0,	0x0,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,
@@ -638,7 +683,7 @@ const char ARROW_RIGHT_BITMAP[] = {
 };
 
 /**
-  * @brief  Constant definition of Bitmap 6
+  * @brief  Constant definition of Bitmap #6 (Arrow left)
   */
 const char ARROW_LEFT_BITMAP[] = {
 		0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0x0,	0x0,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,	0xff,
@@ -659,6 +704,9 @@ const char ARROW_LEFT_BITMAP[] = {
 };
 
 
+/**
+  * @brief  This structure array stores the information of the different bitmaps so that it can be used by VgaIOSetBitmap()
+  */
 TypeDefBitmap bitmaps[] = {
 		{ SMILEY_BITMAP, sizeof(SMILEY_BITMAP), 32, 32 },
 		{ ANGRY_BITMAP, sizeof(ANGRY_BITMAP), 32, 32 },
