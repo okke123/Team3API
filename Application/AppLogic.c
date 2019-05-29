@@ -96,7 +96,7 @@ void StringHandler(char *str_inkomend)
 		#ifdef DEBUG
 			UartPuts("Lijn commando gevonden");
 		#endif
-		if (aantal_komma==6 || aantal_komma==7)
+		if (aantal_komma==6 || aantal_komma==7) //Fill variables with checked parameters
 		{
 			x_1 = 		check_parameter(string_array[1],PARAMETER_TYPE_NUMBER,&error);
 			y_1 = 		check_parameter(string_array[2],PARAMETER_TYPE_NUMBER,&error);

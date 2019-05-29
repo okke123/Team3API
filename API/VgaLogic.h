@@ -3,8 +3,8 @@
   * @file    VgaLogic.h
   * @author  Team 3
   * @version V1.0.0
-  * @date    15-May-2019
-  * @brief   This file prototypes the functions of 'VgaLogic.c', defines global constants and includes the nesseciary files.
+  * @date    29-May-2019
+  * @brief   This file prototypes the functions of 'VgaLogic.c', defines global constants and includes the necessary files.
   */
 
 
@@ -31,7 +31,7 @@ int API_draw_circle (int x, int y, int radius, int color, int filled);
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int weight);
 uint8_t past_tekst(int x, int y, int grot_str_in);
 
-/** @defgroup ErrorCode Error codes
+/** @defgroup Defines Defines
  *  @{
  *  	Error codes values:
  * 		|	Error code	|	Error type									|
@@ -76,6 +76,21 @@ uint8_t past_tekst(int x, int y, int grot_str_in);
 // Green (3bit) -> Bit4-Bit2
 // Blue  (2bit) -> Bit1-Bit0
 //--------------------------------------------------------------
+
+/** @defgroup Defines Defines
+ *  @{
+ *  	Kleur codes:
+ * 		|	Error code	|	Error type									|
+ * 		|:-------------:|:----------------------------------------------|
+ * 		|		0x00	|	Rood										|
+ * 		|		0x0n	|	Blauw										|
+ * 		|		0x1n	|	Script commandos related					|
+ * 		|		0x2n	|	Draw functions related						|
+ * 		|		0x3n	|	Memory functions related					|
+ *
+ */
+
+/** @}*/
 
 #define  VGA_COL_BLACK			0x00 //0b00000000
 #define  VGA_COL_BLUE			0x03 //0b00000011

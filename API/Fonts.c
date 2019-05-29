@@ -1,19 +1,31 @@
+/**
+  ******************************************************************************
+  * @file    Fonts.c
+  * @author  Team 3
+  * @version V1.0.0
+  * @date    29-May-2019
+  * @brief   This file provides the fonts used in the API and relevant info about each font.
+  * @note 	 Currently supports fonts Arial and Consolas in two sizes and fontstyles; normal, bold and italic.
+  */
+
 #include "Fonts.h"
 #include "VgaLogic.h"
 
-/*@brief opbouw met verschillende fonts. Opgedeeld in:
-		lettertypes:
-		- consolas
-		- arial
-	font size:
-		- klein
-		- groot
-	soort:
-		- normaal
-		- vet
-		- atalic / cursief
+/** @addtogroup VGA-API
+ *  @brief	API for VGA
+ * 	@{
+ */
+
+/** @defgroup VGA-API-FONTS Fonts
+ *  @brief	Deceleration of all fonts used by the API.
+ * 	@{
+ */
+
+
+/**
+   @brief Byte array of all characters for the small font consolas with normal style
 */
- const uint8_t consolas_klein_normal[] =
+const uint8_t consolas_small_normal[] =
 {
 	/* @0 'A' (5 pixels wide) */
 	0x20, //   #
@@ -302,7 +314,10 @@
 	0x00, //
 };
 
- const uint8_t consolas_klein_vet[] =
+/**
+   @brief Byte array of all characters for the small font consolas with bold style
+*/
+ const uint8_t consolas_small_bold[] =
 {
 	// @0 'A' (7 pixels wide)
 	0x38, //   ###
@@ -591,7 +606,10 @@
 	0x00, //
 };
 
- const uint8_t consolas_klein_italic[] =
+/**
+   @brief Byte array of all characters for the small font consolas with italic style
+*/
+ const uint8_t consolas_small_italic[] =
 {
 	// @0 'A' (6 pixels wide)
 	0x08, //     #
@@ -880,7 +898,10 @@
 	0x00, //
 };
 
-const uint8_t arial_klein_normal[] =
+/**
+   @brief Byte array of all characters for the small font arial with normal style
+*/
+const uint8_t arial_small_normal[] =
 {
 	// @0 'A' (7 pixels wide)
 	0x10, //    #
@@ -1143,7 +1164,10 @@ const uint8_t arial_klein_normal[] =
 	0xFC, // ######
 };
 
-const uint8_t arial_klein_vet[] =
+/**
+   @brief Byte array of all characters for the small font arial with bold style
+*/
+const uint8_t arial_small_bold[] =
 {
 	// @0 'A' (7 pixels wide)
 	0x38, //   ###
@@ -1432,7 +1456,10 @@ const uint8_t arial_klein_vet[] =
 	0x00, //
 };
 
-const uint8_t arial_klein_italic[] =
+/**
+   @brief Byte array of all characters for the small font arial with italic style
+*/
+const uint8_t arial_small_italic[] =
 {
 	// @0 'A' (6 pixels wide)
 	0x08, //     #
@@ -1721,7 +1748,10 @@ const uint8_t arial_klein_italic[] =
 	0x00, //
 };
 
-const uint8_t consolas_groot_normal[] =
+/**
+   @brief Byte array of all characters for the big font consolas with normal style
+*/
+const uint8_t consolas_big_normal[] =
 {
 	// @0 'A' (11 pixels wide)
 	0x0E, 0x00, //     ###
@@ -2218,7 +2248,10 @@ const uint8_t consolas_groot_normal[] =
 	0x00, 0x00, //
 };
 
-const uint8_t consolas_groot_vet[] =
+/**
+   @brief Byte array of all characters for the big font consolas with bold style
+*/
+const uint8_t consolas_big_bold[] =
 {
 	// @0 'A' (11 pixels wide)
 	0x0F, 0x00, //     ####
@@ -2715,7 +2748,10 @@ const uint8_t consolas_groot_vet[] =
 	0x00, 0x00, //
 };
 
- const uint8_t consolas_groot_italic[] =
+/**
+   @brief Byte array of all characters for the big font consolas with italic style
+*/
+ const uint8_t consolas_big_italic[] =
 {
 	// @0 'A' (11 pixels wide)
 	0x01, 0xC0, //        ###
@@ -3212,7 +3248,10 @@ const uint8_t consolas_groot_vet[] =
 	0x00, 0x00, //
 };
 
-const uint8_t arial_groot_normal[] =
+/**
+   @brief Byte array of all characters for the big font arial with normal style
+*/
+const uint8_t arial_big_normal[] =
 {
 	// @0 'A' (13 pixels wide)
 	0x07, 0x00, //      ###
@@ -3683,7 +3722,10 @@ const uint8_t arial_groot_normal[] =
 	0x00, 0x00, //
 };
 
- const uint8_t arial_groot_vet[] =
+/**
+   @brief Byte array of all characters for the big font arial with bold style
+*/
+ const uint8_t arial_big_bold[] =
 {
 	// @0 'A' (15 pixels wide)
 	0x07, 0xC0, //      #####
@@ -4154,7 +4196,10 @@ const uint8_t arial_groot_normal[] =
 	0x00, 0x00, //
 };
 
-const uint8_t arial_groot_italic[] =
+/**
+   @brief Byte array of all characters for the big font arial with italic style
+*/
+const uint8_t arial_big_italic[] =
 {
 	// @0 'A' (13 pixels wide)
 	0x00, 0xE0, //         ###
@@ -4653,9 +4698,10 @@ const uint8_t arial_groot_italic[] =
 
 
 /**
-   @brief aanmaken van alle fonts in een array.
+   @brief Info per character of the small lettertype consolas with normal style.
 */
-const FONT_INFO consolas_klein_normal_info[]  	= 	{
+const FONT_INFO consolas_small_normal_info[] =
+{
 	{5, 0}, 		/* A */
 	{5, 9}, 		/* B */
 	{4, 18}, 		/* C */
@@ -4683,7 +4729,12 @@ const FONT_INFO consolas_klein_normal_info[]  	= 	{
 	{7, 216}, 		/* Y */
 	{5, 225}, 		/* Z */
 };
-const FONT_INFO consolas_klein_vet_info[] 		=	{
+
+/**
+   @brief Info per character of the small lettertype consolas with bold style.
+*/
+const FONT_INFO consolas_small_bold_info[] =
+{
 	{7, 0}, 		// A
 	{6, 9}, 		// B
 	{7, 18}, 		// C
@@ -4711,7 +4762,12 @@ const FONT_INFO consolas_klein_vet_info[] 		=	{
 	{6, 234}, 		// Y
 	{6, 243}, 		// Z
 };
-const FONT_INFO consolas_klein_italic_info[] 	= 	{
+
+/**
+   @brief Info per character of the small lettertype consolas with italic style.
+*/
+const FONT_INFO consolas_small_italic_info[] =
+{
 	{6, 0}, 		// A
 	{5, 9}, 		// B
 	{6, 18}, 		// C
@@ -4739,7 +4795,12 @@ const FONT_INFO consolas_klein_italic_info[] 	= 	{
 	{6, 216}, 		// Y
 	{6, 225}, 		// Z
 };
-const FONT_INFO arial_klein_normal_info[] 		=	{
+
+/**
+   @brief Info per character of the small lettertype arial with normal style.
+*/
+const FONT_INFO arial_small_normal_info[] =
+{
 	{7, 0}, 		// A
 	{6, 8}, 		// B
 	{6, 16}, 		// C
@@ -4767,7 +4828,12 @@ const FONT_INFO arial_klein_normal_info[] 		=	{
 	{7, 200}, 		// Y
 	{6, 208}, 		// Z
 };
-const FONT_INFO arial_klein_vet_info[] 			=	{
+
+/**
+   @brief Info per character of the small lettertype arial with bold style.
+*/
+const FONT_INFO arial_small_bold_info[] =
+{
 	{7, 0}, 		// A
 	{6, 9}, 		// B
 	{7, 18}, 		// C
@@ -4795,7 +4861,12 @@ const FONT_INFO arial_klein_vet_info[] 			=	{
 	{6, 234}, 		// Y
 	{6, 243}, 		// Z
 };
-const FONT_INFO arial_klein_italic_info[] 		= 	{
+
+/**
+   @brief Info per character of the small lettertype arial with italic style.
+*/
+const FONT_INFO arial_small_italic_info[] =
+{
 	{6, 0}, 		// A
 	{6, 9}, 		// B
 	{6, 18}, 		// C
@@ -4823,7 +4894,12 @@ const FONT_INFO arial_klein_italic_info[] 		= 	{
 	{6, 234}, 		// Y
 	{6, 243}, 		// Z
 };
-const FONT_INFO consolas_groot_normal_info[] 	= 	{
+
+/**
+   @brief Info per character of the big lettertype consolas with normal style.
+*/
+const FONT_INFO consolas_big_normal_info[] =
+{
 		{11, 0}, 		// A
 		{9, 34}, 		// B
 		{10, 68}, 		// C
@@ -4850,8 +4926,13 @@ const FONT_INFO consolas_groot_normal_info[] 	= 	{
 		{12, 680}, 		// X
 		{12, 714}, 		// Y
 		{10, 748}, 		// Z
-	};
-const FONT_INFO consolas_groot_vet_info[]		=	{
+};
+
+/**
+   @brief Info per character of the big lettertype consolas with bold style.
+*/
+const FONT_INFO consolas_big_bold_info[] =
+{
 	{11, 0}, 		// A
 	{10, 34}, 		// B
 	{9, 68}, 		// C
@@ -4879,7 +4960,12 @@ const FONT_INFO consolas_groot_vet_info[]		=	{
 	{11, 748}, 		// Y
 	{9, 782}, 		// Z
 };
-const FONT_INFO consolas_groot_italic_info[]	= 	{
+
+/**
+   @brief Info per character of the big lettertype consolas with italic style.
+*/
+const FONT_INFO consolas_big_italic_info[] =
+{
 	{11, 0}, 		// A
 	{10, 34}, 		// B
 	{11, 68}, 		// C
@@ -4907,7 +4993,12 @@ const FONT_INFO consolas_groot_italic_info[]	= 	{
 	{12, 799}, 		// Y
 	{12, 833}, 		// Z
 };
-const FONT_INFO arial_groot_normal_info[]		=	{
+
+/**
+   @brief Info per character of the big lettertype arial with normal style.
+*/
+const FONT_INFO arial_big_normal_info[] =
+{
 	{13, 0}, 		// A
 	{11, 32}, 		// B
 	{13, 64}, 		// C
@@ -4935,7 +5026,12 @@ const FONT_INFO arial_groot_normal_info[]		=	{
 	{14, 752}, 		// Y
 	{12, 784}, 		// Z
 };
-const FONT_INFO arial_groot_vet_info[]			= 	{
+
+/**
+   @brief Info per character of the big lettertype arial with bold style.
+*/
+const FONT_INFO arial_big_bold_info[] =
+{
 	{15, 0}, 		// A
 	{12, 32}, 		// B
 	{13, 64}, 		// C
@@ -4963,7 +5059,12 @@ const FONT_INFO arial_groot_vet_info[]			= 	{
 	{13, 768}, 		// Y
 	{12, 800}, 		// Z
 };
-const FONT_INFO arial_groot_italic_info[]		=	{
+
+/**
+   @brief Info per character of the big lettertype arial with italic style.
+*/
+const FONT_INFO arial_big_italic_info[] =
+{
 	{13, 0}, 		// A
 	{12, 34}, 		// B
 	{13, 68}, 		// C
@@ -4992,18 +5093,29 @@ const FONT_INFO arial_groot_italic_info[]		=	{
 	{12, 867}, 		// Z
 };
 
-FONTS fonts [] =
+/**
+   @brief Info per font with pointer to byte array of font
+*/
+FONTS all_fonts [] =
 {
-	{consolas_klein_normal_info, 	consolas_klein_normal},
-	{consolas_klein_vet_info,		consolas_klein_vet},
-	{consolas_klein_italic_info,	consolas_klein_italic},
-	{arial_klein_normal_info,		arial_klein_normal},
-	{arial_klein_vet_info,			arial_klein_vet},
-	{arial_klein_italic_info,		arial_klein_italic},
-	{consolas_groot_normal_info,	consolas_groot_normal},
-	{consolas_groot_vet_info,		consolas_groot_vet},
-	{consolas_groot_italic_info,	consolas_groot_italic},
-	{arial_groot_normal_info,		arial_groot_normal},
-	{arial_groot_vet_info,			arial_groot_vet},
-	{arial_groot_italic_info,		arial_groot_italic}
+	{consolas_small_normal_info, 	consolas_small_normal},
+	{consolas_small_bold_info,		consolas_small_bold},
+	{consolas_small_italic_info,	consolas_small_italic},
+	{arial_small_normal_info,		arial_small_normal},
+	{arial_small_bold_info,			arial_small_bold},
+	{arial_small_italic_info,		arial_small_italic},
+	{consolas_big_normal_info,		consolas_big_normal},
+	{consolas_big_bold_info,		consolas_big_bold},
+	{consolas_big_italic_info,		consolas_big_italic},
+	{arial_big_normal_info,			arial_big_normal},
+	{arial_big_bold_info,			arial_big_bold},
+	{arial_big_italic_info,			arial_big_italic}
 };
+
+/**
+ * @}
+ */
+
+/**
+ * @}
+ */

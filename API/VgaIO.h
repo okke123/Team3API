@@ -1,6 +1,11 @@
-//--------------------------------------------------------------
-// File     : stm32_ub_vga_screen.h
-//--------------------------------------------------------------
+/**
+  ******************************************************************************
+  * @file    VgaIO.h
+  * @author  Team 3
+  * @version V1.0.0
+  * @date    29-May-2019
+  * @brief   This file prototypes the functions of 'VgaIO.c', defines global constants and includes the necessary files.
+  */
 
 //--------------------------------------------------------------
 #ifndef __STM32F4_UB_VGA_SCREEN_H

@@ -3,14 +3,11 @@
   * @file    VgaLogic.c
   * @author  Team 3
   * @version V1.0.0
-  * @date    15-May-2019
+  * @date    29-May-2019
   * @brief   This file provides the logical functions of the API that do the following:
   *           - Draw lines and shapes on the VGA screen
   *           - Load images on the VGA screen
   *           - Clear the screen / make the screen one color
-  *           - Wait for a specified time (and store commands during this time to be executed later)
-  *           - Execute saved commands
-  *           - Repeat previous commands
   *
   * @note	The origin of the x and y coordinates on the screen are in the top left.
   */
@@ -445,7 +442,7 @@ int API_draw_text (int x, int y, int color, char *text, char *fontname, int font
 
 	int font_ber = get_info(fontname, fontsize, fontstyle);
 
-	FONTS info = fonts[font_ber];
+	FONTS info = all_fonts[font_ber];
 
 	int grot_str;
 	grot_str = strlen(text);

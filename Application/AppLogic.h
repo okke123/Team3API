@@ -65,8 +65,6 @@ int CharToInt(char* src, int *value);
 
 void CreateObject(char* src, int error);
 
-void StringHandler(char *str_inkomend);
-
 char *trim(char *str, const char *seps);
 
 void StringHandler(char *str_inkomend);

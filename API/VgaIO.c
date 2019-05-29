@@ -1,19 +1,16 @@
-//--------------------------------------------------------------
-// File     : stm32_ub_vga_320x240.c
-// CPU      : STM32F4
-// IDE      : CooCox CoIDE 1.7.0
-// Module   : GPIO, TIM, MISC, DMA
-// Function : VGA out by GPIO (320x240 Pixel, 8bit color)
-//
-// signals  : PB11      = HSync-Signal
-//            PB12      = VSync-Signal
-//            PE8+PE9   = color Blue
-//            PE10-PE12 = color Green
-//            PE13-PE15 = color red
-//
-// uses     : TIM1, TIM2
-//            DMA2, Channel6, Stream5
-//--------------------------------------------------------------
+/**
+  ******************************************************************************
+  * @file    VgaIO.c
+  * @author  Team 3
+  * @version V1.0.0
+  * @date    29-May-2019
+  * @brief   This file provides the hardware functions of the API with the following functions:
+  *           - Initialize the IO of the pins, the internal timers, the internal interrupts and the DMA controller
+  *           - Change individual pixels in SRAM
+  *           - Change the color of a horizontal line in the SRAM
+  *           - Set color of all pixels on screen
+  *           - Copy bitmaps on the screen
+  */
 
 
 //--------------------------------------------------------------

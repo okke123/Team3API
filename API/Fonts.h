@@ -1,3 +1,13 @@
+/**
+  ******************************************************************************
+  * @file    Fonts.h
+  * @author  Team 3
+  * @version V1.0.0
+  * @date    29-May-2019
+  * @brief   This file defines the structures used in 'Font.c'
+  */
+
+
 #include "VgaLogic.h"
 
 /**
@@ -21,4 +31,4 @@ typedef struct	//FONTS
 	const uint8_t *bitmap;
 } FONTS;
 
-extern FONTS fonts[];
+extern FONTS all_fonts[];
