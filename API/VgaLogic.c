@@ -23,20 +23,13 @@
  */
 
 #include "VgaLogic.h"
-#include "Fonts.h"
 
 /*Declare private function, not to be used outside file*/
-///@cond INTERNAL
-void API_draw_simple_line (int x_1, int y_1, int x_2, int y2, int color);
-void swap_horizontal(char* src, char* dest, int columns, int rows);
-void swap_vertical(char* src, char* dest, int columns, int rows);
-void swap(char *a, char *b);
-uint8_t past_tekst(int x, int y, int grot_str_in);
-
-//FONTS zijn toegevoegd in de Fonts.c file
-
-int API_check_outside_screen (int x, int y);
-///@endcond
+void 	API_draw_simple_line (int x_1, int y_1, int x_2, int y2, int color);
+int 	API_check_outside_screen (int x, int y);
+void	API_draw_character(int x_lup, int y_lup, int char_val, int color, FONTS font_style, int format);
+int		API_word_pixel_size(char *text, FONTS *font_info);
+int		API_get_font_value(char *fontname, int fontsize, int fontstype);
 
 /**
   * @brief  Initializes all the necessary API functionality in the IO-Layer (GPIO, Timers, DMA, Interrupts & SRAM)
@@ -257,16 +250,107 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
 	return error;
 }
 
-/**
- * @}
- */
+
 
 /**
- * @}
- */
+   @brief	Draws text with the given font, style and size on the VGA screen
+   @note	The top left of the character is the origin for the coordinates
 
-// This function is internal so we dont want this documentation to appear in doxygen
-///@cond INTERNAL
+   @param x: 			X value of the coordinate
+   @param y: 			Y value of the coordinate
+   @param color:		Color of the text
+   @param *text:		String to be displayed
+   @param *fontname: 	Name of the font ("arial" or "consolas")
+   @param fontsize:		Font size (0=small, 1=big)
+   @param fontstype:	Font style (0=normal, 1=bold, 2=italic)
+   @param reserved:		Value to enable new lines jumping to x coordinate
+
+   @retval Error:		A integer error code if something went wrong, else it's zero
+*/
+int API_draw_text (int x, int y, int color, char *text, char *fontname, int fontsize, int fontstyle, int reserved)
+{
+	//Make parameters ready to be used in API_get_font_value()
+	fontsize-=1;
+	fontstyle-=1;
+
+	int x_jumps = 0;
+
+	if(reserved)
+		x_jumps = x;
+
+	int font_ber = API_get_font_value(fontname, fontsize, fontstyle);
+
+	FONTS info = all_fonts[font_ber];
+
+	int grot_str;
+	grot_str = strlen(text);
+
+	//Make a char array and make a pointer pointing to this new char array. This is needed for the strtok function
+	char str_buf[grot_str];
+	strcpy(str_buf,text);
+	char *pstr;
+
+	//Splits the incomming string to words and look per word.
+	for(pstr = strtok (str_buf," ");pstr!=NULL;pstr = strtok (NULL, " "))
+  	{
+		//Check the size of the word
+  		int str_len = strlen(pstr);
+  		//Get the nessesairy pixelwidth of the word
+  		int x_pixel_size = API_word_pixel_size(pstr,&info);
+
+  		//Put text on next line if it doesn't fit on the screen
+		if(x+x_pixel_size>VGA_DISPLAY_X)
+		{
+  			x=x_jumps+2;	//2 pixels inbetween characters
+
+			//Check what space should be in between lines
+  			y += (info.bitmap_info[0].width>8) ? 16 : 8;
+  			y+=2;
+  		}
+
+		int i;
+		//Look at every character of the word one by one
+		for(i=0;i<str_len;i++)
+		{
+			//Make sure the character is lowercase
+			int ltr_val = tolower(*(pstr+i)) - 'a';
+			//Make sure the character is in the alphabet
+			if(ltr_val >= 0 && ltr_val <= 25)
+			{
+				API_draw_character(x,y,ltr_val,color,info, font_ber);
+				x+=info.bitmap_info[ltr_val].width+2;
+			}
+			else
+				//If character is not in the alphabet then return a parameter error
+				return API_TEXT_PARAM_ERROR;
+		}
+		//Check how big a space should be
+		x += (info.bitmap_info[0].width > 8) ? 10 : 6;
+	}
+	return 0;
+}
+
+
+
+/**
+   @brief	Draws bitmap on the VGA screen
+   @note	The top left of the bitmap is the origin for the coordinates
+
+   @param x: 				X value of the coordinate
+   @param y: 				Y value of the coordinate
+   @param bitmap_number:	Integer of bitmap number
+
+   @retval Error:		A integer error code if something went wrong, else it's zero
+*/
+int API_draw_bitmap (int x, int y, int bitmap_number)
+{
+	VgaIOSetBitmap(x, (VGA_DISPLAY_X + 1)*y, &bitmaps[bitmap_number]);
+	return API_NONE_ERROR;
+}
+
+
+/* Internal functions ---------------------------------------------------------------------------------------------------------------------*/
+
 
 /**
   * @brief  Draws a line with the weight of one pixel on the VGA screen
@@ -282,8 +366,6 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
   */
 void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 {
-	//TODO: Berbetering toevoegen voor horizontaal en verticaale lijnen
-
  /* Initializes private variables */
 	int dx = (int)fabs(x_2-x_1), sx = x_1<x_2 ? 1 : -1;
 	int dy = (int)fabs(y_2-y_1), sy = y_1<y_2 ? 1 : -1;
@@ -305,10 +387,10 @@ void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
   * @brief	Checks if the given position is outside the screen
   * @note 	This function is private and not able to be called outside VgaLogic.c
   *
-  * @param  x_1:	X value of the point
-  * @param  y_1:	Y value of the point
+  * @param  x:		X value of the point
+  * @param  y:		Y value of the point
 
-  * @retval Error:	Gives back a '0x20' if outside screen, '0' if this is not the case
+  * @return Error:	Gives back a API_OFF_SCREEN_WARNING if outside screen, zero if this is not the case
   */
 int API_check_outside_screen (int x, int y)
 {
@@ -317,58 +399,61 @@ int API_check_outside_screen (int x, int y)
 	return 0;
 }
 
-/**!
-   @brief Functie voor het schrijven van een char waarde van A tot Z.
-   @param x_lup: 		links boven start cordinaat op de x-as.
-   @param y_lup: 		links boven start cordinaat op de y-as.
-   @param ltr_val:		letter waarde als een integer (a = 0, z = 25)
-   @param color:		kleur van de fonts.
-   @param FONTS info:	juiste font van die gekozen moet worden.
-   @param format:		of de tekst klein (0) of groot (1) is.
+/**
+   @brief 	Function for drawing a single character
+   @note 	This function is private and not able to be called outside VgaLogic.c
+   @note	The top left of the character is the origin for the coordinates
+
+   @param x_lup: 		X value of the point 
+   @param y_lup: 		Y value of the point
+   @param char_val:		Interger value of character (In order of the alphabet)
+   @param color:		Color of the character.
+   @param font_style:	Information of the font style
+   @param format:		Size of the text (0=small and 1=big)
+
    @return void
 */
-void Draw_Letter(int x_lup, int y_lup, int ltr_val, int color, FONTS info, int format)
+void API_draw_character(int x_lup, int y_lup, int char_val, int color, FONTS font_style, int format)
 {
-	//tellers voor for loops.
+	//counters for loops
 	int y, x_cor, byte_tel=0;
 
 	int x_tel = 0;
 	int width_x, width_y;
 
-	//uitzondering voor de Z.
-	//revisie 25-5-2019
-	if(ltr_val == 25)
-	{
-		//e heeft dus 1.
-		width_x = (info.bitmap_info[ltr_val].width>8) ? 2 : 1;
+	//See if character is 'Z'
+	if(char_val == 25)
+	{ //Set widths
+		width_x = (font_style.bitmap_info[char_val].width>8) ? 2 : 1;
 		width_y = (format>5) ? 16 : 8;
 	}
-	//Rest van de letters.
+	//Other characters
 	else
-	{
-		if(info.bitmap_info[ltr_val].width > 16)
+	{ //Set widths
+		if(font_style.bitmap_info[char_val].width > 16)
 			width_x = 3;
-		else if(info.bitmap_info[ltr_val].width > 8 && info.bitmap_info[ltr_val].width <= 16)
+		else if(font_style.bitmap_info[char_val].width > 8 && font_style.bitmap_info[char_val].width <= 16)
 			width_x = 2;
 		else width_x = 1;
-		width_y = ((info.bitmap_info[ltr_val+1].font_adr - info.bitmap_info[ltr_val].font_adr)) / width_x;
+		width_y = ((font_style.bitmap_info[char_val+1].font_adr - font_style.bitmap_info[char_val].font_adr)) / width_x;
 	}
 
-	//maak de teller van de bitmap gelijk aan het juiste adres van de letter.
-	int bitmap_tel = info.bitmap_info[ltr_val].font_adr;
+	//Make counter of bitmap the index value where the character begins in the font byte array
+	int bitmap_tel = font_style.bitmap_info[char_val].font_adr;
 
-	//laat de teller net zo lang lopen als dat de font een y positie heeft.
+	//Go through all horizontal lines of the character specified by the widths
 	for(y = y_lup; y < (y_lup + (width_y)); y++)
 	{
-		//laat de teller net zo lang lopen als dat de font een x positie heeft.
+		//Go through all the pixels in the horizontal line of the character
 		for(x_cor = x_lup; x_cor < (x_lup+(width_x*8)); x_cor+=8, byte_tel++,bitmap_tel++)
 		{
-			//haal de byte op en sla deze lokaal op als een buffer.
-			uint8_t buf = info.bitmap[bitmap_tel];
-			uint8_t op = 128;	//de operator wordt gebruikt als bitwise operator.
+			//Get byte and store it
+			uint8_t buf = font_style.bitmap[bitmap_tel];
+			uint8_t op;	//Is used for bitwise AND operator
+
+			//Use bitwise operator to see if pixel should be changed
 			for(x_tel=0, op=128;x_tel!=8;op/=2,x_tel++)
 			{
-				//AND-maks met de operator. Als dit een 1 is moet er een pixel worden getekend.
 				if(buf&op)
 				{
 					VgaIOSetPixel(x_cor+x_tel,y,color);
@@ -378,133 +463,59 @@ void Draw_Letter(int x_lup, int y_lup, int ltr_val, int color, FONTS info, int f
 	}
 }
 
+
+
 /**
-   @brief functie die de totale pixelsize meet.
-   @param text: inkomende char pointer string.
-   @param FONTS *info: pointer naar de desbetreffende font.
-   @return totale grote van de pixels van het woord.
+   @brief This function measures the pixel width of the given word
+   @note 	This function is private and not able to be called outside VgaLogic.c
+
+   @param text: 		String which contains the word to measure
+   @param *font_info:	Pointer to fontstyle
+
+   @return int:			Width of the word in pixels
 */
-int woord_pixel_groot(char *text, FONTS *info)
+int API_word_pixel_size(char *text, FONTS *font_info)
 {
 	int x_tot = 0, i;
-	//bekijk elke char in de string.
+	//Look at every character in the string
 	for(i=0;*(text+i)  != '\0';i++)
-	{
-		int asci = *(text+i) - 'a';	//controleer welke waarde deze moet zijn in de font array.
-		//controlleer de wijdte van het aantal pixels
-		x_tot+=	info->bitmap_info[asci].width;
-		x_tot+=2;	//twee pixels tussen de chars voor leesbaarheid.
+	{ //Look at ASCII value of character
+		int asci = *(text+i) - 'a';	
+
+	 //Look at width of character and add two pixels for readability
+		x_tot+=	font_info->bitmap_info[asci].width + 2;
 	}
 	return x_tot;
 }
 
+
+
 /**
-   @brief zorgt dat de goede font wordt aangeroepen.
-   @param fontname: 	naam van de font (arial of consolas)
-   @param fontsize:	of de tekst klein (0) of groot (1) is.
-   @param fontstype:	of de tekst normaal (0), vet (1) of cursief (2) is.
-   @return waarde van 0 tot 6.
+   @brief	Function that gets the correct integer value for the font used in API_draw_text()
+   @note 	This function is private and not able to be called outside VgaLogic.c
+
+   @param fontname: 	Char pointer (string) Name of the font ("arial" or "consolas")
+   @param fontsize:		Int value of font size (0=small, 1=big)
+   @param fontstype:	Int value of text style (0=normal, 1=bold, 2=italic)
+
+   @return font_value:	Integer value for the font used in API_draw_text()
 */
-int get_info(char *fontname, int fontsize, int fontstype)
+int API_get_font_value(char *fontname, int fontsize, int fontstype)
 {
-	int tel=0;
+	int font_value = 0;
 	if(fontsize==1)
-		tel+=6;
-	if(!strcmp(fontname,"arial"))	//check of beide strings gelijk zijn.
-		tel+=3;
-	tel+=fontstype;
-	return tel;
-} //return de waarde voor de fonts struct.
+		font_value+=6;
+	if(!strcmp(fontname,"arial"))
+		font_value+=3;
+
+	font_value += fontstype;
+	return font_value;
+}
 
 /**
-   @brief omzetten van een string naar letters op het vga scherm.
-   @param x: 			start positie van de x-as bij de linkerbovenkant.
-   @param y: 			start positie van de y-as bij de rechterbovenkant.
-   @param color:		kleur van de letters.
-   @param text:			string van de te printen tekst.
-   @param fontname: 	naam van de font (arial of consolas)
-   @param fontsize:		of de tekst klein (0) of groot (1) is.
-   @param fontstype:	of de tekst normaal (0), vet (1) of cursief (2) is.
-   @param reserved:		gereserveerde parameter voor extra functionaliteiten.
+ * @}
+ */
 
-   @pre string tekst.
-   @post tekst op vga scherm.
-*/
-int API_draw_text (int x, int y, int color, char *text, char *fontname, int fontsize, int fontstyle, int reserved)
-{
-	//maak de fontsize gelijk aan de bedachte formule in get_info()
-	fontsize-=1;	//0 is klein, 1 is groot.
-	fontstyle-=1;	//0 = normaal, 1 = vet, 2 = cursief.
-
-	int x_jumps = 0;
-
-	if(reserved)
-		x_jumps = x;
-
-	int font_ber = get_info(fontname, fontsize, fontstyle);
-
-	FONTS info = all_fonts[font_ber];
-
-	int grot_str;
-	grot_str = strlen(text);
-
-	//maak een char array aan en zet de pointer over naar dit array. Dit is zo nodig voor de strtok functie.
-	char str_buf[grot_str];
-	strcpy(str_buf,text);
-	char *pstr;
-
-	//splits de inkomende string in wooorden. En ga per woord kijken.
-	for(pstr = strtok (str_buf," ");pstr!=NULL;pstr = strtok (NULL, " "))
-  	{
-		//controleer de lengte van het woord.
-  		int str_len = strlen(pstr);
-  		//groote van alle pixels van het woord.
-  		int x_pixel_size = woord_pixel_groot(pstr,&info);
-
-  		//enter als deze niet past.
-		if(x+x_pixel_size>VGA_DISPLAY_X)
-		{
-  			x=x_jumps+2;	//2pixels afstand voor leesbaarheid!
-  			//x=2;	//2pixels afstand voor leesbaarheid!
-			//controleer welk font zodat hier een 'enter' komt.
-  			y += (info.bitmap_info[0].width>8) ? 16 : 8;
-  			y+=2;//2pixels afstand voor leesbaarheid!
-  		}
-
-		int i;
-		//ga van woord naar letters.
-		for(i=0;i<str_len;i++)
-		{
-			//maak er zeker van dat de char waardes lowercase zijn.
-			int ltr_val = tolower(*(pstr+i)) - 'a';
-			//maak er zeker van dat de ascii waarde > 'a' & < 'z'
-			if(ltr_val >= 0 && ltr_val <= 25)
-			{
-				Draw_Letter(x,y,ltr_val,color,info, font_ber);
-				x+=info.bitmap_info[ltr_val].width+2;	//voor leesbaarheid
-			}
-			else
-				return API_TEXT_PARAM_ERROR;
-		}
-		//check aan de hand van de font hoe groot de spatie moet zijn.
-		x += (info.bitmap_info[0].width > 8) ? 10 : 6; //spatie
-	}
-	return 0;
-}
-
-
-int API_draw_bitmap (int x_lup, int y_lup, int bm_nr)
-{
-	int start_x = x_lup;
-	int start_y = (VGA_DISPLAY_X + 1) * y_lup;
-
-	VgaIOSetBitmap(start_x, start_y, &bitmaps[bm_nr]);
-
-	return API_NONE_ERROR;
-}
-
-
-// End exclusion of doxygen
-///@endcond
-
-
+/**
+ * @}
+ */
