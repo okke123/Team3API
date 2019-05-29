@@ -15,7 +15,7 @@
  * 	@{
  */
 
-/** @defgroup VGA-API-FONTS Fonts
+/** @defgroup VGA-API-FONTS API Fonts
  *  @brief	Deceleration of all fonts used by the API.
  * 	@{
  */

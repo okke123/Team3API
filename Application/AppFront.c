@@ -63,13 +63,7 @@ void ErrorCodeHandler(char error)
 	switch(error)
 	{
 		case API_NONE_ERROR:
-			//strcpy(error_msg, "\0");
-			//TODO: Veranderen?
 			return;
-			break;
-
-		case API_DISCONNECT_ERROR:
-			strcpy(error_msg, "VGA kabel is niet verbonden.\n\r");
 			break;
 
 		case API_UNKNOWN_COMMAND_ERROR:
@@ -82,10 +76,6 @@ void ErrorCodeHandler(char error)
 			 	 				"\t* bitmap\r"
 								"\t* figuur\r"
 								"\t* cirkel\r");
-			break;
-
-		case API_COMMAND_READ_ERROR:
-			strcpy(error_msg, "No data read.\n\r");
 			break;
 
 		case API_CLEARSCREEN_PARAM_ERROR:
@@ -118,33 +108,22 @@ void ErrorCodeHandler(char error)
 						 "\tbitmap, x linksboven, y linksboven, bitmapnummer");
 			break;
 
-		case API_WAIT_PARAM_ERROR:
-			strcpy(error_msg, "Parameters wacht zijn niet compleet.\n\r"
-						 "Commando template is:\n\r"
-						 "\twacht, milliseconden");
-			break;
-
-		case API_OFF_SCREEN_ERROR:
+		case API_OFF_SCREEN_WARNING:
 			strcpy(error_msg, "Object is buiten het beeldscherm.\n\r");
 			break;
 
-		case API_COLOR_ERROR:
-			strcpy(error_msg, "Deze kleur is niet mogelijk.\n\r");
-			break;
-
-		case API_MEM_FAULT_ERROR:
-			strcpy(error_msg, "Systeem heeft een geheugen.\n\r");
-			break;
 		case API_CIRCLE_PARAM_ERROR:
 			strcpy(error_msg, "Parameters cirkel zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
 						 "\tcirkel, x, y, radius, kleur, gevuld\n\r");
 			break;
+
 		case API_FIGURE_PARAM_ERROR:
 			strcpy(error_msg, "Parameters figuur zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
 						 "\tfiguur, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, kleur, dikte\n\r");
 			break;
+
 		default:
 			stpcpy(error_msg, "\0");
 			break;

@@ -31,6 +31,7 @@ void API_draw_simple_line (int x_1, int y_1, int x_2, int y2, int color);
 void swap_horizontal(char* src, char* dest, int columns, int rows);
 void swap_vertical(char* src, char* dest, int columns, int rows);
 void swap(char *a, char *b);
+uint8_t past_tekst(int x, int y, int grot_str_in);
 
 //FONTS zijn toegevoegd in de Fonts.c file
 
@@ -312,7 +313,7 @@ void API_draw_simple_line(int x_1, int y_1, int x_2, int y_2, int color)
 int API_check_outside_screen (int x, int y)
 {
 	if (x < 0 || x >= VGA_DISPLAY_X || y < 0 || y >= VGA_DISPLAY_Y)
-		return API_OFF_SCREEN_ERROR;
+		return API_OFF_SCREEN_WARNING;
 	return 0;
 }
 

@@ -36,7 +36,7 @@ int CharToInt(char* src, int* value)
 		if (fault_counter >= 10)
 		{
 			*value = 0;
-			return API_COMMAND_READ_ERROR;
+			return API_INT_PARAM_ERROR;
 		}
 		else
 		{
