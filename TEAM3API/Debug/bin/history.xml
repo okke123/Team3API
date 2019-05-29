@@ -1,18 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="7.2.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=TEAM3API.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API -TC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API/link.ld -g">
-      <target file="TEAM3API.elf" lastModified="16a7521914b">
-         <source file="..\obj\AppFront.o" lastModified="16a75218a47"/>
-         <source file="..\obj\Uart.o" lastModified="16a75218ac4"/>
-         <source file="..\obj\AppLogic.o" lastModified="16a75218b21"/>
-         <source file="..\obj\stm32f4xx_usart.o" lastModified="16a75218bbe"/>
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="16a75218c1b"/>
-         <source file="..\obj\main.o" lastModified="16a75218c98"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16a75218d35"/>
-         <source file="..\obj\printf.o" lastModified="16a75218dc1"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16a75218e3e"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="16a75218ebb"/>
-         <source file="..\obj\syscalls.o" lastModified="16a75218f38"/>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -Wall -g -nostartfiles -Map=TEAM3API.map -O0 --gc-sections -lm -lgcc -lc -lm -LC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API -TC:\CooCox\CoIDE\configuration\ProgramData\TEAM3API/arm-gcc-link.ld -g -L..\..\.. -lvga">
+      <target file="TEAM3API.elf" lastModified="16b02c0792e">
+         <source file="..\..\..\libvga.a" lastModified="16b02a2b441"/>
+         <source file="..\obj\AppFront.o" lastModified="16b02c074d9"/>
+         <source file="..\obj\AppLogic.o" lastModified="16b02c075a4"/>
+         <source file="..\obj\stm32f4xx_usart.o" lastModified="16b02b2d6eb"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="16b02b2d758"/>
+         <source file="..\obj\main.o" lastModified="16b02c07640"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16b02b2d8a0"/>
+         <source file="..\obj\printf.o" lastModified="16b02b2d93c"/>
+         <source file="..\obj\AppUart.o" lastModified="16b02c076ec"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16b02b2da75"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="16b02b2daf2"/>
+         <source file="..\obj\syscalls.o" lastModified="16b02b2db6f"/>
+         <source file="..\obj\stm32f4xx_dma.o" lastModified="16b02b2dc0b"/>
+         <source file="..\obj\misc.o" lastModified="16b02b2dc97"/>
+         <source file="..\obj\stm32f4xx_tim.o" lastModified="16b02b2ddb1"/>
       </target>
    </processor>
 </history>

@@ -26,9 +26,9 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaLogic.c" partName="VgaLogic.c" path="C:/Users/Okke/GitRepos/Team3API/API/VgaLogic.c" title="VgaLogic.c" tooltip="C:/Users/Okke/GitRepos/Team3API/API/VgaLogic.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaLogic.c" partName="VgaLogic.c" path="C:/Users/kelvi/Documents/HU/6B/Software/GitRepos/Team3API/API/VgaLogic.c" title="VgaLogic.c" tooltip="C:/Users/kelvi/Documents/HU/6B/Software/GitRepos/Team3API/API/VgaLogic.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/API/VgaLogic.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="13315" selectionTopPixel="931"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1897" selectionTopPixel="640"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="VgaLogic.h" partName="VgaLogic.h" path="C:/Users/Okke/GitRepos/Team3API/API/VgaLogic.h" title="VgaLogic.h" tooltip="C:/Users/Okke/GitRepos/Team3API/API/VgaLogic.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TEAM3API/API/VgaLogic.h"/>
@@ -47,6 +47,9 @@
 <view id="org.eclipse.ui.views.ProgressView" partName="Progress">
 <viewState/>
 </view>
+<view id="org.coocox.component.ui.ComponentView" partName="Components">
+<viewState/>
+</view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
 <viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
@@ -57,9 +60,6 @@
 <element path="/TEAM3API"/>
 </selection>
 </viewState>
-</view>
-<view id="org.coocox.component.ui.ComponentView" partName="Components">
-<viewState/>
 </view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
@@ -98,15 +98,11 @@
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<view id="org.coocox.builder.ui.views.ProjectView"/>
 <fastViewBars>
 <fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@1933eab" orientation="256" selectedTabId="org.coocox.component.ui.Help" style="1">
 <fastViews>
 <view id="org.coocox.component.ui.Help" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
-<fastViewBar fastViewLocation="16384" id="org.eclipse.ui.internal.ViewStack@b21d14" orientation="256" selectedTabId="org.coocox.builder.ui.views.ProjectView" style="1">
-<fastViews>
-<view id="org.coocox.builder.ui.views.ProjectView" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
 <fastViewBar fastViewLocation="16384" id="org.eclipse.ui.internal.ViewStack@c90a0a" orientation="256" selectedTabId="org.coocox.component.ui.ComponentView" style="1">
@@ -114,21 +110,29 @@
 <view id="org.coocox.component.ui.ComponentView" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
-<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@b4e3a8" orientation="256" selectedTabId="org.eclipse.ui.views.ProgressView" style="1">
-<fastViews>
-<view id="org.eclipse.ui.views.ProgressView" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
 <fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@7eef21" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="1">
 <fastViews>
 <view id="org.eclipse.ui.console.ConsoleView" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
+<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@b4e3a8" orientation="256" selectedTabId="org.eclipse.ui.views.ProgressView" style="1">
+<fastViews>
+<view id="org.eclipse.ui.views.ProgressView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
 </fastViewBars>
 <layout>
 <mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@c90a0a">
-<folder appearance="2" expanded="0">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1b9e45d">
+<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@c90a0a" ratio="0.14986522" ratioLeft="278" ratioRight="1577" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1b9e45d">
+<folder appearance="2" expanded="2">
 <page content="org.coocox.component.ui.ComponentView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -140,14 +144,14 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@7eef21" ratio="0.5614035" ratioLeft="352" ratioRight="275" relationship="4" relative="org.eclipse.ui.internal.ViewStack@c90a0a">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.coocox.builder.ui.exampleView" ratio="0.21944036" ratioLeft="298" ratioRight="1060" relationship="2" relative="org.eclipse.ui.internal.ViewStack@c90a0a"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1933eab" ratio="0.7198113" ratioLeft="763" ratioRight="297" relationship="2" relative="org.coocox.builder.ui.exampleView">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="org.coocox.component.ui.Help" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
@@ -157,15 +161,14 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@b4e3a8" ratio="0.49859154" ratioLeft="177" ratioRight="178" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1933eab">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44920635" ratioLeft="283" ratioRight="347" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@b21d14" ratio="0.36984128" ratioLeft="233" ratioRight="397" relationship="4" relative="org.eclipse.ui.internal.ViewStack@c90a0a">
-<folder appearance="2" expanded="0">
-<page content="org.coocox.builder.ui.views.ProjectView" label="LabelNotFound"/>
+<folder appearance="2" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
@@ -340,48 +343,47 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Fonts.c" tooltip="TEAM3API/API/Fonts.c">
-<persistable path="/TEAM3API/API/Fonts.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Fonts.h" tooltip="TEAM3API/API/Fonts.h">
-<persistable path="/TEAM3API/API/Fonts.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaLogic.h" tooltip="TEAM3API/API/VgaLogic.h">
 <persistable path="/TEAM3API/API/VgaLogic.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaLogic.c" tooltip="TEAM3API/API/VgaLogic.c">
-<persistable path="/TEAM3API/API/VgaLogic.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.h" tooltip="TEAM3API/Application/AppLogic.h">
-<persistable path="/TEAM3API/Application/AppLogic.h"/>
-</file>
-<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
-<persistable>&#x0A;<subPage/>
-</persistable>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppUart.h" tooltip="TEAM3API/Application/AppUart.h">
-<persistable path="/TEAM3API/Application/AppUart.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppUart.c" tooltip="TEAM3API/Application/AppUart.c">
-<persistable path="/TEAM3API/Application/AppUart.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="TEAM3API/cmsis_boot/startup/startup_stm32f4xx.c">
-<persistable path="/TEAM3API/cmsis_boot/startup/startup_stm32f4xx.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Fonts.c" tooltip="TEAM3API/API/Fonts.c">
+<persistable path="/TEAM3API/API/Fonts.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaIO.c" tooltip="TEAM3API/API/VgaIO.c">
 <persistable path="/TEAM3API/API/VgaIO.c"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.c" tooltip="TEAM3API/Application/AppLogic.c">
+<persistable path="/TEAM3API/Application/AppLogic.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.h" tooltip="TEAM3API/Application/AppLogic.h">
+<persistable path="/TEAM3API/Application/AppLogic.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppFront.c" tooltip="TEAM3API/Application/AppFront.c">
 <persistable path="/TEAM3API/Application/AppFront.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="TEAM3API/main.c">
+<persistable path="/TEAM3API/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.c" tooltip="TEAM3API/cmsis_boot/system_stm32f4xx.c">
+<persistable path="/TEAM3API/cmsis_boot/system_stm32f4xx.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaLogic.c" tooltip="TEAM3API/API/VgaLogic.c">
+<persistable path="/TEAM3API/API/VgaLogic.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppUart.h" tooltip="TEAM3API/Application/AppUart.h">
+<persistable path="/TEAM3API/Application/AppUart.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppFront.h" tooltip="TEAM3API/Application/AppFront.h">
 <persistable path="/TEAM3API/Application/AppFront.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppLogic.c" tooltip="TEAM3API/Application/AppLogic.c">
-<persistable path="/TEAM3API/Application/AppLogic.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="AppUart.c" tooltip="TEAM3API/Application/AppUart.c">
+<persistable path="/TEAM3API/Application/AppUart.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="TEAM3API/main.c">
-<persistable path="/TEAM3API/main.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaIO.h" tooltip="TEAM3API/API/VgaIO.h">
+<persistable path="/TEAM3API/API/VgaIO.h"/>
+</file>
+<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VgaIO.h" tooltip="C:\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\API\VgaIO.h">
+<persistable path="C:\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\API\VgaIO.h" project="TEAM3API"/>
 </file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="_intsup.h" tooltip="E:\5.4 2016q2\arm-none-eabi\include\sys\_intsup.h">
 <persistable path="E:\5.4 2016q2\arm-none-eabi\include\sys\_intsup.h" project="TEAM3API"/>

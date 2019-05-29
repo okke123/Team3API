@@ -1,38 +1,47 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\workspace -I..\..\..\workspace\Team3API\cmsis_lib -I..\..\..\workspace\Team3API\cmsis_boot -I..\..\..\workspace\Team3API\cmsis -I..\..\..\workspace\Team3API -I..\..\.. -I..\..\..\workspace\Team3API\cmsis_lib\include">
-      <target file="syscalls.o" lastModified="16a75218f38">
-         <source file="..\..\..\syscalls\syscalls.c" lastModified="16a700d95e9"/>
+   <processor signature="arm-none-eabi-gcc 4.8.3 x86_64-w64-mingw32 -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -D__FPU_USED -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\API -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\cmsis -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\cmsis_lib -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\Application -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\cmsis_lib\include -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API\cmsis_boot -I..\..\..\..\..\Users\kelvi\Documents\HU\6B\Software\GitRepos\Team3API">
+      <target file="syscalls.o" lastModified="16b02b2db6f">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="16afec67cac"/>
       </target>
-      <target file="stm32f4xx_gpio.o" lastModified="16a75218e3e">
-         <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a700d95d5"/>
+      <target file="stm32f4xx_gpio.o" lastModified="16b02b2da75">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16afec67c98"/>
       </target>
-      <target file="AppFront.o" lastModified="16a75218a47">
-         <source file="..\..\..\AppFront.c" lastModified="16a7501cb29"/>
+      <target file="AppFront.o" lastModified="16b02c074d9">
+         <source file="..\..\..\Application\AppFront.c" lastModified="16b02c04812"/>
       </target>
-      <target file="Uart.o" lastModified="16a75218ac4">
-         <source file="..\..\..\Uart.c" lastModified="16a74fbb74f"/>
+      <target file="stm32f4xx_dma.o" lastModified="16b02b2dc0b">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16afec67c98"/>
       </target>
-      <target file="system_stm32f4xx.o" lastModified="16a75218ebb">
-         <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a700d95c2"/>
+      <target file="stm32f4xx_tim.o" lastModified="16b02b2ddb1">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16afec67ca2"/>
       </target>
-      <target file="printf.o" lastModified="16a75218dc1">
-         <source file="..\..\..\stdio\printf.c" lastModified="16a700d95df"/>
+      <target file="printf.o" lastModified="16b02b2d93c">
+         <source file="..\..\..\stdio\printf.c" lastModified="16afec67cac"/>
       </target>
-      <target file="startup_stm32f4xx.o" lastModified="16a75218c1b">
-         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a700d95b2"/>
+      <target file="system_stm32f4xx.o" lastModified="16b02b2daf2">
+         <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16afec67c8f"/>
       </target>
-      <target file="stm32f4xx_usart.o" lastModified="16a75218bbe">
-         <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="16a74fbb754"/>
+      <target file="startup_stm32f4xx.o" lastModified="16b02b2d758">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16afec67c84"/>
       </target>
-      <target file="AppLogic.o" lastModified="16a75218b21">
-         <source file="..\..\..\AppLogic.c" lastModified="16a751c69ff"/>
+      <target file="stm32f4xx_usart.o" lastModified="16b02b2d6eb">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="16afec67ca2"/>
       </target>
-      <target file="main.o" lastModified="16a75218c98">
-         <source file="..\..\..\main.c" lastModified="16a751f946c"/>
+      <target file="AppLogic.o" lastModified="16b02c075a4">
+         <source file="..\..\..\Application\AppLogic.c" lastModified="16b02ad4e3e"/>
       </target>
-      <target file="stm32f4xx_rcc.o" lastModified="16a75218d35">
-         <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a700d95df"/>
+      <target file="main.o" lastModified="16b02c07640">
+         <source file="..\..\..\main.c" lastModified="16b02ac18c9"/>
+      </target>
+      <target file="stm32f4xx_rcc.o" lastModified="16b02b2d8a0">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16afec67ca2"/>
+      </target>
+      <target file="AppUart.o" lastModified="16b02c076ec">
+         <source file="..\..\..\Application\AppUart.c" lastModified="16afec67a68"/>
+      </target>
+      <target file="misc.o" lastModified="16b02b2dc97">
+         <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16afec67c98"/>
       </target>
    </processor>
 </history>

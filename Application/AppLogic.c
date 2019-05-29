@@ -8,7 +8,6 @@
 
 #include "AppLogic.h"
 
-
 int check_commando(char *functie_naam);
 
 int check_parameter(char *parameter, int parameter_type, int *error);
@@ -47,8 +46,6 @@ int CharToInt(char* src, int* value)
 	*value = atoi(src);
 	return API_NONE_ERROR;
 }
-
-
 
 void StringHandler(char *str_inkomend)
 {

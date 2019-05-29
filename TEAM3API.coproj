@@ -27,16 +27,18 @@
         <Option name="nostartfiles" value="1"/>
         <Option name="LTO" value="0"/>
         <Option name="IsNewStartupCode" value="1"/>
-        <Option name="Library" value="Not use C Library"/>
+        <Option name="Library" value="Use base C Library"/>
         <Option name="UserEditLinker" value="-lm;"/>
-        <LinkedLibraries/>
+        <LinkedLibraries>
+          <Libset dir="" libs="vga"/>
+        </LinkedLibraries>
         <MemoryAreas debugInFlashNotRAM="1">
           <Memory name="IROM1" type="ReadOnly" size="0x00100000" startValue="0x08000000"/>
           <Memory name="IRAM1" type="ReadWrite" size="0x00020000" startValue="0x20000000"/>
           <Memory name="IROM2" type="ReadOnly" size="" startValue=""/>
           <Memory name="IRAM2" type="ReadWrite" size="0x00010000" startValue="0x10000000"/>
         </MemoryAreas>
-        <LocateLinkFile path="e:/coide/configuration/programdata/team3api/arm-gcc-link.ld" type="0"/>
+        <LocateLinkFile path="../../../../../../../../coocox/coide/configuration/programdata/team3api/arm-gcc-link.ld" type="0"/>
       </Link>
       <Output>
         <Option name="OutputFileType" value="0"/>
@@ -84,18 +86,18 @@
     <Component id="524" name="MISC" path="" type="2"/>
   </Components>
   <Files>
-    <File name="API" path="" type="2"/>
     <File name="Application/AppUart.c" path="Application/AppUart.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_gpio.c" path="cmsis_lib/source/stm32f4xx_gpio.c" type="1"/>
-    <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_dma.c" path="cmsis_lib/source/stm32f4xx_dma.c" type="1"/>
     <File name="stdio" path="" type="2"/>
+    <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_usart.c" path="cmsis_lib/source/stm32f4xx_usart.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_rcc.c" path="cmsis_lib/source/stm32f4xx_rcc.c" type="1"/>
     <File name="Application/AppFront.c" path="Application/AppFront.c" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="Application/AppUart.h" path="Application/AppUart.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
+    <File name="Application/VgaLogic.h" path="API/VgaLogic.h" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_usart.h" path="cmsis_lib/include/stm32f4xx_usart.h" type="1"/>
     <File name="cmsis_boot/stm32f4xx.h" path="cmsis_boot/stm32f4xx.h" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
@@ -103,14 +105,11 @@
     <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
     <File name="cmsis_boot/system_stm32f4xx.c" path="cmsis_boot/system_stm32f4xx.c" type="1"/>
     <File name="cmsis/core_cm4.h" path="cmsis/core_cm4.h" type="1"/>
-    <File name="API/Fonts.h" path="API/Fonts.h" type="1"/>
-    <File name="API/VgaLogic.c" path="API/VgaLogic.c" type="1"/>
-    <File name="API/VgaIO.c" path="API/VgaIO.c" type="1"/>
     <File name="cmsis_lib/source/misc.c" path="cmsis_lib/source/misc.c" type="1"/>
     <File name="cmsis" path="" type="2"/>
     <File name="cmsis_lib/include/stm32f4xx_tim.h" path="cmsis_lib/include/stm32f4xx_tim.h" type="1"/>
-    <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
     <File name="cmsis_lib" path="" type="2"/>
+    <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
     <File name="cmsis_lib/source" path="" type="2"/>
     <File name="cmsis_lib/include/stm32f4xx_dma.h" path="cmsis_lib/include/stm32f4xx_dma.h" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_tim.c" path="cmsis_lib/source/stm32f4xx_tim.c" type="1"/>
@@ -121,13 +120,10 @@
     <File name="cmsis_lib/include/misc.h" path="cmsis_lib/include/misc.h" type="1"/>
     <File name="Application" path="" type="2"/>
     <File name="cmsis_boot/stm32f4xx_conf.h" path="cmsis_boot/stm32f4xx_conf.h" type="1"/>
-    <File name="API/VgaIO.h" path="API/VgaIO.h" type="1"/>
     <File name="cmsis_boot/system_stm32f4xx.h" path="cmsis_boot/system_stm32f4xx.h" type="1"/>
-    <File name="API/Fonts.c" path="API/Fonts.c" type="1"/>
     <File name="cmsis_lib/include" path="" type="2"/>
     <File name="stdio/printf.c" path="stdio/printf.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_rcc.h" path="cmsis_lib/include/stm32f4xx_rcc.h" type="1"/>
-    <File name="API/VgaLogic.h" path="API/VgaLogic.h" type="1"/>
     <File name="main.c" path="main.c" type="1"/>
     <File name="Application/AppLogic.c" path="Application/AppLogic.c" type="1"/>
   </Files>
