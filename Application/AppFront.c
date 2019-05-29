@@ -1,13 +1,22 @@
 /**
   ******************************************************************************
   * @file    AppFront.c
-  * @author  Chileam Bohnen
-  * @version V0.0.1
-  * @date    30-april-2019
-  * @brief   This file provides the front layer for the application
-  *
-  ******************************************************************************
+  * @author  Team 3
+  * @brief   This file provides the logical functions for the UART
+  *           - init the front layer.
+  *			  - pass a string from the UART.
+  *			  - check which error code has to be send.
   */
+
+/** @addtogroup Application
+ *  @brief	Application used for demo.
+ * 	@{
+ */
+
+/** @defgroup APP-FRONT Front layer for the application
+ *  @brief	All the graphical functions for the app layer.
+ * 	@{
+ */
 
 /* Includes ------------------------------------------------------------------*/
 #include "AppFront.h"
@@ -17,17 +26,12 @@ int error;
 
 void AppFrontLoop(void);
 
-/** @addtogroup App Demo application
-  * @{
-  */
 
-/** @defgroup AppFront Front layer
-  * @brief Terminal functions
-  * @{
-  */
-
-
-
+/**
+ * @brief	inits the front.
+ * @param	void: no parameters needed.
+ * @return	none.
+ */
 void AppFrontInit(void)
 {
 	UartInit();
@@ -38,6 +42,12 @@ void AppFrontInit(void)
 	AppFrontLoop();
 }
 
+
+/**
+ * @brief	while loop that gets the the UART messages.
+ * @param	void: no parameters needed.
+ * @return	none.
+ */
 void AppFrontLoop(void)
 {
 	while(1)
@@ -51,11 +61,8 @@ void AppFrontLoop(void)
 
 /**
  * @brief	Error code handling routine according to the specified error value
- * 			an automated message is generated.
- * @param	error:		integer that contains an error code value.
- *
- * @param	error_msg:	char pointer that contains a feedback message for the therminal.
- * @retval	None
+ * @param	error:		char that contains an error code value.
+ * @return	none.
  */
 void ErrorCodeHandler(char error)
 {

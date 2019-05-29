@@ -1,3 +1,11 @@
+/**
+  ******************************************************************************
+  * @file    AppUart.h
+  * @author  Team 3
+  * @date    29-5-2019
+  * @brief   The headerfile for the Uart.c and includes relevant files, global defines and functions.
+*/
+
 #ifndef __UART_H
 #define __UART_H
 
@@ -15,12 +23,13 @@
 #define TRUE	1				// boolean value true
 #define FALSE	0				// boolean value false
 
+/* Functies ------------------------------------------------------------------*/
 void UartInit();
 void UartPut(char c);
 void UartPuts(char* s);
 char UartGet();
 int UartGets(char* s, int echo);
 void UART_putnum(unsigned int num, unsigned char deel);
-void UART_putint(unsigned int num);
+void UARTPutInt(unsigned int num);
 
 #endif
