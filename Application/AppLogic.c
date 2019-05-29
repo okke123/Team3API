@@ -157,17 +157,19 @@ void StringHandler(char *str_inkomend)
 			color =  	check_parameter(string_array[5],PARAMETER_TYPE_COLOR, &error);
 			filled = 	check_parameter(string_array[6],PARAMETER_TYPE_NUMBER,&error);
 
-			if (aantal_komma < 8)
+			if (aantal_komma == 6)
 			{
-				bordercolor = 0;
-				if (aantal_komma < 7)
-					weight = 1;
-				else
-					weight = check_parameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
+				weight = 1;
+				bordercolor = color;
 			}
 			else
-				bordercolor = check_parameter(string_array[8],PARAMETER_TYPE_NUMBER,&error);
-
+			{
+				weight = check_parameter(string_array[7],PARAMETER_TYPE_NUMBER,&error);
+				if (aantal_komma == 7)
+					bordercolor = color;
+				else
+					bordercolor = check_parameter(string_array[8],PARAMETER_TYPE_COLOR,&error);
+			}
 
 			if (!error)
 			{
@@ -384,6 +386,7 @@ int check_parameter(char *parameter, int parameter_type, int *error)
 			if(strcmp(parameter, COLOR_TEXT_LIGHT_MAGENTA)	==0)	return VGA_COL_LIGHT_MAGENTA;
 			if(strcmp(parameter, COLOR_TEXT_BROWN)			==0) 	return VGA_COL_BROWN;
 			if(strcmp(parameter, COLOR_TEXT_YELLOW)			==0)	return VGA_COL_YELLOW;
+			if(strcmp(parameter, COLOR_TEXT_GRAY)			==0)	return VGA_COL_GRAY;
 			if(strcmp(parameter, COLOR_TEXT_WHITE)  		==0) 	return VGA_COL_WHITE;
 			if(strcmp(parameter, COLOR_TEXT_PINK)			==0) 	return VGA_COL_PINK;
 			break;
