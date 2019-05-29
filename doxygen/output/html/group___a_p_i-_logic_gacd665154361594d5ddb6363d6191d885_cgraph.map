@@ -1,0 +1,5 @@
+<map id="API_draw_text" name="API_draw_text">
+<area shape="rect" id="node1" title="Draws text with the given font, style and size on the VGA screen." alt="" coords="5,31,112,57"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_logic.html#gaf8f77293004e98b82a015ab7e836645a" title="Function that gets the correct integer value for the font used in API_draw_text()" alt="" coords="165,5,297,32"/>
+<area shape="rect" id="node3" href="$group___a_p_i-_logic.html#gafa07605ab7880a512a893aad040bd6b9" title="This function measures the pixel width of the given word." alt="" coords="160,56,303,83"/>
+</map>

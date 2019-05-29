@@ -1,0 +1,7 @@
+<map id="API_draw_figure" name="API_draw_figure">
+<area shape="rect" id="node1" title="Draws a polygon with the given points on the VGA screen." alt="" coords="5,31,120,57"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_logic.html#ga3fd40a7f05424ffe7b0ef94c8c7f7315" title="Draws a line with the weight and color specified on the VGA screen." alt="" coords="168,31,272,57"/>
+<area shape="rect" id="node3" href="$group___a_p_i-_logic.html#ga3ceed65813f07e51e8bee8fdc82fa451" title="Draws a line with the weight of one pixel on the VGA screen." alt="" coords="335,5,485,32"/>
+<area shape="rect" id="node5" href="$group___a_p_i-_logic.html#gad6ab7443274ea22feb17f32c26d09088" title="Checks if the given position is outside the screen." alt="" coords="320,56,500,83"/>
+<area shape="rect" id="node4" href="$group___a_p_i-_i_o.html#ga42927d901824147fd8e850367a57fa3e" title="This function changes one pixel in the SRAM." alt="" coords="548,5,655,32"/>
+</map>

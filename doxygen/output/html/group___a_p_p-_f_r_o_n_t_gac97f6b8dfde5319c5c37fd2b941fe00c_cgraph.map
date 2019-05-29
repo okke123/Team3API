@@ -1,0 +1,8 @@
+<map id="AppFrontInit" name="AppFrontInit">
+<area shape="rect" id="node1" title="Initialises the App IO (UART) and the API." alt="" coords="5,56,97,83"/>
+<area shape="rect" id="node2" href="$group___a_p_p-_u_a_r_t.html#ga68b1bf2a7d138a7420f729e2393462d9" title="Initializes the USART2 peripheral." alt="" coords="161,5,247,32"/>
+<area shape="rect" id="node3" href="$group___a_p_i-_logic.html#gad1b28429e9f113344ce334f0626b6ed6" title="Initializes all the necessary API functionality in the IO&#45;Layer (GPIO, Timers, DMA,..." alt="" coords="171,56,237,83"/>
+<area shape="rect" id="node5" href="$group___a_p_i-_logic.html#gac5d34bcb0d84db1190d4b876a3f65944" title="Makes the VGA screen one color by calling VgaIOClearScreen() with the given color." alt="" coords="145,107,263,133"/>
+<area shape="rect" id="node4" href="$group___a_p_i-_i_o.html#gae9bf0f9927be44304c9288f52044b880" title="Initializes all the necessary functionality (GPIO, Timers, DMA, Interrupts)" alt="" coords="338,56,413,83"/>
+<area shape="rect" id="node6" href="$group___a_p_i-_i_o.html#ga24755a2906dacb89a90d14df827fc8ce" title="This function sets the SRAM to one value (except the H&#45;Sync pixel)" alt="" coords="311,107,440,133"/>
+</map>

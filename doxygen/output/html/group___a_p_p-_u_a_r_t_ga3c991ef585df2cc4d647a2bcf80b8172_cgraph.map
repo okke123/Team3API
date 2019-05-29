@@ -1,0 +1,4 @@
+<map id="AppUartPuts" name="AppUartPuts">
+<area shape="rect" id="node1" title="Transmits a string of data through the USART2 peripheral." alt="" coords="5,5,101,32"/>
+<area shape="rect" id="node2" href="$group___a_p_p-_u_a_r_t.html#ga73ea91dd7e47eb0347676bf1a4d2e980" title="Transmits single data through the USART2 peripheral." alt="" coords="149,5,239,32"/>
+</map>

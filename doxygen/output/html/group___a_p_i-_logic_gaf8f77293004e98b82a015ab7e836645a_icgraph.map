@@ -1,0 +1,4 @@
+<map id="API_get_font_value" name="API_get_font_value">
+<area shape="rect" id="node1" title="Function that gets the correct integer value for the font used in API_draw_text()" alt="" coords="160,5,292,32"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_logic.html#gacd665154361594d5ddb6363d6191d885" title="Draws text with the given font, style and size on the VGA screen." alt="" coords="5,5,112,32"/>
+</map>

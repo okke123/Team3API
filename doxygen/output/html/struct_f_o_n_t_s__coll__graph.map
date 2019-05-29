@@ -1,0 +1,4 @@
+<map id="FONTS" name="FONTS">
+<area shape="rect" id="node1" title="Deceleration of structure used for storing info about a font. Stores address of the information for e..." alt="" coords="19,95,85,121"/>
+<area shape="rect" id="node2" href="$struct_f_o_n_t___i_n_f_o.html" title="Deceleration of structure used for storing info about a character. Stores the width of each character..." alt="" coords="5,5,99,32"/>
+</map>

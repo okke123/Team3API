@@ -1,0 +1,6 @@
+<map id="API_check_outside_screen" name="API_check_outside_screen">
+<area shape="rect" id="node1" title="Checks if the given position is outside the screen." alt="" coords="191,56,371,83"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_logic.html#ga62957deeb57f3a25c8d0727c8c9a8b40" title="Draws a rectangle on the VGA screen with the specified values." alt="" coords="5,5,143,32"/>
+<area shape="rect" id="node3" href="$group___a_p_i-_logic.html#gaafb5c2810f8084bed6b20e4c398f0fc8" title="Draws a circle on the VGA screen with the specified values." alt="" coords="17,56,131,83"/>
+<area shape="rect" id="node4" href="$group___a_p_i-_logic.html#ga3fd40a7f05424ffe7b0ef94c8c7f7315" title="Draws a line with the weight and color specified on the VGA screen." alt="" coords="22,107,126,133"/>
+</map>

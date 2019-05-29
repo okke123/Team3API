@@ -1,0 +1,10 @@
+<map id="C:/Users/Okke/GitRepos/Team3API/API/VgaIO.h" name="C:/Users/Okke/GitRepos/Team3API/API/VgaIO.h">
+<area shape="rect" id="node1" title="This file prototypes the functions of &#39;VgaIO.c&#39;, defines global constants and includes the necessary ..." alt="" coords="104,5,271,47"/>
+<area shape="rect" id="node2" href="$_vga_i_o_8c.html" title="This file provides the hardware functions of the API with the following functions:" alt="" coords="5,95,172,136"/>
+<area shape="rect" id="node3" href="$_vga_logic_8h.html" title="This file prototypes the functions of &#39;VgaLogic.c&#39;, defines global constants and includes the necessa..." alt="" coords="196,95,376,136"/>
+<area shape="rect" id="node4" href="$_vga_logic_8c.html" title="This file provides the logical functions of the API that do the following:" alt="" coords="97,191,277,233"/>
+<area shape="rect" id="node5" href="$_app_logic_8h.html" title="The headerfile for the AppLogic.c and includes relevant files, global defines and functions." alt="" coords="301,184,468,240"/>
+<area shape="rect" id="node6" href="$_app_front_8h.html" title="The headerfile for the AppFront.c and includes relevant files, global defines and functions." alt="" coords="205,288,372,344"/>
+<area shape="rect" id="node8" href="$_app_logic_8c.html" title="This file provides the logical functions for the UART:" alt="" coords="396,288,563,344"/>
+<area shape="rect" id="node7" href="$_app_front_8c.html" title="This file provides the logical functions for the UART." alt="" coords="205,392,372,448"/>
+</map>

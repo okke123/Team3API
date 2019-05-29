@@ -1,0 +1,4 @@
+<map id="AppLogicTrimString" name="AppLogicTrimString">
+<area shape="rect" id="node1" title="Function that trims a string using (AppLogicTrimStringLeft() and AppLogicTrimStringRight() )." alt="" coords="208,5,343,32"/>
+<area shape="rect" id="node2" href="$group___a_p_p-_l_o_g_i_c.html#ga27ba18026425f36f9b71d24954b7e6df" title="Checks the function for parameters and calls the correct function." alt="" coords="5,5,160,32"/>
+</map>

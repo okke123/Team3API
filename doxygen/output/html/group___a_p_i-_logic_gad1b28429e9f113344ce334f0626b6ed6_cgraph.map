@@ -1,0 +1,4 @@
+<map id="API_init" name="API_init">
+<area shape="rect" id="node1" title="Initializes all the necessary API functionality in the IO&#45;Layer (GPIO, Timers, DMA,..." alt="" coords="5,5,72,32"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_i_o.html#gae9bf0f9927be44304c9288f52044b880" title="Initializes all the necessary functionality (GPIO, Timers, DMA, Interrupts)" alt="" coords="120,5,195,32"/>
+</map>

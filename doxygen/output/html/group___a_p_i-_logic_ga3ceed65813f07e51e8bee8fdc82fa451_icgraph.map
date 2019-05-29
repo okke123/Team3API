@@ -1,0 +1,4 @@
+<map id="API_draw_simple_line" name="API_draw_simple_line">
+<area shape="rect" id="node1" title="Draws a line with the weight of one pixel on the VGA screen." alt="" coords="157,5,307,32"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_logic.html#ga3fd40a7f05424ffe7b0ef94c8c7f7315" title="Draws a line with the weight and color specified on the VGA screen." alt="" coords="5,5,109,32"/>
+</map>

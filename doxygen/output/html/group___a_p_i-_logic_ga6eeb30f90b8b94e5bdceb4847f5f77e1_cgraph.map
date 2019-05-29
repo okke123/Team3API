@@ -1,0 +1,4 @@
+<map id="API_draw_bitmap" name="API_draw_bitmap">
+<area shape="rect" id="node1" title="Draws bitmap on the VGA screen." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_i_o.html#gafc57beb34a803fffe153f385e9db22a9" title="This function copy&#39;s a bitmap to the SRAM." alt="" coords="176,5,295,32"/>
+</map>

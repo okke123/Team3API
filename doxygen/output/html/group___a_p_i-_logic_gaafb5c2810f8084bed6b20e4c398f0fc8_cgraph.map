@@ -1,0 +1,6 @@
+<map id="API_draw_circle" name="API_draw_circle">
+<area shape="rect" id="node1" title="Draws a circle on the VGA screen with the specified values." alt="" coords="5,56,120,83"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_i_o.html#ga3e751cde6531afa4cb23dcd91b2af549" title="This function changes one horizontal line in the SRAM." alt="" coords="207,5,309,32"/>
+<area shape="rect" id="node3" href="$group___a_p_i-_i_o.html#ga42927d901824147fd8e850367a57fa3e" title="This function changes one pixel in the SRAM." alt="" coords="205,56,311,83"/>
+<area shape="rect" id="node4" href="$group___a_p_i-_logic.html#gad6ab7443274ea22feb17f32c26d09088" title="Checks if the given position is outside the screen." alt="" coords="168,107,348,133"/>
+</map>

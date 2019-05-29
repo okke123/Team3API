@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    AppFront.c
+  * @file    AppUart.c
   * @author  Team 3
   * @date    29-5-2019
   * @brief   This file provides the logical functions for the UART:

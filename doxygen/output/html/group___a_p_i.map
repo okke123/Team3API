@@ -1,0 +1,7 @@
+<map id="API" name="API">
+<area shape="rect" id="node1" href="$group___a_p_i-_logic.html" title="All the logic functions for the VGA screen." alt="" coords="96,5,211,31"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_f_o_n_t_s.html" title="Deceleration of all fonts used by the API." alt="" coords="113,55,193,80"/>
+<area shape="rect" id="node3" href="$group___a_p_i-_defines.html" title="In this module are all the defines that are declared in the API." alt="" coords="108,104,199,129"/>
+<area shape="rect" id="node4" href="$group___a_p_i-_i_o.html" title="All the IO functions for the VGA screen." alt="" coords="105,153,201,179"/>
+<area shape="rect" id="node5" title="API for VGA." alt="" coords="5,80,48,105"/>
+</map>

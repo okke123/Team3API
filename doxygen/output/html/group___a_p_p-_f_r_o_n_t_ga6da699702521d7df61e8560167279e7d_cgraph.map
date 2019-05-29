@@ -1,0 +1,11 @@
+<map id="AppFrontLoop" name="AppFrontLoop">
+<area shape="rect" id="node1" title="Infinite loop that keeps scanning Uart and acts on message gotten." alt="" coords="5,81,108,108"/>
+<area shape="rect" id="node2" href="$group___a_p_p-_u_a_r_t.html#ga64df49dc7a23f06a78a067cd5ece5bd9" title="Return the most recent received string of data by the USART2 peripheral." alt="" coords="185,56,282,83"/>
+<area shape="rect" id="node3" href="$group___a_p_p-_l_o_g_i_c.html#ga27ba18026425f36f9b71d24954b7e6df" title="Checks the function for parameters and calls the correct function." alt="" coords="156,107,311,133"/>
+<area shape="rect" id="node4" href="$group___a_p_p-_l_o_g_i_c.html#ga81af92fd004950771e9c1ba8e668885a" title="Function that trims a string using (AppLogicTrimStringLeft() and AppLogicTrimStringRight() )." alt="" coords="377,56,512,83"/>
+<area shape="rect" id="node7" href="$group___a_p_p-_u_a_r_t.html#ga3c991ef585df2cc4d647a2bcf80b8172" title="Transmits a string of data through the USART2 peripheral." alt="" coords="397,107,493,133"/>
+<area shape="rect" id="node9" href="$group___a_p_p-_l_o_g_i_c.html#ga7562f96bcd280b83fb22abb2cfa5fcf5" title="Function that checks if the command name in the string is valid." alt="" coords="359,157,531,184"/>
+<area shape="rect" id="node5" href="$group___a_p_p-_l_o_g_i_c.html#gacae9a6c4f7fbea6c39b77bbeac58cbe5" title="Function that left trims a string." alt="" coords="583,5,739,32"/>
+<area shape="rect" id="node6" href="$group___a_p_p-_l_o_g_i_c.html#ga49b0a579613eaed4320cef4f542d57f2" title="Function that right trims a string." alt="" coords="579,56,744,83"/>
+<area shape="rect" id="node8" href="$group___a_p_p-_u_a_r_t.html#ga73ea91dd7e47eb0347676bf1a4d2e980" title="Transmits single data through the USART2 peripheral." alt="" coords="617,107,706,133"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="C:/Users/Okke/GitRepos/Team3API/Application/AppUart.h" name="C:/Users/Okke/GitRepos/Team3API/Application/AppUart.h">
+<area shape="rect" id="node1" title="The headerfile for the Uart.c and includes relevant files, global defines and functions." alt="" coords="195,5,361,61"/>
+<area shape="rect" id="node2" href="$_app_logic_8h.html" title="The headerfile for the AppLogic.c and includes relevant files, global defines and functions." alt="" coords="100,109,267,165"/>
+<area shape="rect" id="node6" href="$_app_uart_8c.html" title="This file provides the logical functions for the UART:" alt="" coords="291,109,457,165"/>
+<area shape="rect" id="node3" href="$_app_front_8h.html" title="The headerfile for the AppFront.c and includes relevant files, global defines and functions." alt="" coords="5,213,172,269"/>
+<area shape="rect" id="node5" href="$_app_logic_8c.html" title="This file provides the logical functions for the UART:" alt="" coords="196,213,363,269"/>
+<area shape="rect" id="node4" href="$_app_front_8c.html" title="This file provides the logical functions for the UART." alt="" coords="5,317,172,373"/>
+</map>

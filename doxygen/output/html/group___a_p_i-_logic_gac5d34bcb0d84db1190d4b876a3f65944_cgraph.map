@@ -1,0 +1,4 @@
+<map id="API_clearscreen" name="API_clearscreen">
+<area shape="rect" id="node1" title="Makes the VGA screen one color by calling VgaIOClearScreen() with the given color." alt="" coords="5,5,123,32"/>
+<area shape="rect" id="node2" href="$group___a_p_i-_i_o.html#ga24755a2906dacb89a90d14df827fc8ce" title="This function sets the SRAM to one value (except the H&#45;Sync pixel)" alt="" coords="171,5,300,32"/>
+</map>
