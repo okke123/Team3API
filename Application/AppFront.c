@@ -62,12 +62,6 @@ void ErrorCodeHandler(char error)
 	char error_msg[255];
 	switch(error)
 	{
-		case API_NONE_ERROR:
-			//strcpy(error_msg, "\0");
-			//TODO: Veranderen?
-			return;
-			break;
-
 		case API_DISCONNECT_ERROR:
 			strcpy(error_msg, "VGA kabel is niet verbonden.\n\r");
 			break;

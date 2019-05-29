@@ -18,6 +18,17 @@
       <source file="..\..\..\Application\AppLogic.c" lastModified="16b02ad4e3e">
          <include file="..\..\..\Application\AppLogic.h"/>
       </source>
+      <source file="..\..\..\API\VgaIO.h" lastModified="16afec6822e">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
+         <include file="..\..\..\cmsis_lib\include\misc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
+      </source>
+      <source file="..\..\..\API\VgaLogic.h" lastModified="16b02a2bfea">
+         <include file="..\..\..\API\VgaIO.h"/>
+      </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="16afec67c8f">
       </source>
       <source file="..\..\..\Application\AppFront.h" lastModified="16afec67a68">
@@ -35,6 +46,9 @@
       </source>
       <source file="..\..\..\cmsis_lib\include\misc.h" lastModified="16afec67c8f">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\Application\AppFront.c" lastModified="16b02c04812">
+         <include file="..\..\..\Application\AppFront.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16afec67c98">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
