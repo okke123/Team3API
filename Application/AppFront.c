@@ -91,37 +91,37 @@ void ErrorCodeHandler(char error)
 		case API_CLEARSCREEN_PARAM_ERROR:
 			strcpy(error_msg, "Parameters clearscreen zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
-						 "\tclearscreen,kleur\n\r");
+						 "\tclearscreen, kleur\n\r");
 			break;
 
 		case API_LINE_PARAM_ERROR:
 			strcpy(error_msg, "Paramaters lijn zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
-						 "\tlijn,x_1,y_1,x_2,y_2,kleur,dikte,reserverd\n\r");
+						 "\tlijn, x1, y1, x2, y2, kleur, dikte, gereserveerd\n\r");
 			break;
 
 		case API_RECT_PARAM_ERROR:
 			strcpy(error_msg, "Parameters rechthoek zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
-						 "\trechthoek,x_lup,y_lup,x_rdowm,y_rdown,kleur,stijle,reserved\n\r");
+						 "\trechthoek, x linksboven, y linksboven, dikte, hoogte, kleur, gevuld, randdikte, randkleur\n\r");
 			break;
 
 		case API_TEXT_PARAM_ERROR:
 			strcpy(error_msg, "Parameters text zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
-						 "\ttekst,x_lup,y_lup,kleur,text,font,fontsize,fontstyle,reserved\n\r");
+						 "\ttekst, x linksboven, y linksboven, kleur, tekst, font, grootte, stijl, inspringen\n\r");
 			break;
 
 		case API_BITMAP_PARAM_ERROR:
 			strcpy(error_msg, "Parameters bitmap zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
-						 "\tbitmap,x_lup,y_lup,bitmap_nummer");
+						 "\tbitmap, x linksboven, y linksboven, bitmapnummer");
 			break;
 
 		case API_WAIT_PARAM_ERROR:
 			strcpy(error_msg, "Parameters wacht zijn niet compleet.\n\r"
 						 "Commando template is:\n\r"
-						 "\twacht,milliseconden");
+						 "\twacht, milliseconden");
 			break;
 
 		case API_OFF_SCREEN_ERROR:
@@ -135,7 +135,16 @@ void ErrorCodeHandler(char error)
 		case API_MEM_FAULT_ERROR:
 			strcpy(error_msg, "Systeem heeft een geheugen.\n\r");
 			break;
-
+		case API_CIRCLE_PARAM_ERROR:
+			strcpy(error_msg, "Parameters cirkel zijn niet compleet.\n\r"
+						 "Commando template is:\n\r"
+						 "\tcirkel, x, y, radius, kleur, gevuld\n\r");
+			break;
+		case API_FIGURE_PARAM_ERROR:
+			strcpy(error_msg, "Parameters figuur zijn niet compleet.\n\r"
+						 "Commando template is:\n\r"
+						 "\tfiguur, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, kleur, dikte\n\r");
+			break;
 		default:
 			stpcpy(error_msg, "\0");
 			break;
